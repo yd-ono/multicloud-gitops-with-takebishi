@@ -4,7 +4,6 @@ metadata:
   annotations:
     camel.apache.org/operator.id: camel-k
   name: kafka2s3
-  namespace: kafka2s3
 spec:
   configuration:
     - type: configmap
