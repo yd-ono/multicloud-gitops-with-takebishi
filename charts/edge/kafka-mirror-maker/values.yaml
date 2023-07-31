@@ -10,7 +10,7 @@ hubkafka:
   topic: "dgw"
 
 edgekafka:
-  uri: "edge-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+  uri: "edge-cluster-kafka-bootstrap:9092"
   topic: "dgw"
 
 mirror:

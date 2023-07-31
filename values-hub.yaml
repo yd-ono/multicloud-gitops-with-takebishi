@@ -7,8 +7,7 @@ clusterGroup:
     - vault
     - golang-external-secrets
     - kafka
-    - openshift-storage
-    - kafka2s3
+    # - openshift-storage
     # - config-demo
     # - hello-world
 
@@ -92,7 +91,7 @@ clusterGroup:
 
     camel:
       name: camel
-      namespace: kafka2s3
+      namespace: kafka
       project: hub
       path: charts/hub/camel
 

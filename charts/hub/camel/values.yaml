@@ -17,6 +17,11 @@ secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
+s3secret:
+  key: secret/hub/aws
+  namespaces:
+    - kafka
+
 kafka:
   broker:
     uri: "hub-cluster-kafka-bootstrap.broker.svc.cluster.local:9092"
