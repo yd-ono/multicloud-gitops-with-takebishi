@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  name: {{ .Values.skupper.name }}
+  console: "true"
+  flow-collector: "true"
+  console-authentication: internal
+  console-user: "admin"
+  console-password: "admin"
+  cluster-local: "false"
+  edge: "false"
+  service-sync: "true"
+  ingress: "true"
+kind: ConfigMap
+metadata:
+  name: skupper-site

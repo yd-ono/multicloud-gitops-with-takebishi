@@ -1,0 +1,13 @@
+apiVersion: camel.apache.org/v1
+kind: IntegrationPlatform
+metadata:
+  name: kafka2s3
+  namespace: kafka2s3
+  labels:
+    app: "kafka2s3"
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  configuration:
+  - type: repository
+    value: https://maven.repository.redhat.com/ga/all@id=redhat.ea

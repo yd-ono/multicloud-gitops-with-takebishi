@@ -1,0 +1,13 @@
+tree:
+  of: "values"
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+mqtt:
+  name: amq-broker
+  initimage: registry.redhat.io/amq7/amq-broker-init-rhel8:7.11.1-2.1689586802
+  image: registry.redhat.io/amq7/amq-broker-rhel8:7.11.1-2.1689584940
+  port: 61616
+  size: 1

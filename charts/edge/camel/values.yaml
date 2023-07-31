@@ -1,0 +1,21 @@
+tree:
+  of: "values"
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+global:
+  localClusterDomain: sandbox2218.opentlc.com
+  hubClusterDomain: sandbox2218.opentlc.com
+
+mqtt:
+  broker:
+    uri: "tcp://amq-broker-hdls-svc.mqtt.svc.cluster.local:61616"
+    clientId: "MQTT2KafkaRoute"
+    topic: "dgw"
+
+kafka:
+  broker:
+    uri: "edge-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+    topic: "dgw"

@@ -1,0 +1,6 @@
+apiVersion: v2
+description: Device Gateway helm chart
+keywords:
+- device-gateway
+name: device-gateway
+version: 0.0.1

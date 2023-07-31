@@ -1,0 +1,19 @@
+tree:
+  of: "values"
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+hubkafka:
+  uri: "hub-cluster-kafka-bootstrap:9092"
+  topic: "dgw"
+
+edgekafka:
+  uri: "edge-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+  topic: "dgw"
+
+mirror:
+  replicas: 10
+  topicsPattern: .*
+  groupsPattern: .*

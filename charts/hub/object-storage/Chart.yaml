@@ -1,0 +1,6 @@
+apiVersion: v2
+description: Kafka configuration helm chart
+keywords:
+- s3
+name: s3_config
+version: 0.0.1

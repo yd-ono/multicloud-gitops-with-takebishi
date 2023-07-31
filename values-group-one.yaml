@@ -1,0 +1,155 @@
+global:
+  options:
+    useCSV: False
+    syncPolicy: Automatic
+    installPlanApproval: Automatic
+
+clusterGroup:
+  name: group-one
+  isHubCluster: false
+
+  namespaces:
+    - golang-external-secrets
+    - dgw
+    - mqtt
+    - kafka
+    - kafka-mirror
+
+  subscriptions:
+    amq-broker:
+      name: amq-broker-rhel8
+      channel: 7.11.x
+      namespace: openshift-operators
+    
+    amq-streams:
+      name: amq-streams
+      channel: stable
+      namespace: openshift-operators
+
+    camel:
+      name: red-hat-camel-k
+      channel: latest
+      namespace: openshift-operators
+
+    # skupper:
+    #   name: skupper-operator
+    #   namespace: openshift-operators
+    #   channel: alpha  
+
+  projects:
+    - eso
+    - dw-gateway
+
+  applications:
+    golang-external-secrets:
+      name: golang-external-secrets
+      namespace: golang-external-secrets
+      project: eso
+      path: common/golang-external-secrets
+
+    amq:
+      name: mqtt-broker
+      namespace: mqtt
+      project: dw-gateway
+      path: charts/edge/amq
+
+    camel:
+      name: camel
+      namespace: kafka
+      project: dw-gateway
+      path: charts/edge/camel
+
+    kafka:
+      name: kafka-broker
+      namespace: kafka
+      project: dw-gateway
+      path: charts/edge/kafka
+
+    kafka-mirror:
+      name: kafka-mirror
+      namespace: kafka-mirror
+      project: dw-gateway
+      path: charts/edge/kafka-mirror-maker
+
+    kafdrop:
+      name: kafdrop
+      namespace: kafka
+      project: dw-gateway
+      path: charts/edge/kafdrop
+
+    device-gateway:
+      name: dgw
+      namespace: dgw
+      project: dw-gateway
+      path: charts/edge/dgw
+
+    # skupper:
+    #   name: skupper
+    #   namespace: kafka-mirror
+    #   project: dw-gateway
+    #   path: charts/edge/skupper
+
+  # imperative:
+    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
+    # The default schedule is every 10 minutes: imperative.schedule
+    # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
+    # imagePullPolicy is set to always: imperative.imagePullPolicy
+    # For additional overrides that apply to the jobs, please refer to
+    # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
+    # jobs:
+    # - name: hello-world
+    #   # ansible playbook to be run
+    #   playbook: common/ansible/playbooks/hello-world/hello-world.yaml
+    #   # per playbook timeout in seconds
+    #   timeout: 234
+      # verbosity: "-v"
+
+#  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
+#
+#    pipelines:
+#      name: pipelines
+#      namespace: production
+#      project: datacenter
+#      path: applications/pipeline
+#      repoURL: https://github.com/you/applications.git
+#      targetRevision: stable
+#      overrides:
+#      - name: myparam
+#        value: myparam
+#
+#    pipelines_staging:
+#    - name: pipelines
+#      namespace: staging
+#      project: datacenter
+#      path: applications/pipeline
+#      repoURL: https://github.com/you/applications.git
+#      targetRevision: main
+#
+#   Additional applications
+#   Be sure to include additional resources your apps will require
+#   +X machines
+#   +Y RAM
+#   +Z CPU
+#    vendor-app:
+#      name: vendor-app
+#      namespace: default
+#      project: vendor
+#      path: path/to/myapp
+#      repoURL: https://github.com/vendor/applications.git
+#      targetRevision: main
+
+#  managedSites:
+#    factory:
+#      name: factory
+#      # repoURL: https://github.com/dagger-refuse-cool/manuela-factory.git
+#      targetRevision: main
+#      path: applications/factory
+#      helmOverrides:
+#      - name: site.isHubCluster
+#        value: false
+#      clusterSelector:
+#        matchExpressions:
+#        - key: vendor
+#          operator: In
+#          values:
+#            - OpenShift

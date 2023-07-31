@@ -1,0 +1,9 @@
+tree:
+  of: "values"
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+kafka:
+  name: hub-cluster

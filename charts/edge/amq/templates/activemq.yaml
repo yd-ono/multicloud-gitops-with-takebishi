@@ -1,0 +1,23 @@
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: {{ .Values.mqtt.name }}
+  namespace: mqtt
+spec:
+  acceptors:
+    - bindToAllInterfaces: true
+      expose: true
+      name: all
+      port: {{ .Values.mqtt.port }}
+  deploymentPlan:
+    size: {{ .Values.mqtt.size }}
+    persistenceEnabled: false
+    requireLogin: false
+    messageMigration: false
+    initImage: {{ .Values.mqtt.initimage }}
+    managementRBACEnabled: true
+    journalType: nio
+    enableMetricsPlugin: true
+    jolokiaAgentEnabled: false
+    clustered: true
+    image: {{ .Values.mqtt.image }}
