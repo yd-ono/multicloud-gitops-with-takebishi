@@ -22,7 +22,10 @@ clusterGroup:
     skupper:
       name: skupper-operator
       namespace: openshift-operators
+      installPlanApproval: Automatic
       channel: alpha
+      source: redhat-operators
+      startingCSV: skupper-operator.v1.2
 
     amq-streams:
       name: amq-streams
