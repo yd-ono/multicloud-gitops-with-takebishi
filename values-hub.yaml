@@ -34,12 +34,12 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
-      channel: stable-4.13
-      source: redhat-operators
-      sourceNamespace: openshift-marketplace
+    # odf:
+    #   name: odf-operator
+    #   namespace: openshift-storage
+    #   channel: stable-4.13
+    #   source: redhat-operators
+    #   sourceNamespace: openshift-marketplace
 
   projects:
     - hub
@@ -94,11 +94,11 @@ clusterGroup:
       project: hub
       path: charts/hub/camel
 
-    object-storage:
-      name: object-storage
-      namespace: openshift-storage
-      project: hub
-      path: charts/hub/object-storage
+    # object-storage:
+    #   name: object-storage
+    #   namespace: openshift-storage
+    #   project: hub
+    #   path: charts/hub/object-storage
 
     # config-demo:
     #   name: config-demo
