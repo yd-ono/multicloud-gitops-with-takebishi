@@ -25,8 +25,8 @@ spec:
                   bucketNameOrArn: {{ $.Values.global.s3.bucket.name }}
                   keyName: {{ $.Values.global.s3.bucket.key_name }}
                   region: {{ $.Values.global.s3.bucket.region }}
-                  accessKey: {{ .s3.accessKey }}
-                  secretKey: {{ .s3.secretKey }}
+                  accessKey: s3.accessKey
+                  secretKey: s3.secretKey
                   autoCreateBucket: true
                   batchMessageNumber: 10
                   batchSize: 1
