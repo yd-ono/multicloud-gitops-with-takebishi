@@ -2,7 +2,6 @@ apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
   name: demo
-  namespace: openshift-storage
   labels:
     app: noobaa
     bucket-provisioner: openshift-storage.noobaa.io-obc

@@ -4,7 +4,6 @@ clusterGroup:
 
   namespaces:
     - open-cluster-management
-    - skupper
     - vault
     - golang-external-secrets
     - kafka
@@ -19,13 +18,13 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.7
       #csv: advanced-cluster-management.v2.6.1
-    # skupper:
-    #   name: skupper-operator
-    #   namespace: openshift-operators
-    #   installPlanApproval: Automatic
-    #   channel: alpha
-    #   source: redhat-operators
-    #   startingCSV: skupper-operator.v1.2
+    skupper:
+      name: skupper-operator
+      namespace: openshift-operators
+      installPlanApproval: Automatic
+      channel: alpha
+      source: redhat-operators
+      startingCSV: skupper-operator.v1.2
 
     amq-streams:
       name: amq-streams
@@ -73,11 +72,11 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
-    # skupper:
-    #   name: skupper
-    #   namespace: kafka
-    #   project: hub
-    #   path: charts/hub/skupper
+    skupper:
+      name: skupper
+      namespace: kafka
+      project: hub
+      path: charts/hub/skupper
 
     kafka:
       name: kafka-broker
@@ -116,12 +115,12 @@ clusterGroup:
     #   path: charts/all/hello-world
 
   imperative:
-  #   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
-  #   # The default schedule is every 10 minutes: imperative.schedule
-  #   # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
-  #   # imagePullPolicy is set to always: imperative.imagePullPolicy
-  #   # For additional overrides that apply to the jobs, please refer to
-  #   # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
+    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
+    # The default schedule is every 10 minutes: imperative.schedule
+    # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
+    # imagePullPolicy is set to always: imperative.imagePullPolicy
+    # For additional overrides that apply to the jobs, please refer to
+    # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
     jobs:
     - name: hello-world
       # ansible playbook to be run
@@ -132,10 +131,10 @@ clusterGroup:
 
   managedClusterGroups:
     exampleRegion:
-      name: group-one
+      name: edge
       acmlabels:
       - name: clusterGroup
-        value: group-one
+        value: edge
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false
@@ -143,7 +142,7 @@ clusterGroup:
       clusterPools:
         exampleAWSPool:
           size: 1
-          name: edge-box-group
+          name: edgebox
           openshiftVersion: 4.12.24
           baseDomain: sandbox1282.opentlc.com
           controlPlane:
@@ -158,7 +157,7 @@ clusterGroup:
               region: ap-northeast-1
           clusters:
           - One
-  
+
       # Before enabling cluster provisioning, ensure AWS and/or Azure
       #   credentials and OCP pull secrets are defined in Vault.
       #   See values-secret.yaml.template

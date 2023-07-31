@@ -4,7 +4,6 @@ metadata:
   annotations:
     camel.apache.org/operator.id: camel-k
   name: mqtt2kafka
-  namespace: kafka
 spec:
   configuration:
     - type: configmap

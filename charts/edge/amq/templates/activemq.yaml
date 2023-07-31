@@ -2,7 +2,6 @@ apiVersion: broker.amq.io/v1beta1
 kind: ActiveMQArtemis
 metadata:
   name: {{ .Values.mqtt.name }}
-  namespace: mqtt
 spec:
   acceptors:
     - bindToAllInterfaces: true
