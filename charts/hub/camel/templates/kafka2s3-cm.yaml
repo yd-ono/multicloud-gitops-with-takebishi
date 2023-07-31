@@ -4,7 +4,6 @@ metadata:
   name: kafka-to-s3-config
 data:
   application.properties: |
-
     kafka.broker.uri={{ .Values.kafka.broker.uri }}
     kafka.broker.topic={{ .Values.kafka.broker.topic }}
 

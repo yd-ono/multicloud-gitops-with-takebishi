@@ -6,8 +6,8 @@ metadata:
   name: kafka2s3
 spec:
   configuration:
-    - type: configmap
-      value: kafka-to-s3-config
+    # - type: configmap
+    #   value: kafka-to-s3-config
     - type: secret
       value: s3-secret
   flows:
@@ -23,6 +23,7 @@ spec:
                 id: to-s3
                 uri: 'kamelet:aws-s3-streaming-upload-sink'
                 parameters:
+                  AmazonS3Client: #client
                   bucketNameOrArn: {{ $.Values.global.s3.bucket.name }}
                   keyName: {{ $.Values.global.s3.bucket.key_name }}
                   region: {{ $.Values.global.s3.bucket.region }}
