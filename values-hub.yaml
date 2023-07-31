@@ -87,7 +87,7 @@ clusterGroup:
 
     kafdrop:
       name: kafdrop
-      namespace: kafka2s3
+      namespace: kafka
       project: hub
       path: charts/hub/kafdrop
 
