@@ -19,13 +19,13 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.7
       #csv: advanced-cluster-management.v2.6.1
-    skupper:
-      name: skupper-operator
-      namespace: openshift-operators
-      installPlanApproval: Automatic
-      channel: alpha
-      source: redhat-operators
-      startingCSV: skupper-operator.v1.2
+    # skupper:
+    #   name: skupper-operator
+    #   namespace: openshift-operators
+    #   installPlanApproval: Automatic
+    #   channel: alpha
+    #   source: redhat-operators
+    #   startingCSV: skupper-operator.v1.2
 
     amq-streams:
       name: amq-streams
@@ -73,11 +73,11 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
-    skupper:
-      name: skupper
-      namespace: kafka
-      project: hub
-      path: charts/hub/skupper
+    # skupper:
+    #   name: skupper
+    #   namespace: kafka
+    #   project: hub
+    #   path: charts/hub/skupper
 
     kafka:
       name: kafka-broker
