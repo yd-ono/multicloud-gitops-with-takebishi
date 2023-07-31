@@ -21,24 +21,19 @@ for additional context and installation instructions
 You can connect Kafka cluster in between hub and edge by usin Skupper.
 Run the following command:
 
-i) skupper deploy for each cluster
-```bash
-skupper init
-```
-
-ii) skupper token create in `hub cluster``
+i) skupper token create in `hub cluster``
 ```bash
 oc login https://HUBCLUSTER:6443
 skupper token create ~/token.yaml
 ```
 
-iii) skupper link create in `edge cluster
+ii) skupper link create in `edge cluster
 ```bash
 oc login https://EDGECLUSTER:6443
 skupper link create ~/token.yaml
 ```
 
-iv) expose kafka address from hub cluster to edge cluster
+iii) expose kafka address from hub cluster to edge cluster
 ```bash
 skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap --port 9092
 ```
