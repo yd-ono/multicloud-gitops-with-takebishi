@@ -31,10 +31,10 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
-    # skupper:
-    #   name: skupper-operator
-    #   namespace: openshift-operators
-    #   channel: alpha  
+    skupper:
+      name: skupper-operator
+      namespace: openshift-operators
+      channel: alpha  
 
   projects:
     - eso
@@ -83,11 +83,11 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/dgw
 
-    # skupper:
-    #   name: skupper
-    #   namespace: kafka-mirror
-    #   project: dw-gateway
-    #   path: charts/edge/skupper
+    skupper:
+      name: skupper
+      namespace: kafka-mirror
+      project: dw-gateway
+      path: charts/edge/skupper
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

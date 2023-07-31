@@ -19,10 +19,10 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.7
       #csv: advanced-cluster-management.v2.6.1
-    # skupper:
-    #   name: skupper-operator
-    #   namespace: openshift-operators
-    #   channel: alpha
+    skupper:
+      name: skupper-operator
+      namespace: openshift-operators
+      channel: alpha
 
     amq-streams:
       name: amq-streams
@@ -34,12 +34,12 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
-    # odf:
-    #   name: odf-operator
-    #   namespace: openshift-storage
-    #   channel: stable-4.13
-    #   source: redhat-operators
-    #   sourceNamespace: openshift-marketplace
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      channel: stable-4.13
+      source: redhat-operators
+      sourceNamespace: openshift-marketplace
 
   projects:
     - hub
@@ -70,11 +70,11 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
-    # skupper:
-    #   name: skupper
-    #   namespace: kafka
-    #   project: hub
-    #   path: charts/hub/skupper
+    skupper:
+      name: skupper
+      namespace: kafka
+      project: hub
+      path: charts/hub/skupper
 
     kafka:
       name: kafka-broker
@@ -94,11 +94,11 @@ clusterGroup:
       project: hub
       path: charts/hub/camel
 
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
-    #   project: hub
-    #   path: charts/hub/object-storage
+    object-storage:
+      name: object-storage
+      namespace: openshift-storage
+      project: hub
+      path: charts/hub/object-storage
 
     # config-demo:
     #   name: config-demo
@@ -142,7 +142,7 @@ clusterGroup:
           size: 1
           name: edge-box-group
           openshiftVersion: 4.12.24
-          baseDomain: sandbox419.opentlc.com
+          baseDomain: sandbox1282.opentlc.com
           controlPlane:
             count: 1
             platform:

@@ -1,14 +1,10 @@
 global:
   localClusterDomain: svc
-  
-  datacenter:
-    clustername: datacenter-XXXXX
-    domain: sandbox419.opentlc.com
 
   s3:
     bucket:
-      name: demo-q9csc-image-registry-ap-northeast-1-kqwjygwvclfyurebnkywi
-      region: ap-southeast-1
+      name: demo
+      region: ap-northeast-1
       key_name: kafka.txt
       message:
         aggregation:
@@ -20,27 +16,6 @@ global:
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
-
-clusterGroup:
-  name: datacenter
-  isHubCluster: true
-  managedClusterGroups:
-    factory:
-      name: factory
-      # repoURL: https://github.com/dagger-refuse-cool/manuela-factory.git
-      # targetRevision: main
-      helmOverrides:
-      # Values must be strings!
-      - name: clusterGroup.isHubCluster
-        value: "false"
-      clusterSelector:
-#        matchLabels:
-#          clusterGroup: factory
-        matchExpressions:
-        - key: vendor
-          operator: In
-          values:
-            - OpenShift
 
 kafka:
   broker:

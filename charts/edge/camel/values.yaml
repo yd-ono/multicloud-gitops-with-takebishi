@@ -5,10 +5,6 @@ secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
-global:
-  localClusterDomain: sandbox2218.opentlc.com
-  hubClusterDomain: sandbox2218.opentlc.com
-
 mqtt:
   broker:
     uri: "tcp://amq-broker-hdls-svc.mqtt.svc.cluster.local:61616"
