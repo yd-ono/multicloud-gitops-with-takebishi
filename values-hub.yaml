@@ -130,10 +130,10 @@ clusterGroup:
 
   managedClusterGroups:
     exampleRegion:
-      name: edge
+      name: group-one
       acmlabels:
       - name: clusterGroup
-        value: edge
+        value: group-one
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false
