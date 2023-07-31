@@ -141,9 +141,9 @@ clusterGroup:
       clusterPools:
         exampleAWSPool:
           size: 1
-          name: edgebox
+          name: edge
           openshiftVersion: 4.12.24
-          baseDomain: sandbox1282.opentlc.com
+          baseDomain: sandbox1705.opentlc.com
           controlPlane:
             count: 1
             platform:
