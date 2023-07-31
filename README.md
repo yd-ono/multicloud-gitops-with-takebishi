@@ -35,5 +35,5 @@ skupper link create ~/token.yaml
 
 iii) expose kafka address from hub cluster to edge cluster
 ```bash
-skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap --port 9092
+skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
 ```

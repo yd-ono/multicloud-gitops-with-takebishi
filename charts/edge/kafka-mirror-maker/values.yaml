@@ -14,6 +14,6 @@ edgekafka:
   topic: "dgw"
 
 mirror:
-  replicas: 10
+  replicas: 1
   topicsPattern: .*
   groupsPattern: .*
