@@ -18,7 +18,7 @@ secretStore:
   kind: ClusterSecretStore
 
 s3secret:
-  key: hub/aws
+  key: secret/data/hub/aws
   namespaces:
     - kafka
 
