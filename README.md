@@ -6,6 +6,7 @@ Large scale deployment Takebishi Device Gateway on OpenShift with GitOps approac
 
 [Live build status](https://util.hybrid-cloud-patterns.io/dashboard.php?pattern=mcgitops)
 
+
 ## Getting Started
 
 If you've followed a link to this repository, but are not really sure what it contains
