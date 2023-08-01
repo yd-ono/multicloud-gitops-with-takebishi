@@ -7,5 +7,5 @@ data:
   console: "true"
   console-user: "admin"
   console-password: "admin"
+  console-authentication: "openshift"
   flow-collector: "true"
-  edge: "true"
