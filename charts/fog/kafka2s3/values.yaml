@@ -3,7 +3,7 @@ global:
 
   s3:
     bucket:
-      name: demo
+      name: demo-1337420e-5ad9-4cea-8c0b-de904ae2b29a
       region: ap-northeast-1
       key_name: kafka.txt
       message:
