@@ -17,6 +17,7 @@ clusterGroup:
       namespace: open-cluster-management
       channel: release-2.7
       #csv: advanced-cluster-management.v2.6.1
+
     skupper:
       name: skupper-operator
       namespace: openshift-operators
@@ -35,17 +36,18 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
-    # odf:
-    #   name: odf-operator
-    #   namespace: openshift-storage
-    #   channel: stable-4.13
-    #   source: redhat-operators
-    #   sourceNamespace: openshift-marketplace
+    amq-broker:
+      name: amq-broker-rhel8
+      channel: 7.11.x
+      namespace: openshift-operators
 
   projects:
     - hub
+    - eso
     # - config-demo
     # - hello-world
+    # - kafka
+    # - dw-gateway
 
   applications:
     acm:
@@ -68,7 +70,7 @@ clusterGroup:
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: hub
+      project: eso
       path: common/golang-external-secrets
 
     skupper:
@@ -95,23 +97,26 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka2s3
 
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
+    # NOTE: If you want to deploy all-in-one box to hub cluster,
+    # comment out the following applications configurations:
+
+    # mqtt2kafka:
+    #   name: mqtt2kafka
+    #   namespace: kafka
     #   project: hub
-    #   path: charts/hub/object-storage
+    #   path: charts/fog/mqtt2kafka
 
-    # config-demo:
-    #   name: config-demo
-    #   namespace: config-demo
-    #   project: config-demo
-    #   path: charts/all/config-demo
+    # device-gateway:
+    #   name: dgw
+    #   namespace: dgw
+    #   project: hub
+    #   path: charts/edge/dgw
 
-    # hello-world:
-    #   name: hello-world
-    #   namespace: hello-world
-    #   project: hello-world
-    #   path: charts/all/hello-world
+    # amq:
+    #   name: mqtt-broker
+    #   namespace: mqtt
+    #   project: hub
+    #   path: charts/edge/amq
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
