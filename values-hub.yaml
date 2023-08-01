@@ -36,11 +36,14 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
+    # NOTE: If you want to deploy all-in-one box to hub cluster,
+    # comment out the following applications configurations:
     # amq-broker:
     #   name: amq-broker-rhel8
     #   channel: 7.11.x
     #   namespace: openshift-operators
 
+    # NOTE: optional
     # odf:
     #   name: odf-operator
     #   namespace: openshift-storage
@@ -80,6 +83,7 @@ clusterGroup:
       project: eso
       path: common/golang-external-secrets
 
+    # NOTE: optional
     # object-storage:
     #   name: object-storage
     #   namespace: kafka
@@ -161,7 +165,7 @@ clusterGroup:
           size: 1
           name: fog
           openshiftVersion: 4.12.24
-          baseDomain: sandbox1036.opentlc.com
+          baseDomain: sandbox1446.opentlc.com
           controlPlane:
             count: 3
             platform:
@@ -189,7 +193,7 @@ clusterGroup:
           size: 1
           name: edge
           openshiftVersion: 4.12.24
-          baseDomain: sandbox1036.opentlc.com
+          baseDomain: sandbox1446.opentlc.com
           controlPlane:
             count: 1
             platform:
