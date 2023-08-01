@@ -9,3 +9,14 @@ global:
     useCSV: false
     syncPolicy: Automatic
     installPlanApproval: Automatic
+
+  s3:
+    bucket:
+      name: demo-1337420e-5ad9-4cea-8c0b-de904ae2b29a
+      region: openshift-storage
+      message:
+        aggregation:
+          count: 50
+      custom:
+        endpoint:
+          enabled: false
