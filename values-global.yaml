@@ -19,4 +19,4 @@ global:
           count: 50
       custom:
         endpoint:
-          enabled: false
+          enabled: true
