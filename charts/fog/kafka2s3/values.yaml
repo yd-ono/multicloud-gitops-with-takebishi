@@ -18,7 +18,7 @@ secretStore:
   kind: ClusterSecretStore
 
 s3secret:
-  key: secret/fog
+  key: secret/fog/aws
   namespaces:
     - kafka
 
