@@ -6,7 +6,7 @@ secretStore:
   kind: ClusterSecretStore
 
 hubkafka:
-  uri: "hub-cluster-kafka-bootstrap:9092"
+  uri: "tcp://hub-cluster-kafka-bootstrap:9092"
   topic: "dgw"
 
 edgekafka:
