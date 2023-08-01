@@ -27,7 +27,7 @@ spec:
   multiCloudGateway:
     reconcileStrategy: manage   # <-- Default value is manage
   storageDeviceSets:
-  - count: 1  # <-- Modify count to desired value. For each set of 3 disks increment the count by 1.
+  - count: {{ .Values.odf.devicesets }}  # <-- Modify count to desired value. For each set of 3 disks increment the count by 1.
     dataPVCTemplate:
       spec:
         accessModes:

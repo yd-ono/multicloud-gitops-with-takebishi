@@ -9,7 +9,7 @@ metadata:
 spec:
   additionalConfig:
     bucketclass: noobaa-default-bucket-class
-  bucketName: demo
-  generateBucketName: demo
-  objectBucketName: obc-openshift-storage-demo
+  bucketName: {{ .Values.odf.bucketName }}
+  generateBucketName: {{ .Values.odf.bucketName }}
+  objectBucketName: obc-openshift-storage-{{ .Values.odf.bucketName }}
   storageClassName: openshift-storage.noobaa.io

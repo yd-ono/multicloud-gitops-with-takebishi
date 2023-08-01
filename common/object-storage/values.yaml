@@ -1,0 +1,7 @@
+global:
+  localClusterDomain: svc
+
+odf:
+  region: ap-northeast-1
+  devicesets: 3
+  bucketName: demo

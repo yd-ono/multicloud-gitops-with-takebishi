@@ -9,14 +9,3 @@ global:
     useCSV: false
     syncPolicy: Automatic
     installPlanApproval: Automatic
-
-  s3:
-    bucket:
-      name: demo
-      region: kafka
-      message:
-        aggregation:
-          count: 50
-      custom:
-        endpoint:
-          enabled: true

@@ -41,6 +41,13 @@ clusterGroup:
     #   channel: 7.11.x
     #   namespace: openshift-operators
 
+    # odf:
+    #   name: odf-operator
+    #   namespace: openshift-storage
+    #   channel: stable-4.12
+    #   source: redhat-operators
+    #   startingCSV: odf-operator.v4.12.5-rhodf
+
   projects:
     - hub
     - eso
@@ -72,6 +79,12 @@ clusterGroup:
       namespace: golang-external-secrets
       project: eso
       path: common/golang-external-secrets
+
+    # object-storage:
+    #   name: object-storage
+    #   namespace: kafka
+    #   project: fog
+    #   path: common/object-storage
 
     skupper:
       name: skupper
@@ -153,7 +166,7 @@ clusterGroup:
             count: 3
             platform:
               aws:
-                type: m5.2xlarge
+                type: m5.8xlarge
           workers:
             count: 0
           platform:

@@ -3,8 +3,8 @@ global:
 
   s3:
     bucket:
-      name: BUCKETNAME
-      region: AWSREGION
+      name: demo
+      region: ap-northeast-3
       key_name: kafka.txt
       message:
         aggregation:
