@@ -59,3 +59,15 @@ iii) expose kafka address from hub cluster to edge cluster
 ```bash
 skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
 ```
+
+### From edge to Fog
+
+```bash
+skupper expose statefulset amq-broker-ss --headless --target-port 61616
+```
+
+### From Hub to Fog
+
+```bash
+skupper expose service hub-cluster-kafka-bootstrap --target-port 9092
+```
