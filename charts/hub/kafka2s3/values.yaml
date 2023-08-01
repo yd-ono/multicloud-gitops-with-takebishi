@@ -11,7 +11,7 @@ global:
           count: 50
       custom:
         endpoint:
-          enabled: true
+          enabled: false
 
 secretStore:
   name: vault-backend
