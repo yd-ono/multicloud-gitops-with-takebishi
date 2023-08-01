@@ -8,3 +8,4 @@ data:
   console-user: "admin"
   console-password: "admin"
   flow-collector: "true"
+  edge: "false"
