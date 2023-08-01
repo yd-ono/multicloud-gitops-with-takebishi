@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: skupper-site
 data:
-  name: edge-site
+  name: fog-site
   console: "true"
   console-user: "admin"
   console-authentication: "openshift"
