@@ -11,6 +11,7 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - kafka
+    - openshift-storage
 
   subscriptions:
     # amq-broker:
@@ -38,7 +39,7 @@ clusterGroup:
 
   projects:
     - eso
-    - dw-gateway
+    - fog
 
   applications:
     golang-external-secrets:
@@ -47,22 +48,34 @@ clusterGroup:
       project: eso
       path: common/golang-external-secrets
 
+    object-storage:
+      name: object-storage
+      namespace: openshift-storage
+      project: fog
+      path: charts/hub/object-storage
+
     # amq:
     #   name: mqtt-broker
     #   namespace: mqtt
     #   project: dw-gateway
     #   path: charts/edge/amq
 
-    camel:
-      name: camel
+    mqtt2kafka:
+      name: mqtt2kafka
       namespace: kafka
-      project: dw-gateway
-      path: charts/fog/camel
+      project: fog
+      path: charts/fog/mqtt2kafka
+
+    kafka2s3:
+      name: kafka2s3
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3
 
     kafka:
       name: kafka-broker
       namespace: kafka
-      project: dw-gateway
+      project: fog
       path: charts/fog/kafka
 
     # kafka-mirror:
@@ -74,7 +87,7 @@ clusterGroup:
     kafdrop:
       name: kafdrop
       namespace: kafka
-      project: dw-gateway
+      project: fog
       path: charts/fog/kafdrop
 
     # device-gateway:
@@ -86,7 +99,7 @@ clusterGroup:
     skupper:
       name: skupper
       namespace: kafka
-      project: dw-gateway
+      project: fog
       path: charts/fog/skupper
 
   # imperative:

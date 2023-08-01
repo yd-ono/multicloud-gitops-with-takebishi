@@ -89,11 +89,11 @@ clusterGroup:
       project: hub
       path: charts/hub/kafdrop
 
-    camel:
-      name: camel
+    kafka2s3:
+      name: kafka2s3
       namespace: kafka
       project: hub
-      path: charts/hub/camel
+      path: charts/hub/kafka2s3
 
     # object-storage:
     #   name: object-storage
@@ -145,7 +145,7 @@ clusterGroup:
           openshiftVersion: 4.12.24
           baseDomain: sandbox1705.opentlc.com
           controlPlane:
-            count: 1
+            count: 3
             platform:
               aws:
                 type: m5.2xlarge

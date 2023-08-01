@@ -9,21 +9,3 @@ global:
     useCSV: false
     syncPolicy: Automatic
     installPlanApproval: Automatic
-
-  git:
-    hostname: github.com
-    account: PLAINTEXT
-    #username: PLAINTEXT
-    email: SOMEWHERE@EXAMPLE.COM
-    dev_revision: main
-
-  s3:
-    bucket:
-      name: BUCKETNAME
-      region: AWSREGION
-      message:
-        aggregation:
-          count: 50
-      custom:
-        endpoint:
-          enabled: false
