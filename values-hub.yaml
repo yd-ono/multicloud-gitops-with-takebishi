@@ -153,7 +153,7 @@ clusterGroup:
             count: 0
           platform:
             aws:
-              region: ap-northeast-3
+              region: ap-northeast-2
           clusters:
           - One
 
@@ -181,7 +181,7 @@ clusterGroup:
             count: 0
           platform:
             aws:
-              region: ap-northeast-1
+              region: ap-northeast-3
           clusters:
           - One
 
