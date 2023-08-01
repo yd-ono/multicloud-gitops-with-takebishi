@@ -13,7 +13,7 @@ global:
   s3:
     bucket:
       name: demo
-      region: openshift-storage
+      region: kafka
       message:
         aggregation:
           count: 50
