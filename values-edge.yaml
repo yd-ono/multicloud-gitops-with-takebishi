@@ -12,6 +12,7 @@ clusterGroup:
     - golang-external-secrets
     - dgw
     - mqtt
+    #- kafka
 
   subscriptions:
     amq-broker:
@@ -54,30 +55,6 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/amq
 
-    # camel:
-    #   name: camel
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/edge/camel
-
-    # kafka:
-    #   name: kafka-broker
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/edge/kafka
-
-    # kafka-mirror:
-    #   name: kafka-mirror
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/edge/kafka-mirror-maker
-
-    # kafdrop:
-    #   name: kafdrop
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/edge/kafdrop
-
     device-gateway:
       name: dgw
       namespace: dgw
@@ -89,6 +66,30 @@ clusterGroup:
       namespace: mqtt
       project: dw-gateway
       path: charts/edge/skupper
+
+    # mqtt2kafka:
+    #   name: mqtt2kafka
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/fog/mqtt2kafka
+
+    # kafka:
+    #   name: kafka-broker
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/fog/kafka
+
+    # kafka-mirror:
+    #   name: kafka-mirror
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/fog/kafka-mirror-maker
+
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/fog/kafdrop
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
