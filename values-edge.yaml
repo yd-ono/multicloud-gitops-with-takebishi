@@ -5,14 +5,13 @@ global:
     installPlanApproval: Automatic
 
 clusterGroup:
-  name: group-one
+  name: edge
   isHubCluster: false
 
   namespaces:
     - golang-external-secrets
     - dgw
     - mqtt
-    - kafka
 
   subscriptions:
     amq-broker:
@@ -20,15 +19,15 @@ clusterGroup:
       channel: 7.11.x
       namespace: openshift-operators
 
-    amq-streams:
-      name: amq-streams
-      channel: stable
-      namespace: openshift-operators
+    # amq-streams:
+    #   name: amq-streams
+    #   channel: stable
+    #   namespace: openshift-operators
 
-    camel:
-      name: red-hat-camel-k
-      channel: latest
-      namespace: openshift-operators
+    # camel:
+    #   name: red-hat-camel-k
+    #   channel: latest
+    #   namespace: openshift-operators
 
     skupper:
       name: skupper-operator
@@ -55,29 +54,29 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/amq
 
-    camel:
-      name: camel
-      namespace: kafka
-      project: dw-gateway
-      path: charts/edge/camel
+    # camel:
+    #   name: camel
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/edge/camel
 
-    kafka:
-      name: kafka-broker
-      namespace: kafka
-      project: dw-gateway
-      path: charts/edge/kafka
+    # kafka:
+    #   name: kafka-broker
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/edge/kafka
 
-    kafka-mirror:
-      name: kafka-mirror
-      namespace: kafka
-      project: dw-gateway
-      path: charts/edge/kafka-mirror-maker
+    # kafka-mirror:
+    #   name: kafka-mirror
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/edge/kafka-mirror-maker
 
-    kafdrop:
-      name: kafdrop
-      namespace: kafka
-      project: dw-gateway
-      path: charts/edge/kafdrop
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: dw-gateway
+    #   path: charts/edge/kafdrop
 
     device-gateway:
       name: dgw

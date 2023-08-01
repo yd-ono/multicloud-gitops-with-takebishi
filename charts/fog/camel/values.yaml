@@ -7,11 +7,11 @@ secretStore:
 
 mqtt:
   broker:
-    uri: "tcp://amq-broker-hdls-svc.mqtt.svc.cluster.local:61616"
+    uri: "tcp://amq-broker-hdls-svc:61616"
     clientId: "MQTT2KafkaRoute"
     topic: "dgw"
 
 kafka:
   broker:
-    uri: "edge-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+    uri: "fog-cluster-kafka-bootstrap:9092"
     topic: "dgw"

@@ -6,5 +6,5 @@ secretStore:
   kind: ClusterSecretStore
 
 kafka:
-  name: edge-cluster
+  name: fog-cluster
   topic: dgw

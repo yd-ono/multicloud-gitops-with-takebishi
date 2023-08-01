@@ -1,11 +1,29 @@
 ---
+main:
+  clusterGroupName: hub
+
 global:
-  pattern: multicloud-gitops
+  pattern: multicloud-gitops-with-takebishi
 
   options:
     useCSV: false
     syncPolicy: Automatic
     installPlanApproval: Automatic
 
-main:
-  clusterGroupName: hub
+  git:
+    hostname: github.com
+    account: PLAINTEXT
+    #username: PLAINTEXT
+    email: SOMEWHERE@EXAMPLE.COM
+    dev_revision: main
+
+  s3:
+    bucket:
+      name: BUCKETNAME
+      region: AWSREGION
+      message:
+        aggregation:
+          count: 50
+      custom:
+        endpoint:
+          enabled: false
