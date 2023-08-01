@@ -86,7 +86,7 @@ clusterGroup:
 
     skupper:
       name: skupper
-      namespace: kafka
+      namespace: mqtt
       project: dw-gateway
       path: charts/edge/skupper
 
