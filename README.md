@@ -69,7 +69,7 @@ skupper expose statefulset amq-broker-ss --headless --target-port 61616
 ### From Hub to Fog
 
 ```bash
-skupper expose service hub-cluster-kafka-bootstrap --target-port 9092
+skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
 ```
 
 ```bash
