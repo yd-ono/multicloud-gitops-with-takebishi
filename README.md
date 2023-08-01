@@ -71,3 +71,8 @@ skupper expose statefulset amq-broker-ss --headless --target-port 61616
 ```bash
 skupper expose service hub-cluster-kafka-bootstrap --target-port 9092
 ```
+
+
+```bash
+./pattern.sh make load-secrets
+```
