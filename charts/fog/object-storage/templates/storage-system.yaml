@@ -1,14 +1,8 @@
-apiVersion: noobaa.io/v1alpha1
-kind: NooBaa
+apiVersion: odf.openshift.io/v1alpha1
+kind: StorageSystem
 metadata:
-  name: noobaa
+  name: ocs-storagecluster-storagesystem
 spec:
-  dbResources:
-    requests:
-      cpu: '0.1'
-      memory: 1Gi
-  dbType: postgres
-  coreResources:
-    requests:
-      cpu: '0.1'
-      memory: 1Gi
+  kind: storagecluster.ocs.openshift.io/v1
+  name: ocs-storagecluster
+  namespace: openshift-storage

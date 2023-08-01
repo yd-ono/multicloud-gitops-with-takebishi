@@ -54,7 +54,7 @@ clusterGroup:
       name: object-storage
       namespace: openshift-storage
       project: fog
-      path: charts/hub/object-storage
+      path: charts/fog/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka
@@ -75,23 +75,17 @@ clusterGroup:
       path: charts/fog/kafka
 
     # Note: comment out the following lines for integration demo between fog and cloud:
-    # kafka-mirror:
-    #   name: kafka-mirror
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/fog/kafka-mirror-maker
+    kafka-mirror:
+      name: kafka-mirror
+      namespace: kafka
+      project: dw-gateway
+      path: charts/fog/kafka-mirror-maker
 
     kafdrop:
       name: kafdrop
       namespace: kafka
       project: fog
       path: charts/fog/kafdrop
-
-    # device-gateway:
-    #   name: dgw
-    #   namespace: dgw
-    #   project: dw-gateway
-    #   path: charts/edge/dgw
 
     skupper:
       name: skupper
