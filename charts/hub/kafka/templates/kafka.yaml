@@ -8,7 +8,7 @@ spec:
   kafka:
     replicas: 3
     listeners:
-      - name: plain-1
+      - name: plain1
         port: 9091
         type: internal
         tls: false
@@ -20,7 +20,7 @@ spec:
               advertisedHost: hub-cluster-kafka-1.hub-cluster-kafka-bootstrap
             - broker: 2
               advertisedHost: hub-cluster-kafka-2.hub-cluster-kafka-bootstrap
-      - name: plain-2
+      - name: plain2
         port: 9092
         type: internal
         tls: false
