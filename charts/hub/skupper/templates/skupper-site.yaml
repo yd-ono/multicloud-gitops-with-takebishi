@@ -9,3 +9,4 @@ data:
   console-password: "admin"
   console-authentication: "openshift"
   flow-collector: "true"
+  edge: "true"
