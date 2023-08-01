@@ -36,10 +36,10 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
-    amq-broker:
-      name: amq-broker-rhel8
-      channel: 7.11.x
-      namespace: openshift-operators
+    # amq-broker:
+    #   name: amq-broker-rhel8
+    #   channel: 7.11.x
+    #   namespace: openshift-operators
 
   projects:
     - hub

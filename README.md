@@ -21,7 +21,10 @@ cp values-secret.yaml.template ~/values-secret.yaml
 vi ~/values-secret.yaml
 ```
 
-iii) run `pattern.sh` as follows:
+iii) modify `value-hub.yaml` file
+Change `clusterGroup.managedClusterGroups.clusterPools.baseDomain` to the appropriate value.
+
+iv) run `pattern.sh` as follows:
 
 ```bash
 ./pattern.sh make install
