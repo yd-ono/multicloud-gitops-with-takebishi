@@ -67,30 +67,6 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/skupper
 
-    # mqtt2kafka:
-    #   name: mqtt2kafka
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/fog/mqtt2kafka
-
-    # kafka:
-    #   name: kafka-broker
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/fog/kafka
-
-    # kafka-mirror:
-    #   name: kafka-mirror
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/fog/kafka-mirror-maker
-
-    # kafdrop:
-    #   name: kafdrop
-    #   namespace: kafka
-    #   project: dw-gateway
-    #   path: charts/fog/kafdrop
-
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
