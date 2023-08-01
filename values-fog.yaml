@@ -52,7 +52,7 @@ clusterGroup:
 
     object-storage:
       name: object-storage
-      namespace: openshift-storage
+      namespace: kafka
       project: fog
       path: charts/fog/object-storage
 
