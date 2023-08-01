@@ -8,6 +8,6 @@ provisioner: openshift-storage.ceph.rook.io/bucket
 parameters:
   objectStoreName: ocs-storagecluster-cephobjectstore
   objectStoreNamespace: openshift-storage
-  region: us-east-1
+  region: ap-northeast-2
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
