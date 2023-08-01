@@ -78,7 +78,7 @@ clusterGroup:
     kafka-mirror:
       name: kafka-mirror
       namespace: kafka
-      project: dw-gateway
+      project: fog
       path: charts/fog/kafka-mirror-maker
 
     kafdrop:
