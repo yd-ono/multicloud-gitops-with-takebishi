@@ -14,21 +14,23 @@ spec:
         tls: false
         configuration:
           bootstrap:
-            annotation:
+            annotations:
               skupper.io/address: hub-cluster-kafka-bootstrap
               skupper.io/port: 9092
               skupper.io/proxy: tcp
           brokers:
             - broker: 0
-                annotation:
+                annotations:
                   skupper.io/address: hub-cluster-kafka-brokers
                   skupper.io/port: 9092
                   skupper.io/proxy: tcp
             - broker: 1
+                annotations:
                   skupper.io/address: hub-cluster-kafka-brokers
                   skupper.io/port: 9092
                   skupper.io/proxy: tcp
             - broker: 2
+                annotations:
                   skupper.io/address: hub-cluster-kafka-brokers
                   skupper.io/port: 9092
                   skupper.io/proxy: tcp
