@@ -88,8 +88,14 @@ clusterGroup:
       project: fog
       path: charts/fog/kafdrop
 
-    skupper:
-      name: skupper
+    skupper-fog2edge:
+      name: skupper-fog2edge
+      namespace: kafka
+      project: fog
+      path: charts/fog/skupper
+
+    skupper-hub2fog:
+      name: skupper-hub2fog
       namespace: kafka-mm
       project: fog
       path: charts/fog/skupper
