@@ -20,7 +20,7 @@ clusterGroup:
 
     skupper:
       name: skupper-operator
-      namespace: openshift-operators
+      namespace: kafka
       installPlanApproval: Automatic
       channel: alpha
       source: redhat-operators

@@ -5,7 +5,5 @@ metadata:
 data:
   name: edge-site
   console: "true"
-  console-user: "admin"
   console-authentication: "openshift"
-  console-password: "admin"
   flow-collector: "true"

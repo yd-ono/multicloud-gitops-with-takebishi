@@ -32,7 +32,7 @@ clusterGroup:
 
     skupper:
       name: skupper-operator
-      namespace: openshift-operators
+      namespace: mqtt
       installPlanApproval: Automatic
       channel: alpha
       source: redhat-operators
