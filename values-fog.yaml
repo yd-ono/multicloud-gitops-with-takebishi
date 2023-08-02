@@ -16,7 +16,7 @@ clusterGroup:
   subscriptions:
     amq-streams:
       name: amq-streams
-      channel: amq-streams-2.2.x
+      channel: amq-streams-2.4.x
       namespace: openshift-operators
 
     camel:
