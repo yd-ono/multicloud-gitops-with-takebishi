@@ -11,7 +11,6 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - kafka
-    - kafka-mm
     # - openshift-storage
 
   subscriptions:
@@ -78,7 +77,7 @@ clusterGroup:
     # Note: comment out the following lines for integration demo between fog and cloud:
     kafka-mirror:
       name: kafka-mirror
-      namespace: kafka-mm
+      namespace: kafka
       project: fog
       path: charts/fog/kafka-mirror-maker
 
@@ -88,15 +87,9 @@ clusterGroup:
       project: fog
       path: charts/fog/kafdrop
 
-    skupper-fog2edge:
-      name: skupper-fog2edge
+    skupper:
+      name: skupper
       namespace: kafka
-      project: fog
-      path: charts/fog/skupper
-
-    skupper-hub2fog:
-      name: skupper-hub2fog
-      namespace: kafka-mm
       project: fog
       path: charts/fog/skupper
 
