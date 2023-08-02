@@ -12,14 +12,14 @@ spec:
         port: 9092
         type: internal
         tls: false
-        configuration:
-          brokers:
-            - broker: 0
-              advertisedHost: hub-cluster-kafka-0.hub-cluster-kafka-brokers
-            - broker: 1
-              advertisedHost: hub-cluster-kafka-1.hub-cluster-kafka-brokers
-            - broker: 2
-              advertisedHost: hub-cluster-kafka-2.hub-cluster-kafka-brokers
+        # configuration:
+        #   brokers:
+        #     - broker: 0
+        #       advertisedHost: hub-cluster-kafka-0.hub-cluster-kafka-brokers
+        #     - broker: 1
+        #       advertisedHost: hub-cluster-kafka-1.hub-cluster-kafka-brokers
+        #     - broker: 2
+        #       advertisedHost: hub-cluster-kafka-2.hub-cluster-kafka-brokers
       - name: tls
         port: 9093
         type: internal
