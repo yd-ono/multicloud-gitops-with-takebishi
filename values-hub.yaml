@@ -102,6 +102,12 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka
 
+    amq-streams-operator:
+      name: amq-streams-operator
+      namespace: openshift-operators
+      project: hub
+      path: charts/hub/patch-amq-streams-operator
+
     kafdrop:
       name: kafdrop
       namespace: kafka
