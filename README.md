@@ -36,6 +36,85 @@ A `pattern` operator is configured as using your Git repo path.
 
 > If you are using MAC OS, you need to install podman-desktop.
 
+## EdgeとFogの接続
+
+### [Fog side] Skupper Tokenを作成
+```bash
+oc login --server https://api.fog-fog-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
+oc project kafka
+skupper token create ~/token.yaml
+```
+
+### [Edge side] Skupper Linkの作成
+```bash
+oc login --server https://api.edge-edge-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
+oc project mqtt
+skupper link create ~/token.yaml
+skupper link status
+```
+
+```
+Links created from this site:
+
+         Link link1 is connected
+```
+
+### [Edge side] MQTT BrokerをFogへExpose
+
+```bash
+skupper expose statefulset amq-broker-ss --headless --target-port 61616
+skupper service status
+```
+
+```
+Services exposed through Skupper:
+╰─ amq-broker-hdls-svc (tcp ports 8161 61616)
+   ╰─ Targets:
+      ╰─ ActiveMQArtemis=amq-broker,application=amq-broker-app name=amq-broker-ss namespace=mqtt
+```
+
+### [Fog side] 接続確認
+
+![Kafdrop](./doc/images/kafdrop-fog.png)
+
+## HubとFogの接続
+
+### [Hub side] Skupper Tokenを作成
+
+```bash
+oc login --server https://api.$CLUSTERNAME.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
+oc project kafka
+skupper token create ~/token.yaml
+```
+
+### [Fog side] Skupper Linkの作成
+```bash
+oc login --server https://api.edge-edge-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
+oc project mqtt
+skupper link create ~/token.yaml
+skupper link status
+```
+
+```
+Links created from this site:
+
+         Link link1 is connected
+```
+
+### [Edge side] MQTT BrokerをFogへExpose
+
+```bash
+skupper expose statefulset amq-broker-ss --headless --target-port 61616
+skupper service status
+```
+
+```
+Services exposed through Skupper:
+╰─ amq-broker-hdls-svc (tcp ports 8161 61616)
+   ╰─ Targets:
+      ╰─ ActiveMQArtemis=amq-broker,application=amq-broker-app name=amq-broker-ss namespace=mqtt
+```
+
 ## Connection between hub and edge cluster
 
 You can connect Kafka cluster in between hub and edge by usin Skupper.
@@ -59,12 +138,6 @@ iii) expose kafka address from hub cluster to edge cluster
 
 ```bash
 skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
-```
-
-### From edge to Fog
-
-```bash
-skupper expose statefulset amq-broker-ss --headless --target-port 61616
 ```
 
 ### From Hub to Fog
