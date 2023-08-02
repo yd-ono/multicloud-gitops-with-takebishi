@@ -20,20 +20,20 @@ spec:
               skupper.io/proxy: tcp
           brokers:
             - broker: 0
-                annotations:
-                  skupper.io/address: hub-cluster-kafka-brokers
-                  skupper.io/port: 9092
-                  skupper.io/proxy: tcp
+              annotations:
+                skupper.io/address: hub-cluster-kafka-brokers
+                skupper.io/port: 9092
+                skupper.io/proxy: tcp
             - broker: 1
-                annotations:
-                  skupper.io/address: hub-cluster-kafka-brokers
-                  skupper.io/port: 9092
-                  skupper.io/proxy: tcp
+              annotations:
+                skupper.io/address: hub-cluster-kafka-brokers
+                skupper.io/port: 9092
+                skupper.io/proxy: tcp
             - broker: 2
-                annotations:
-                  skupper.io/address: hub-cluster-kafka-brokers
-                  skupper.io/port: 9092
-                  skupper.io/proxy: tcp
+              annotations:
+                skupper.io/address: hub-cluster-kafka-brokers
+                skupper.io/port: 9092
+                skupper.io/proxy: tcp
       - name: tls
         port: 9093
         type: internal
