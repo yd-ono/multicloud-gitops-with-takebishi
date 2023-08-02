@@ -11,7 +11,7 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - kafka
-    # - openshift-storage
+    - openshift-storage
 
   subscriptions:
     amq-streams:
