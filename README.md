@@ -105,16 +105,14 @@ Links created from this site:
 
 ```bash
 oc login --server https://api.$CLUSTERNAME.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
-skupper expose service hub-cluster-kafka-brokers --address hub-cluster-kafka-brokers
-skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
+skupper expose statefulset/hub-cluster-kafka --headless --port 9092
 skupper service status
 ```
 
 ```
 Services exposed through Skupper:
-╰─ amq-broker-hdls-svc (tcp ports 8161 61616)
-   ╰─ Targets:
-      ╰─ ActiveMQArtemis=amq-broker,application=amq-broker-app name=amq-broker-ss namespace=mqtt
+├─ amq-broker-hdls-svc (tcp ports 8161 61616)
+╰─ hub-cluster-kafka-brokers (tcp port 9092)
 ```
 
 ## Connection between hub and edge cluster
