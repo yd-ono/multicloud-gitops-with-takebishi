@@ -42,21 +42,21 @@ A `pattern` operator is configured as using your Git repo path.
 ```bash
 oc login --server https://api.fog-fog-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
 oc project kafka
-oc get secret -o yaml fog2edge | yq 'del(.metadata.namespace)' > ~/token.yaml
+skupper token create ~/token-fog2edge.yaml
 ```
 
 ### [Edge side] Skupper Linkの作成
 ```bash
 oc login --server https://api.edge-edge-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
 oc project mqtt
-oc apply -f ~/token.yaml
+skupper link create ~/token-fog2edge.yaml
 skupper link status
 ```
 
 ```
 Links created from this site:
 
-         Link fog2edge is connected
+         Link link1 is connected
 ```
 
 ### [Edge side] MQTT BrokerをFogへExpose
@@ -84,13 +84,13 @@ Services exposed through Skupper:
 ```bash
 oc login --server https://api.$CLUSTERNAME.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
 oc project kafka
-oc get secret -o yaml hub2fog | yq 'del(.metadata.namespace)' > ~/token.yaml
+skupper token create ~/token-hub2fog.yaml
 ```
 
 ### [Fog side] Skupper Linkの作成
 ```bash
 oc login --server https://api.fog-fog-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
-oc project kafka
+oc project kafka-mm
 oc apply -f ~/token.yaml
 skupper link status
 ```
