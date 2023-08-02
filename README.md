@@ -91,20 +91,21 @@ skupper token create ~/token-hub2fog.yaml
 ```bash
 oc login --server https://api.fog-fog-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
 oc project kafka-mm
-oc apply -f ~/token.yaml
+skupper link create ~/token-hub2fog.yaml
 skupper link status
 ```
 
 ```
 Links created from this site:
 
-         Link hub2fog is connected
+         Link link1 is connected
 ```
 
-### [Edge side] MQTT BrokerをFogへExpose
+### [Hub side] Kafka BrokerのアドレスをFogへExpose
 
 ```bash
-skupper expose statefulset amq-broker-ss --headless --target-port 61616
+skupper expose service hub-cluster-kafka-brokers --address hub-cluster-kafka-brokers
+skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
 skupper service status
 ```
 
