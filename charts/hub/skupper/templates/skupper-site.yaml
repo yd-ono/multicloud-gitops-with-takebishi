@@ -7,4 +7,3 @@ data:
   console: "true"
   console-authentication: "openshift"
   flow-collector: "true"
-  edge: "false"
