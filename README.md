@@ -90,7 +90,7 @@ skupper token create ~/token-hub2fog.yaml
 ### [Fog side] Skupper Linkの作成
 ```bash
 oc login --server https://api.fog-fog-$CLUSTERID.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
-oc project kafka-mm
+oc project kafka
 skupper link create ~/token-hub2fog.yaml
 skupper link status
 ```
@@ -104,6 +104,7 @@ Links created from this site:
 ### [Hub side] Kafka BrokerのアドレスをFogへExpose
 
 ```bash
+oc login --server https://api.$CLUSTERNAME.$BASEDOMAIN:6443 -u kubeadmin -p $PASSWORD
 skupper expose service hub-cluster-kafka-brokers --address hub-cluster-kafka-brokers
 skupper expose service hub-cluster-kafka-bootstrap --address hub-cluster-kafka-bootstrap
 skupper service status
