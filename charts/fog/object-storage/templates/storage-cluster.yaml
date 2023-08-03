@@ -2,45 +2,40 @@ apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
   name: ocs-storagecluster
+  namespace: openshift-storage
 spec:
   arbiter: {}
   encryption:
     kms: {}
   externalStorage: {}
   flexibleScaling: true
-  managedResources:
-    cephBlockPools:
-      reconcileStrategy: manage
-    cephCluster: {}
-    cephConfig: {}
-    cephDashboard: {}
-    cephFilesystems: {}
-    cephNonResilientPools: {}
-    cephObjectStoreUsers: {}
-    cephObjectStores: {}
-    cephToolbox: {}
-  mirroring: {}
-  monDataDirHostPath: /var/lib/rook
-  multiCloudGateway:
-    reconcileStrategy: manage
-  nodeTopologies: {}
   resources:
     mds:
       limits:
         cpu: "3"
-        memory: 8Gi
+        memory: "8Gi"
       requests:
         cpu: "3"
-        memory: 8Gi
+        memory: "8Gi"
+  monDataDirHostPath: /var/lib/rook
+  managedResources:
+    cephBlockPools:
+      reconcileStrategy: manage   # <-- Default value is manage
+    cephConfig: {}
+    cephFilesystems: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+  multiCloudGateway:
+    reconcileStrategy: manage   # <-- Default value is manage
   storageDeviceSets:
-  - count: 3
+  - count: 3  # <-- Modify count to desired value. For each set of 3 disks increment the count by 1.
     dataPVCTemplate:
       spec:
         accessModes:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 100Mi
+            storage: "100Mi"
         storageClassName: localblock
         volumeMode: Block
     name: ocs-deviceset
@@ -50,7 +45,7 @@ spec:
     resources:
       limits:
         cpu: "2"
-        memory: 5Gi
+        memory: "5Gi"
       requests:
         cpu: "2"
-        memory: 5Gi
+        memory: "5Gi"

@@ -2,6 +2,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: s3-rgw
+  namespace: openshift-storage
   labels:
     app: rook-ceph-rgw
     ceph_daemon_id: ocs-storagecluster-cephobjectstore

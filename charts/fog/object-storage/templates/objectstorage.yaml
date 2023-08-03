@@ -1,7 +1,9 @@
+---
 apiVersion: ceph.rook.io/v1
 kind: CephObjectStore
 metadata:
   name: ocs-storagecluster-cephobjectstore
+  namespace: openshift-storage
 spec:
   dataPool:
     crushRoot: ""
