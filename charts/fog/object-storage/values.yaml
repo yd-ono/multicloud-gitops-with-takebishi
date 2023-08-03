@@ -2,7 +2,7 @@ global:
   apps:
     namespace: "kafka"
   datacenter:
-    storageClassName: gp2
+    storageClassName: gp3-csi
     region: ap-northeast-2
 
 odf:
