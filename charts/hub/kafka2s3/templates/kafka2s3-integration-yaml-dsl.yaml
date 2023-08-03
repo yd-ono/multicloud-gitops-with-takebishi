@@ -17,8 +17,8 @@ spec:
             - to:
                 id: to-odf
                 parameters:
-                  accessKey: {{ secrets.odf-secret.application.properties.s3.accessKey }}
-                  secretKey: {{ secrets.odf-secret.application.properties.s3.secretKey }}
+                  accessKey: ${{ secrets.odf-secret.application.properties.s3.accessKey }}
+                  secretKey: ${{ secrets.odf-secret.application.properties.s3.secretKey }}
                   bucketName: demo
                   cephUrl: {{ .Values.global.s3.bucket.uri }}
                   keyName: kafka.txt
