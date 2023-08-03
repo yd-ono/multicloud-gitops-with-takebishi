@@ -71,12 +71,11 @@ rbac:
       apiGroups:
         - '""'
         - 'operator.openshift.io'
-        - 'config.openshift.io'
       scope:
         cluster: true
       resources:
         - nodes
-        - console
+        - consoles
       verbs:
         - "get"
         - "list"
