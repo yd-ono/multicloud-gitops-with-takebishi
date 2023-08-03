@@ -54,7 +54,7 @@ clusterGroup:
       name: object-storage
       namespace: openshift-storage
       project: fog
-      path: charts/common/object-storage
+      path: charts/fog/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka
