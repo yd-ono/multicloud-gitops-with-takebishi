@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: service-point
-  namespace: "{{ .Values.global.lab.namespace }}"
+  namespace: "{{ .Values.global.apps.namespace }}"
   annotations:
     argocd.argoproj.io/sync-wave: "-4"
 data:
