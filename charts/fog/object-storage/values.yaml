@@ -3,7 +3,7 @@ global:
     namespace: "kafka"
   datacenter:
     storageClassName: gp3-csi
-    region: ap-northeast-2
+    region: ap-northeast-3
   bucket:
     name: demo
 
@@ -11,7 +11,7 @@ odf:
   namespace: openshift-storage
   serviceUrl: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
   externalUrl: "https://s3-rgw-openshift-storage"
-  targetBucket: com.redhat.demo
+  targetBucket: com.redhat.jrickard.xray-source
   mon:
     requests:
        cpu: 1
@@ -37,7 +37,7 @@ odf:
       cpu: 2
       memory: 5Gi
     pvc:
-      storage: 500Gi
+      storage: 2Ti
   storageClass:
     name: ocs-storagecluster-ceph-rgw
     objectStoreName: ocs-storagecluster-cephobjectstore
@@ -64,7 +64,6 @@ storageSystem:
     name: ocs-storagecluster
     namespace: ""
 
-#RoleBasedAccessControl
 #RoleBasedAccessControl
 serviceAccountName: odf-patch-sa
 rbac:
