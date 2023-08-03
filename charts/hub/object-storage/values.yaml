@@ -72,7 +72,7 @@ rbac:
         - '""'
         - operator.openshift.io
       scope:
-        cluster: true
+        cluster: false
       resources:
         - nodes
         - console
