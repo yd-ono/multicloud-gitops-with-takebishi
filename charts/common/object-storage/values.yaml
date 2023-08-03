@@ -1,9 +1,9 @@
 global:
-  xraylab:
-    namespace: "xraylab-1"
+  lab:
+    namespace: "openshift-storage"
   datacenter:
     storageClassName: gp2
-    region: us-east-1
+    region: ap-northeast-1
 
 odf:
   namespace: openshift-storage
