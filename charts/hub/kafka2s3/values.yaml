@@ -4,6 +4,7 @@ global:
   s3:
     bucket:
       name: demo
+      namespace: openshift-storage
       region: ap-northeast-1
       key_name: kafka.txt
       message:
@@ -11,7 +12,7 @@ global:
           count: 50
       custom:
         endpoint:
-          url: s3.openshift-storage.svc:443
+          url: https://s3-rgw-openshift-storage.apps.demo.sandbox1224.opentlc.com
           enabled: true
 
 secretStore:
