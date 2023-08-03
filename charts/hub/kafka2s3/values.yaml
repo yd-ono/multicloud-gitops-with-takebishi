@@ -12,7 +12,6 @@ global:
           count: 50
       custom:
         endpoint:
-          url: https://s3-rgw-openshift-storage.apps.demo.sandbox1224.opentlc.com
           enabled: true
 
 secretStore:
