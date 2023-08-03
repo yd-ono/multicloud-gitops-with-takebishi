@@ -28,5 +28,11 @@ rules:
 {{- range $value.verbs }}
       - {{ . }}
 {{- end }}
+  - apiGroups:
+      - operator.openshift.io
+    resources:
+      - consoles
+    verbs:
+      - patch
 {{- end }}
 {{- end }}
