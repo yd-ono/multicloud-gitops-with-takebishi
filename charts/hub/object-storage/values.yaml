@@ -70,6 +70,7 @@ rbac:
       createRole: true
       apiGroups:
         - '""'
+        - operator.openshift.io
       scope:
         cluster: true
       resources:
