@@ -45,12 +45,12 @@ clusterGroup:
     #   namespace: openshift-operators
 
     # NOTE: optional
-    # odf:
-    #   name: odf-operator
-    #   namespace: openshift-storage
-    #   channel: stable-4.12
-    #   source: redhat-operators
-    #   startingCSV: odf-operator.v4.12.5-rhodf
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      channel: stable-4.12
+      source: redhat-operators
+      startingCSV: odf-operator.v4.12.5-rhodf
 
   projects:
     - hub
@@ -85,11 +85,11 @@ clusterGroup:
       path: common/golang-external-secrets
 
     # NOTE: optional
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
-    #   project: hub
-    #   path: charts/fog/object-storage
+    object-storage:
+      name: object-storage
+      namespace: openshift-storage
+      project: hub
+      path: charts/common/object-storage
 
     skupper:
       name: skupper
