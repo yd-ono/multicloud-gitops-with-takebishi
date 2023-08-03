@@ -4,6 +4,8 @@ global:
   datacenter:
     storageClassName: gp3-csi
     region: ap-northeast-3
+  bucket:
+    name: demo
 
 odf:
   namespace: openshift-storage
