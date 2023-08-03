@@ -9,7 +9,7 @@ spec:
     - type: configmap
       value: kafka-to-s3-config
     - type: secret
-      value: s3-secret
+      value: odf-secret
   profile: OpenShift
   sources:
     - content: |

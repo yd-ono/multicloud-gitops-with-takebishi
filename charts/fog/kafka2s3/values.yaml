@@ -4,6 +4,7 @@ global:
   s3:
     bucket:
       name: demo
+      namespace: openshift-storage
       region: ap-northeast-3
       key_name: kafka.txt
       message:
@@ -11,18 +12,51 @@ global:
           count: 50
       custom:
         endpoint:
-          enabled: false
+          enabled: true
 
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
 s3secret:
-  key: secret/data/global/odf
+  key: secret/data/odf/aws
   namespaces:
     - kafka
 
 kafka:
   broker:
     uri: "fog-cluster-kafka-bootstrap:9092"
-    topic: "dgw"
+    topic: "edge-kafka-cluster.dgw"
+
+serviceAccountName: secret-converter-sa
+rbac:
+  roles:
+    - name: secret-converter-role
+      createRole: true
+      apiGroups:
+        - '""'
+      scope:
+        cluster: true
+      resources:
+        - secrets
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+  roleBindings:
+    - name: secret-converter-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: secret-converter-sa
+        namespace: kafka
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: secret-converter-role
+
+job:
+  image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
