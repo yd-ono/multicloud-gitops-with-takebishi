@@ -75,6 +75,7 @@ rbac:
         cluster: true
       resources:
         - nodes
+        - console
       verbs:
         - "get"
         - "list"
