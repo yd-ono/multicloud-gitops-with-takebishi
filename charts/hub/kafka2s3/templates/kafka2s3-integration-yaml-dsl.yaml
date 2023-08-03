@@ -17,11 +17,11 @@ spec:
             - to:
                 id: to-odf
                 parameters:
-                  accessKey: {{ s3.accessKey }}
+                  accessKey: {{ .s3.accessKey }}
                   bucketName: demo
                   cephUrl: {{ .Values.global.s3.bucket.uri }}
                   keyName: kafka.txt
-                  secretKey: {{ s3.secretKey }}
+                  secretKey: {{ .s3.secretKey }}
                   zoneGroup: openshift-storage
                 uri: 'kamelet:ceph-sink'
           uri: 'kafka:dgw'
