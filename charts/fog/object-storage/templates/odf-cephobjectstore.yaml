@@ -1,4 +1,3 @@
----
 apiVersion: ceph.rook.io/v1
 kind: CephObjectStore
 metadata:
@@ -6,18 +5,15 @@ metadata:
   namespace: openshift-storage
 spec:
   dataPool:
-    crushRoot: ""
-    deviceClass: ""
     erasureCoded:
-      algorithm: ""
       codingChunks: 0
       dataChunks: 0
-    failureDomain: host
+    failureDomain: zone
     replicated:
       size: 3
   gateway:
-    allNodes: false
-    instances: 1
+    #allNodes: false
+    instances: 2
     placement:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -49,15 +45,10 @@ spec:
       requests:
         cpu: "1"
         memory: 4Gi
-    securePort: 0
-    sslCertificateRef: ""
   metadataPool:
-    crushRoot: ""
-    deviceClass: ""
     erasureCoded:
-      algorithm: ""
       codingChunks: 0
       dataChunks: 0
-    failureDomain: host
+    failureDomain: zone
     replicated:
       size: 3

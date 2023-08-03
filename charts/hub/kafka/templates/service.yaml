@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    strimzi.io/component-type: kafka
+  name: hub-cluster-kafka-0
+spec:
+  ports:
+  - name: tcp-clients
+    port: 9092
+    protocol: TCP
+    targetPort: 9092
+  publishNotReadyAddresses: true
+  selector:
+    strimzi.io/cluster: hub-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: hub-cluster--kafka
+    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-0
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    strimzi.io/component-type: kafka
+  name: hub-cluster-kafka-1
+spec:
+  ports:
+  - name: tcp-clients
+    port: 9092
+    protocol: TCP
+    targetPort: 9092
+  publishNotReadyAddresses: true
+  selector:
+    strimzi.io/cluster: hub-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: hub-cluster-kafka
+    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-1
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    strimzi.io/component-type: kafka
+  name: hub-cluster-kafka-2
+spec:
+  ports:
+  - name: tcp-clients
+    port: 9092
+    protocol: TCP
+    targetPort: 9092
+  publishNotReadyAddresses: true
+  selector:
+    strimzi.io/cluster: hub-cluster
+    strimzi.io/kind: Kafka
+    strimzi.io/name: hub-cluster-kafka
+    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-2
+  sessionAffinity: None
+  type: ClusterIP
