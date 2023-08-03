@@ -1,29 +1,29 @@
-apiVersion: camel.apache.org/v1
-kind: Integration
-metadata:
-  name: kafka-to-odf
-spec:
-  configuration:
-    - type: secret
-      value: odf-secret
-  profile: OpenShift
-  flows:
-    - route:
-        from:
-          id: from-kafka
-          parameters:
-            brokers: {{ .Values.kafka.broker.uri }}
-          steps:
-            - to:
-                id: to-odf
-                parameters:
-                  accessKey: ${{ s3.accessKey }}
-                  secretKey: ${{ s3.secretKey }}
-                  bucketName: demo
-                  cephUrl: {{ .Values.global.s3.bucket.uri }}
-                  keyName: kafka.txt
-                  zoneGroup: openshift-storage
-                uri: 'kamelet:ceph-sink'
-          uri: 'kafka:dgw'
-        id: route-kafka-to-odf
-  traits: {}
+# apiVersion: camel.apache.org/v1
+# kind: Integration
+# metadata:
+#   name: kafka-to-odf
+# spec:
+#   configuration:
+#     - type: secret
+#       value: odf-secret
+#   profile: OpenShift
+#   flows:
+#     - route:
+#         from:
+#           id: from-kafka
+#           parameters:
+#             brokers: {{ .Values.kafka.broker.uri }}
+#           steps:
+#             - to:
+#                 id: to-odf
+#                 parameters:
+#                   accessKey: ${{ s3.accessKey }}
+#                   secretKey: ${{ s3.secretKey }}
+#                   bucketName: demo
+#                   cephUrl: {{ .Values.global.s3.bucket.uri }}
+#                   keyName: kafka.txt
+#                   zoneGroup: openshift-storage
+#                 uri: 'kamelet:ceph-sink'
+#           uri: 'kafka:dgw'
+#         id: route-kafka-to-odf
+#   traits: {}
