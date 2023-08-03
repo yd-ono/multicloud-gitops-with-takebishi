@@ -16,7 +16,10 @@ spec:
     targetPort: 9092
   publishNotReadyAddresses: true
   selector:
-    statefulset.kubernetes.io/pod-name: cluster1-kafka-0
+    strimzi.io/cluster: cluster1
+    strimzi.io/kind: Kafka
+    strimzi.io/name: kafka
+    strimzi.io/pod-name: cluster1-kafka-0
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -34,7 +37,10 @@ spec:
     targetPort: 9092
   publishNotReadyAddresses: true
   selector:
-    statefulset.kubernetes.io/pod-name: cluster1-kafka-1
+    strimzi.io/cluster: cluster1
+    strimzi.io/kind: Kafka
+    strimzi.io/name: cluster1-kafka
+    strimzi.io/pod-name: cluster1-kafka-1
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -52,7 +58,10 @@ spec:
     targetPort: 9092
   publishNotReadyAddresses: true
   selector:
-    statefulset.kubernetes.io/pod-name: cluster1-kafka-2
+    strimzi.io/cluster: cluster1
+    strimzi.io/kind: Kafka
+    strimzi.io/name: kafka
+    strimzi.io/pod-name: cluster1-kafka-2
   sessionAffinity: None
   type: ClusterIP
 ---
