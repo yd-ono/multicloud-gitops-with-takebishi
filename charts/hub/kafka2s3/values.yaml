@@ -4,6 +4,7 @@ global:
   s3:
     bucket:
       name: demo
+      uri: http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc
       namespace: openshift-storage
       region: ap-northeast-1
       key_name: kafka.txt
