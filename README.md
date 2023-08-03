@@ -6,6 +6,9 @@ Large scale deployment Takebishi Device Gateway on OpenShift with GitOps approac
 
 [Live build status](https://util.hybrid-cloud-patterns.io/dashboard.php?pattern=mcgitops)
 
+## Deployment Target
+
+![Alt text](doc/images/overview.png)
 
 ## Getting Started
 
@@ -120,7 +123,7 @@ Services exposed through Skupper:
 ╰─ hub-cluster-1 (tcp port 9092)
 ```
 
-### Load ODF ACCESS_KEY/SECRET_ACCESS_KEY
+### Update ODF access key
 
 ```bash
 vi ~/.odf/credentials
@@ -131,30 +134,3 @@ aws_secret_access_key: XXX
 ```bash
 ./pattern.sh make load-secrets
 ```
-
-## ODF
-```bash
-oc label node <NodeName> cluster.ocs.openshift.io/openshift-storage=''
-oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
-oc patch OCSInitialization ocsinit -n openshift-storage --type json --patch  '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
-```
-```
-oc rsh -n openshift-storage $(oc get pod -n openshift-storage -l app=rook-ceph-tools -o jsonpath='{.items[0].metadata.name}')
-```
-```
-radosgw-admin user create --display-name="Your user" --uid=your-user
-```
-
-The output of the command will give you all the details for the newly create user, especially this part:
-
-```
-{
-  "user": "your-user",
-  "access_key": "XXXXXXXXXXXXXXXX",
-  "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-}
-```
-
-```
-oc exec -n openshift-storage $(oc get pod -n openshift-storage -l app=rook-ceph-tools -o jsonpath='{.items[0].metadata.name}') -- radosgw-admin user create --uid="<user-name>" --display-name="<Display Name>"
-``
