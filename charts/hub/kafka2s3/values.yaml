@@ -18,10 +18,10 @@ secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
-# s3secret:
-#   key: secret/data/odf/aws
-#   namespaces:
-#     - kafka
+s3secret:
+  key: secret/data/odf/aws
+  namespaces:
+    - kafka
 
 kafka:
   broker:
