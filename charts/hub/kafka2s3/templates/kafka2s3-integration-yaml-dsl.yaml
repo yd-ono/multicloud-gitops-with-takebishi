@@ -19,7 +19,7 @@ spec:
                 parameters:
                   accessKey: {{ s3.accessKey }}
                   bucketName: demo
-                  cephUrl: {{ .global.s3.bucket.uri }}
+                  cephUrl: {{ .Values.global.s3.bucket.uri }}
                   keyName: kafka.txt
                   secretKey: {{ s3.secretKey }}
                   zoneGroup: openshift-storage
