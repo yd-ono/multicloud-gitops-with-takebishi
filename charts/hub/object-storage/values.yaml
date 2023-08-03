@@ -63,10 +63,10 @@ storageSystem:
     namespace: ""
 
 #RoleBasedAccessControl
-serviceAccountName: odf-node-label-sa
+serviceAccountName: odf-patch-sa
 rbac:
   roles:
-    - name: label-storage-nodes
+    - name: odf-patch-role
       createRole: true
       apiGroups:
         - '""'
@@ -82,19 +82,19 @@ rbac:
         - "patch"
         - "update"
   roleBindings:
-    - name: label-storage-nodes
+    - name: odf-patch-rolebinding
       createBinding: true
       scope:
         cluster: true
         namespace: ""
       subjects:
         kind: ServiceAccount
-        name: odf-node-label-sa
+        name: odf-patch-sa
         namespace: openshift-storage
         apiGroup: ""
       roleRef:
         kind: ClusterRole
-        name: label-storage-nodes
+        name: odf-patch-role
 
 job:
   image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
