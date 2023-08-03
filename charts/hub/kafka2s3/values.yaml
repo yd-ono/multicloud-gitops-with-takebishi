@@ -11,16 +11,17 @@ global:
           count: 50
       custom:
         endpoint:
-          enabled: false
+          url: s3.openshift-storage.svc:443
+          enabled: true
 
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
 
-s3secret:
-  key: secret/data/odf/aws
-  namespaces:
-    - kafka
+# s3secret:
+#   key: secret/data/odf/aws
+#   namespaces:
+#     - kafka
 
 kafka:
   broker:
@@ -41,8 +42,6 @@ rbac:
       verbs:
         - "get"
         - "list"
-        - "patch"
-        - "update"
         - "create"
   roleBindings:
     - name: secret-converter-rolebinding
