@@ -43,6 +43,7 @@ rbac:
         - "list"
         - "patch"
         - "update"
+        - "create"
   roleBindings:
     - name: secret-converter-rolebinding
       createBinding: true

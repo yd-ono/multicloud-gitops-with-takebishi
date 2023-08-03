@@ -75,3 +75,5 @@ skupper expose service cluster1-kafka-bootstrap --address cluster1-kafka-bootstr
 
 oc run client --attach --rm --restart Never --image quay.io/skupper/kafka-example-client \
 --env BOOTSTRAP_SERVERS=cluster1-kafka-bootstrap-ex:9092
+
+
