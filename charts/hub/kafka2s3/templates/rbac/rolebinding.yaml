@@ -11,9 +11,6 @@ metadata:
 {{- if eq $value.scope.cluster false }}
   namespace: kafka
 {{- end }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-2"
 subjects:
 - kind: {{ $value.subjects.kind | default "ServiceAccount" }}
   name: {{ $value.subjects.name }}

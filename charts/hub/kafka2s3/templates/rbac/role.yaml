@@ -12,9 +12,6 @@ metadata:
   name: {{ $value.name }}
   namespace: kafka
 {{- end }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
 rules:
   - apiGroups:
 {{- range $value.apiGroups }}
