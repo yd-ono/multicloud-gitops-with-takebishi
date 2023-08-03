@@ -70,10 +70,12 @@ rbac:
       createRole: true
       apiGroups:
         - '""'
+        - operator.openshift.io
       scope:
-        cluster: true
+        cluster: false
       resources:
         - nodes
+        - console
       verbs:
         - "get"
         - "list"
