@@ -37,7 +37,7 @@ rbac:
       createBinding: true
       scope:
         cluster: true
-        namespace: "kafka"
+        namespace: ""
       subjects:
         kind: ServiceAccount
         name: manage-skupper-token-sa
