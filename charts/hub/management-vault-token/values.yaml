@@ -1,0 +1,5 @@
+tree:
+  of: "values"
+
+job:
+  image: registry.connect.redhat.com/hashicorp/vault:1.13.1-ubi

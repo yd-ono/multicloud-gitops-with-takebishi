@@ -78,6 +78,12 @@ clusterGroup:
       project: hub
       path: common/hashicorp-vault
 
+    management-vault-token:
+      name: management-vault-token
+      namespace: imperative
+      project: hub
+      path: charts/hub/management-vault-token
+
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
