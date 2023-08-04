@@ -19,7 +19,6 @@ spec:
             oc -n kafka annotate service hub-cluster-kafka-0 "skupper.io/proxy=tcp" --overwrite
             oc -n kafka annotate service hub-cluster-kafka-1 "skupper.io/proxy=tcp" --overwrite
             oc -n kafka annotate service hub-cluster-kafka-2 "skupper.io/proxy=tcp" --overwrite
-            oc -n kafka annotate service hub-cluster-kafka-bootstrap "skupper.io/address=hub-cluster-kafka-bootstrap-ex" "skupper.io/proxy=tcp" --overwrite
           fi
         name: expose-service-patch
       dnsPolicy: ClusterFirst
