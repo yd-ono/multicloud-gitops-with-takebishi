@@ -17,7 +17,7 @@ spec:
           CACRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
           TLSCRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
           TLSKEY=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
-          skupperToken=$(echo -e "ca\.crt:$CACRT\ntls\.crt:$TLSCRT\ntls\.key:$TLSKEY")
+          skupperToken=$(echo -e "ca.crt:$CACRT\ntls.crt:$TLSCRT\ntls.key:$TLSKEY")
           VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/skupper-hub-token skupper-token="$skupperToken"
