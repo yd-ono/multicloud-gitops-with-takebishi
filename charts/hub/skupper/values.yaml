@@ -3,6 +3,8 @@ tree:
 
 skupper:
   name: skupper-hub
+  token:
+    name: to-hub
 
 secretStore:
   name: vault-backend

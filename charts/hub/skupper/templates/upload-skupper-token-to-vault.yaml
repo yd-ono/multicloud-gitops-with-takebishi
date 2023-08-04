@@ -2,9 +2,9 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-25"
   name: upload-skupper-token-to-vault
-  namespace: imperative
+  namespace: kafka
 spec:
   template:
     spec:
@@ -14,9 +14,13 @@ spec:
         - /bin/bash
         - -c
         - |
-          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
+          CACRT=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
+          TLSCRT=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
+          TLSKEY=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
+          skupperToken=$(echo -e "ca\.crt:$CACRT\ntls\.crt:$TLSCRT\ntls\.key:$TLSKEY")
+          VAULT_TOKEN=$(vault kv get -field=VAULT_TOKEN secret/global/vault-token)
           vault login token="$VAULT_TOKEN"
-          vault kv put secret/global/vault-token VAULT_TOKEN="$VAULT_TOKEN"
+          vault kv put secret/global/skupper-hub-token skupper-token="$skupperToken"
         name: upload-skupper-token-to-vault
         env:
         - name: VAULT_SKIP_VERIFY
