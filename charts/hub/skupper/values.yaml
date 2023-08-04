@@ -20,11 +20,11 @@ serviceAccountName: manage-skupper-token-sa
 rbac:
   roles:
     - name: manage-skupper-token-role
-      createRole: false
+      createRole: true
       apiGroups:
         - '""'
       scope:
-        cluster: false
+        cluster: true
       resources:
         - secrets
       verbs:
@@ -34,10 +34,10 @@ rbac:
         - "update"
   roleBindings:
     - name: manage-skupper-token-rolebinding
-      createBinding: false
+      createBinding: true
       scope:
-        cluster: false
-        namespace: "imperative"
+        cluster: true
+        namespace: "kafka"
       subjects:
         kind: ServiceAccount
         name: manage-skupper-token-sa
