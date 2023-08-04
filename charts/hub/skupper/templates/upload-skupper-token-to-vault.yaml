@@ -3,7 +3,7 @@ kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-  name: job-console-update
+  name: upload-skupper-token-to-vault
 spec:
   template:
     spec:
