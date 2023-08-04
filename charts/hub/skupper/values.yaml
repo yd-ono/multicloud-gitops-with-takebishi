@@ -41,7 +41,7 @@ rbac:
       subjects:
         kind: ServiceAccount
         name: manage-skupper-token-sa
-        namespace: openshift-storage
+        namespace: kafka
         apiGroup: ""
       roleRef:
         kind: ClusterRole
