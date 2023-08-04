@@ -1,6 +1,8 @@
 tree:
   of: "values"
 
+namespaces:
+  - kafka
 
 skupper:
   name: skupper-hub
