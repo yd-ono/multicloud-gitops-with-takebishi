@@ -3,3 +3,40 @@ tree:
 
 skupper:
   name: skupper-fog
+
+serviceAccountName: expose-service-sa
+rbac:
+  roles:
+    - name: expose-service-role
+      createRole: true
+      apiGroups:
+        - '""'
+      scope:
+        cluster: true
+      resources:
+        - service
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+        - "patch"
+        - "watch"
+        - "update"
+  roleBindings:
+    - name: expose-service-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: expose-service-sa
+        namespace: kafka
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: expose-service-role
+
+
+job:
+  image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
