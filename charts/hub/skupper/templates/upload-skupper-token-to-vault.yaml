@@ -14,7 +14,9 @@ spec:
         - /bin/bash
         - -c
         - |
-          vault login
+          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
+          vault login token="$VAULT_TOKEN"
+          vault kv put secret/global/vault-token VAULT_TOKEN="$VAULT_TOKEN"
         name: upload-skupper-token-to-vault
         env:
         - name: VAULT_SKIP_VERIFY
