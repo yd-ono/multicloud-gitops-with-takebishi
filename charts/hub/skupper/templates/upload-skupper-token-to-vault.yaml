@@ -2,9 +2,9 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-25"
+    argocd.argoproj.io/sync-wave: "-100"
   name: upload-skupper-token-to-vault
-  namespace: kafka
+  namespace: imperative
 spec:
   template:
     spec:
@@ -14,11 +14,11 @@ spec:
         - /bin/bash
         - -c
         - |
-          CACRT=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
-          TLSCRT=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
-          TLSKEY=$(oc get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
+          CACRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
+          TLSCRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
+          TLSKEY=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
           skupperToken=$(echo -e "ca\.crt:$CACRT\ntls\.crt:$TLSCRT\ntls\.key:$TLSKEY")
-          VAULT_TOKEN=$(vault kv get -field=VAULT_TOKEN secret/global/vault-token)
+          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/skupper-hub-token skupper-token="$skupperToken"
         name: upload-skupper-token-to-vault
@@ -27,6 +27,14 @@ spec:
           value: "true"
         - name: VAULT_ADDR
           value: "https://vault-vault.{{ .Values.global.hubClusterDomain }}"
+        envFrom:
+        - secretRef:
+            name: vault-secret
+            key: VAULT_TOKEN
+        volumeMounts:
+        - mountPath: vault_data_json
+          readOnly: true
+          name: vaultkeys
       volumes:
       - name: vaultkeys
         secret:
