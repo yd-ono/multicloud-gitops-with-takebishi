@@ -12,6 +12,9 @@ clusterGroup:
     - golang-external-secrets
     - kafka
     - openshift-storage
+    # Note: if you want to deploy edge applications to fog cluster, comment out the following:
+    # - mqtt
+    # - dgw
 
   subscriptions:
     amq-streams:
@@ -38,6 +41,12 @@ clusterGroup:
       channel: stable-4.12
       source: redhat-operators
       startingCSV: odf-operator.v4.12.5-rhodf
+
+    # Note: if you want to deploy edge applications to fog cluster, comment out the following:
+    # amq-broker:
+    #   name: amq-broker-rhel8
+    #   channel: 7.11.x
+    #   namespace: openshift-operators
 
   projects:
     - eso
@@ -74,7 +83,6 @@ clusterGroup:
       project: fog
       path: charts/fog/kafka
 
-    # Note: comment out the following lines for integration demo between fog and cloud:
     kafka-mirror:
       name: kafka-mirror
       namespace: kafka
@@ -92,6 +100,19 @@ clusterGroup:
       namespace: kafka
       project: fog
       path: charts/fog/skupper
+
+    # Note: if you want to deploy edge applications to fog cluster, comment out the following:
+    # amq:
+    #   name: mqtt-broker
+    #   namespace: mqtt
+    #   project: dw-gateway
+    #   path: charts/edge/amq
+
+    # device-gateway:
+    #   name: dgw
+    #   namespace: dgw
+    #   project: dw-gateway
+    #   path: charts/edge/dgw
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

@@ -1,5 +1,45 @@
 tree:
   of: "values"
 
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
 skupper:
   name: skupper-hub
+
+vaultsecret:
+  key: secret/data/global/vault-token
+
+serviceAccountName: skupper-token-sa
+rbac:
+  roles:
+    - name: skupper-token-role
+      createRole: true
+      apiGroups:
+        - '""'
+      scope:
+        cluster: true
+      resources:
+        - secrets
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+  roleBindings:
+    - name: skupper-token-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: skupper-token-sa
+        namespace: kafka
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: skupper-token-role
+
+job:
+  image: registry.connect.redhat.com/hashicorp/vault:1.13.1-ubi

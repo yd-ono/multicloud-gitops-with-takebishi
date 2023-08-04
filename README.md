@@ -123,12 +123,16 @@ Services exposed through Skupper:
 ╰─ hub-cluster-1 (tcp port 9092)
 ```
 
-### Update ODF access key
+### Load Skupper Token to Vault
 
+[Hub Cluster]
 ```bash
-vi ~/.odf/credentials
-aws_access_key_id: XXX
-aws_secret_access_key: XXX
+oc get secret -o yaml to-hub | yq 'del(.metadata.namespace)' > ~/tohub.yaml
+```
+
+[Fog Cluster]
+```bash
+oc get secret -o yaml to-fog | yq 'del(.metadata.namespace)' > ~/tofog.yaml
 ```
 
 ```bash
