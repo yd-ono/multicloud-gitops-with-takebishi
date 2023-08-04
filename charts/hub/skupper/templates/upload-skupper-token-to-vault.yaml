@@ -13,13 +13,13 @@ spec:
         - |
           cd $HOME; curl -LO "https://dl.k8s.io/release/$(curl -LS https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
           chmod 755 $HOME/kubectl
-          CACRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
-          TLSCRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
-          TLSKEY=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
+          CACRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}" | base64 -d -w 0)
+          TLSCRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}" | base64 -d -w 0)
+          TLSKEY=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}" | base64 -d -w 0)
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/skupper-hub-token ca.crt="$CACRT"
-          vault kv put secret/global/skupper-hub-token tls.crt="$TLSCRT"
-          vault kv put secret/global/skupper-hub-token tls.key="$TLSKEY"
+          vault kv patch secret/global/skupper-hub-token tls.crt="$TLSCRT"
+          vault kv patch secret/global/skupper-hub-token tls.key="$TLSKEY"
         name: upload-skupper-token-to-vault
         env:
         - name: VAULT_SKIP_VERIFY
