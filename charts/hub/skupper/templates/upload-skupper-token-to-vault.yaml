@@ -4,7 +4,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-100"
   name: upload-skupper-token-to-vault
-  namespace: imperative
 spec:
   template:
     spec:
@@ -30,7 +29,7 @@ spec:
           value: "https://vault-vault.{{ .Values.global.hubClusterDomain }}"
         envFrom:
         - secretRef:
-            name: vault-secret
+            name: vault-token
             key: VAULT_TOKEN
         volumeMounts:
         - mountPath: vault_data_json
