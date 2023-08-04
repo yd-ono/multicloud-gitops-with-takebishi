@@ -11,5 +11,36 @@ secretStore:
 vaultsecret:
   key: secret/data/global/vault-token
 
+serviceAccountName: manage-skupper-token-sa
+rbac:
+  roles:
+    - name: manage-skupper-token-role
+      createRole: false
+      apiGroups:
+        - '""'
+      scope:
+        cluster: false
+      resources:
+        - secrets
+      verbs:
+        - "get"
+        - "list"
+        - "patch"
+        - "update"
+  roleBindings:
+    - name: manage-skupper-token-rolebinding
+      createBinding: false
+      scope:
+        cluster: false
+        namespace: "imperative"
+      subjects:
+        kind: ServiceAccount
+        name: manage-skupper-token-sa
+        namespace: openshift-storage
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: manage-skupper-token-role
+
 job:
   image: registry.connect.redhat.com/hashicorp/vault:1.13.1-ubi
