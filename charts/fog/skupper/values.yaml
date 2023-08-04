@@ -14,7 +14,7 @@ rbac:
       scope:
         cluster: true
       resources:
-        - service
+        - services
       verbs:
         - "get"
         - "list"
