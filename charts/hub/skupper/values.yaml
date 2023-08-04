@@ -8,6 +8,7 @@ skupper:
   name: skupper-hub
   token:
     name: to-hub
+    key: skupper-hub-token
 
 secretStore:
   name: vault-backend

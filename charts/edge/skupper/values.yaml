@@ -1,5 +1,18 @@
 tree:
   of: "values"
 
+namespaces:
+  - mqtt
+
+externalsecret:
+  name: to-fog
+
 skupper:
   name: skupper-edge
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+skuppertoken:
+  key: secret/data/global/skupper-fog-token
