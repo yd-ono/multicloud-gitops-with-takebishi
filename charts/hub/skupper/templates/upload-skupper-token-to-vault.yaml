@@ -11,10 +11,11 @@ spec:
         - /bin/bash
         - -c
         - |
-          CACRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
-          TLSCRT=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
-          TLSKEY=$(oc -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
-          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
+          cd $HOME; curl -LO "https://dl.k8s.io/release/$(curl -LS https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod 755 $HOME/kubectl
+          CACRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}")
+          TLSCRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}")
+          TLSKEY=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}")
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/skupper-hub-token ca.crt="$CACRT"
           vault kv put secret/global/skupper-hub-token tls.crt="$TLSCRT"
@@ -31,4 +32,6 @@ spec:
             key: VAULT_TOKEN
       dnsPolicy: ClusterFirst
       restartPolicy: Never
+      serviceAccount: {{ .Values.serviceAccountName }}
+      serviceAccountName: {{ .Values.serviceAccountName }}
       terminationGracePeriodSeconds: 400
