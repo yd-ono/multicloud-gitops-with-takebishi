@@ -13,7 +13,7 @@ spec:
         - /bin/bash
         - -c
         - |
-          curl https://skupper.io/install.sh | sh
+          curl {{ .Values.skupper.dl-cli-scripts }} | sh
           if [[ `skupper -n kafka service status | grep "No services defined" ` ]]; then
             oc -n kafka annotate service hub-cluster-kafka-0 skupper.io/proxy=tcp
             oc -n kafka annotate service hub-cluster-kafka-1 skupper.io/proxy=tcp
