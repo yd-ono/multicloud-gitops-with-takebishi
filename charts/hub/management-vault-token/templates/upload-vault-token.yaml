@@ -11,7 +11,7 @@ spec:
         - /bin/bash
         - -c
         - |
-          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/")
+          VAULT_TOKEN=$(cat vault_data_json/vault_data_json | grep root_token | sed -e "s/\"root_token\": \"\(.*\)\",/\1/" | sed "s/ //g")
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/vault-token VAULT_TOKEN="$VAULT_TOKEN"
         name: upload-vault-token
