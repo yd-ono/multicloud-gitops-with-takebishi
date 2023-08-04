@@ -17,7 +17,7 @@ spec:
     strimzi.io/cluster: hub-cluster
     strimzi.io/kind: Kafka
     strimzi.io/name: hub-cluster--kafka
-    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-0
+    strimzi.io/pod-name: hub-cluster-kafka-0
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -40,7 +40,7 @@ spec:
     strimzi.io/cluster: hub-cluster
     strimzi.io/kind: Kafka
     strimzi.io/name: hub-cluster-kafka
-    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-1
+    strimzi.io/pod-name: hub-cluster-kafka-1
   sessionAffinity: None
   type: ClusterIP
 ---
@@ -63,6 +63,6 @@ spec:
     strimzi.io/cluster: hub-cluster
     strimzi.io/kind: Kafka
     strimzi.io/name: hub-cluster-kafka
-    statefulset.kubernetes.io/pod-name: hub-cluster-kafka-2
+    strimzi.io/pod-name: hub-cluster-kafka-2
   sessionAffinity: None
   type: ClusterIP
