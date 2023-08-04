@@ -3,3 +3,10 @@ tree:
 
 skupper:
   name: skupper-fog
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+skuppertoken:
+  key: secret/data/global/skupper-hub-token
