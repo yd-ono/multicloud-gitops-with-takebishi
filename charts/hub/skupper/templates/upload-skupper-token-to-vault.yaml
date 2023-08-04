@@ -4,6 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   name: upload-skupper-token-to-vault
+  namespace: imperative
 spec:
   template:
     spec:
@@ -24,6 +25,14 @@ spec:
         - secretRef:
             name: vault-secret
             key: VAULT_TOKEN
+        volumeMounts:
+        - mountPath: vault_data_json
+          readOnly: true
+          name: vaultkeys
+      volumes:
+      - name: vaultkeys
+        secret:
+          secretName: vaultkeys
       dnsPolicy: ClusterFirst
       restartPolicy: Never
       terminationGracePeriodSeconds: 400
