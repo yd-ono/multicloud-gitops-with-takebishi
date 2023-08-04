@@ -17,9 +17,9 @@ spec:
         name: upload-skupper-token-to-vault
         env:
         - name: VAULT_SKIP_VERIFY
-          value: true
+          value: "true"
         - name: VAULT_ADDR
-          value: https://vault-vault.{{ .Values.global.hubClusterDomain }}
+          value: "https://vault-vault.{{ .Values.global.hubClusterDomain }}"
         envFrom:
         - secretRef:
             name: VAULT_TOKEN
