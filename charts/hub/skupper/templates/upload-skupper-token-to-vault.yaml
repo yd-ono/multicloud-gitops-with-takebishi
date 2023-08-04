@@ -27,7 +27,7 @@ spec:
           value: "https://vault-vault.{{ .Values.global.hubClusterDomain }}"
         envFrom:
         - secretRef:
-            name: vault-token
+            name: vault-token-secret
             key: VAULT_TOKEN
       dnsPolicy: ClusterFirst
       restartPolicy: Never
