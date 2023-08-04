@@ -1,8 +1,6 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "-100"
   name: upload-skupper-token-to-vault
 spec:
   template:
