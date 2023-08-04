@@ -3,3 +3,38 @@ tree:
 
 skupper:
   name: skupper-hub
+  cli-path: https://github.com/skupperproject/skupper/releases/download/1.4/skupper-cli-1.4-linux-amd64.tgz
+
+
+serviceAccountName: expose-service-sa
+rbac:
+  roles:
+    - name: expose-service-role
+      createRole: true
+      apiGroups:
+        - '""'
+      scope:
+        cluster: true
+      resources:
+        - service
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+        - "patch"
+        - "watch"
+        - "update"
+  roleBindings:
+    - name: expose-service-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: expose-service-sa
+        namespace: kafka
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: expose-service-role
