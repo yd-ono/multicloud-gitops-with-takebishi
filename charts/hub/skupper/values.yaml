@@ -3,7 +3,6 @@ tree:
 
 skupper:
   name: skupper-hub
-  dl-cli-scripts: https://raw.githubusercontent.com/yd-ono/multicloud-gitops-with-takebishi/main/common/scripts/get-skupper.sh
 
 serviceAccountName: expose-service-sa
 rbac:
