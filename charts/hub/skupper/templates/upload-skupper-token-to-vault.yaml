@@ -13,14 +13,17 @@ spec:
         - /bin/bash
         - -c
         - |
-          export VAULT_SKIP_VERIFY=true
-          export VAULT_ADDR=https://vault-vault.{{ .Values.global.hubClusterDomain }}
-          export VAULT_TOKEN=$content
           vault login
-        name: patch-openshift-console
+        name: upload-skupper-token-to-vault
+        env:
+        - name: VAULT_SKIP_VERIFY
+          value: true
+        - name: VAULT_ADDR
+          value: https://vault-vault.{{ .Values.global.hubClusterDomain }}
         envFrom:
         - secretRef:
-            name: vault-secret
+            name: VAULT_TOKEN
+            key: content
       dnsPolicy: ClusterFirst
       restartPolicy: Never
       terminationGracePeriodSeconds: 400
