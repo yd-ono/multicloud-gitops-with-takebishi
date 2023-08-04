@@ -3,6 +3,8 @@ kind: Service
 metadata:
   labels:
     strimzi.io/component-type: kafka
+  annotations:
+    skupper.io/proxy: tcp
   name: hub-cluster-kafka-0
 spec:
   ports:
@@ -24,6 +26,8 @@ kind: Service
 metadata:
   labels:
     strimzi.io/component-type: kafka
+  annotations:
+    skupper.io/proxy: tcp
   name: hub-cluster-kafka-1
 spec:
   ports:
@@ -45,6 +49,8 @@ kind: Service
 metadata:
   labels:
     strimzi.io/component-type: kafka
+  annotations:
+    skupper.io/proxy: tcp
   name: hub-cluster-kafka-2
 spec:
   ports:
