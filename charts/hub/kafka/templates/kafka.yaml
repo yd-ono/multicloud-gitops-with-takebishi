@@ -13,6 +13,10 @@ spec:
         type: internal
         tls: false
         configuration:
+          bootstrap:
+            annotations:
+              skupper.io/address: hub-cluster-kafka-bootstrap-ex
+              skupper.io/proxy: tcp
           brokers:
             - broker: 0
               advertisedHost: hub-cluster-kafka-0.hub-cluster-kafka-brokers
