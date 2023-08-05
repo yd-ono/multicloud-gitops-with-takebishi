@@ -30,6 +30,13 @@ clusterGroup:
     #   channel: latest
     #   namespace: openshift-operators
 
+    # odf:
+    #   name: odf-operator
+    #   namespace: openshift-storage
+    #   channel: stable-4.12
+    #   source: redhat-operators
+    #   startingCSV: odf-operator.v4.12.5-rhodf
+
     skupper:
       name: skupper-operator
       namespace: openshift-operators
@@ -41,6 +48,7 @@ clusterGroup:
   projects:
     - eso
     - dw-gateway
+    # - fog
 
   applications:
     golang-external-secrets:
@@ -66,6 +74,42 @@ clusterGroup:
       namespace: mqtt
       project: dw-gateway
       path: charts/edge/skupper
+
+    # object-storage:
+    #   name: object-storage
+    #   namespace: openshift-storage
+    #   project: fog
+    #   path: charts/common/object-storage
+
+    # mqtt2kafka:
+    #   name: mqtt2kafka
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/mqtt2kafka
+
+    # kafka2s3:
+    #   name: kafka2s3
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka2s3
+
+    # kafka:
+    #   name: kafka-broker
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka
+
+    # kafka-mirror:
+    #   name: kafka-mirror
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka-mirror-maker
+
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafdrop
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

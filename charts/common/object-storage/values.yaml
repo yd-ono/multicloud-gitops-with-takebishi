@@ -3,7 +3,7 @@ global:
     namespace: "kafka"
   datacenter:
     storageClassName: gp3-csi
-    region: ap-northeast-3
+    region: ap-northeast-1
   bucket:
     name: demo
 
@@ -11,7 +11,7 @@ odf:
   namespace: openshift-storage
   serviceUrl: "http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc.cluster.local"
   externalUrl: "https://s3-rgw-openshift-storage"
-  targetBucket: com.redhat.jrickard.xray-source
+  targetBucket: demo
   mon:
     requests:
        cpu: 1

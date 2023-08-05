@@ -8,8 +8,8 @@ clusterGroup:
     - golang-external-secrets
     - kafka
     - openshift-storage
-    # - config-demo
-    # - hello-world
+    # - mqtt
+    # - dgw
 
   subscriptions:
     acm:
@@ -55,10 +55,8 @@ clusterGroup:
   projects:
     - hub
     - eso
-    # - config-demo
-    # - hello-world
-    # - kafka
-    # - dw-gateway
+    # - fog
+    # - edge
 
   applications:
     acm:
@@ -90,12 +88,11 @@ clusterGroup:
       project: eso
       path: common/golang-external-secrets
 
-    # NOTE: optional
     object-storage:
       name: object-storage
       namespace: openshift-storage
       project: hub
-      path: charts/hub/object-storage
+      path: charts/common/object-storage
 
     skupper:
       name: skupper
@@ -127,19 +124,19 @@ clusterGroup:
     # mqtt2kafka:
     #   name: mqtt2kafka
     #   namespace: kafka
-    #   project: hub
+    #   project: fog
     #   path: charts/fog/mqtt2kafka
 
     # device-gateway:
     #   name: dgw
     #   namespace: dgw
-    #   project: hub
+    #   project: edge
     #   path: charts/edge/dgw
 
     # amq:
     #   name: mqtt-broker
     #   namespace: mqtt
-    #   project: hub
+    #   project: edge
     #   path: charts/edge/amq
 
   imperative:

@@ -13,7 +13,6 @@ metadata:
 {{- end }}
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-15"
 subjects:
 - kind: {{ $value.subjects.kind | default "ServiceAccount" }}
   name: {{ $value.subjects.name }}

@@ -1,6 +1,8 @@
 apiVersion: ocs.openshift.io/v1
 kind: StorageCluster
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   namespace: {{ .Values.odf.namespace }}
   name: ocs-storagecluster
 spec:

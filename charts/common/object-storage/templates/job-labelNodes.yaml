@@ -1,11 +1,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
   name: job-label-storage-nodes
   namespace: {{ .Values.odf.namespace }}
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:

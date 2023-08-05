@@ -2,10 +2,11 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
-  name: job-label-storage-nodes
+    argocd.argoproj.io/sync-wave: "4"
+  name: job-console-update
   namespace: {{ .Values.odf.namespace }}
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -14,8 +15,8 @@ spec:
         - /bin/bash
         - -c
         - |
-          oc label nodes -l node-role.kubernetes.io/worker= cluster.ocs.openshift.io/openshift-storage='' --overwrite
-        name: label-storage-nodes
+          oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins/0", "value": "odf-console"}]'
+        name: patch-openshift-console
       dnsPolicy: ClusterFirst
       restartPolicy: Never
       serviceAccount: {{ .Values.serviceAccountName }}

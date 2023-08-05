@@ -2,8 +2,8 @@
 apiVersion: odf.openshift.io/v1alpha1
 kind: StorageSystem
 metadata:
-  finalizers:
-  - storagesystem.odf.openshift.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: {{ .Values.storageSystem.name }}
   namespace: {{ .Values.storageSystem.namespace }}
 spec:

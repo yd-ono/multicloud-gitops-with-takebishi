@@ -14,7 +14,6 @@ metadata:
 {{- end }}
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-15"
 rules:
   - apiGroups:
 {{- range $value.apiGroups }}
