@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: upload-skupper-token-to-vault
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:

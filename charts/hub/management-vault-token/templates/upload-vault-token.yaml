@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: upload-vault-token
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:

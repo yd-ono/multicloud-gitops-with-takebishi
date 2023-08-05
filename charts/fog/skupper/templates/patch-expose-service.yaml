@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: expose-service-patch
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
