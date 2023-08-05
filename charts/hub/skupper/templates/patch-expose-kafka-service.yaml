@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: expose-service-patch
+  name: expose-kafka-service-patch
 spec:
   backoffLimit: 0
   template:
@@ -20,7 +20,7 @@ spec:
             oc -n kafka annotate service hub-cluster-kafka-2 "skupper.io/proxy=tcp" --overwrite
             oc -n kafka annotate service hub-cluster-kafka-bootstrap "skupper.io/address=hub-cluster-kafka-bootstrap-ex" "skupper.io/proxy=tcp" --overwrite
           fi
-        name: expose-service-patch
+        name: expose-kafka-service-patch
       dnsPolicy: ClusterFirst
       restartPolicy: Never
       serviceAccount: {{ .Values.serviceAccountName }}

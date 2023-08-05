@@ -20,6 +20,11 @@ spec:
       metadata:
         labels:
           skupper.io/type: connection-token
+      annotations:
+        edge-host: skupper-edge-kafka.apps.fog-fog-bbm8x.sandbox1224.opentlc.com
+        edge-port: '443'
+        inter-router-host: skupper-inter-router-kafka.apps.fog-fog-bbm8x.sandbox1224.opentlc.com
+        inter-router-port: '443'
       type: Opaque
       data:
         "ca.crt": "{{ $CACRT }}"
