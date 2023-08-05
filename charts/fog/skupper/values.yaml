@@ -56,4 +56,3 @@ rbac:
 
 job:
   image: registry.connect.redhat.com/hashicorp/vault:1.13.1-ubi
-  cliimage: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
