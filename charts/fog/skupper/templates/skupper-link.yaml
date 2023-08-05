@@ -6,7 +6,7 @@
 apiVersion: "external-secrets.io/v1beta1"
 kind: ExternalSecret
 metadata:
-  name: {{ .Values.externalsecret.name }}
+  name: {{ $.Values.externalsecret.name }}
   namespace: {{ . }}
 spec:
   refreshInterval: 15s
@@ -14,7 +14,7 @@ spec:
     name: {{ $.Values.secretStore.name }}
     kind: {{ $.Values.secretStore.kind }}
   target:
-    name: {{ .Values.externalsecret.name }}
+    name: {{ $.Values.externalsecret.name }}
     creationPolicy: Owner
     template:
       type: Opaque
