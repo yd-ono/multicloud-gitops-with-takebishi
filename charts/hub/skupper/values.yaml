@@ -28,6 +28,7 @@ rbac:
         cluster: true
       resources:
         - secrets
+        - services
       verbs:
         - "get"
         - "list"
