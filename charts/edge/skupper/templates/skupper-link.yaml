@@ -23,15 +23,15 @@ spec:
         "tls.crt": "{{ $TLSCRT }}"
         "tls.key": "{{ $TLSKEY }}"
   data:
-    - secretKey: "ca.crt"
+    - secretKey: "cacrt"
       remoteRef:
         key: {{ $.Values.skuppertoken.key }}
         property: ca.crt
-    - secretKey: "tls.crt"
+    - secretKey: "tlscrt"
       remoteRef:
         key: {{ $.Values.skuppertoken.key }}
         property: tls.crt
-    - secretKey: "tls.key"
+    - secretKey: "tlskey"
       remoteRef:
         key: {{ $.Values.skuppertoken.key }}
         property: tls.key
