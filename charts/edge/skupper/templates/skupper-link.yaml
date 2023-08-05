@@ -17,6 +17,14 @@ spec:
     name: {{ $.Values.externalsecret.name }}
     creationPolicy: Owner
     template:
+      metadata:
+        labels:
+          skupper.io/type: connection-token
+      annotations:
+        edge-host: skupper-edge-kafka.{{ .Values.global.localClusterDomain }}
+        edge-port: '443'
+        inter-router-host: skupper-inter-router-kafka.{{ .Values.global.localClusterDomain }}
+        inter-router-port: '443'
       type: Opaque
       data:
         "ca.crt": "{{ $CACRT }}"
