@@ -21,8 +21,7 @@ secretStore:
 
 s3secret:
   key: secret/data/odf/aws
-  namespaces:
-    - kafka
+  namespaces: kafka
 
 kafka:
   broker:
