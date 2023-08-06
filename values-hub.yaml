@@ -36,6 +36,13 @@ clusterGroup:
       channel: latest
       namespace: openshift-operators
 
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      channel: stable-4.12
+      source: redhat-operators
+      startingCSV: odf-operator.v4.12.5-rhodf
+
 
     # NOTE: If you want to deploy all-in-one box to hub cluster,
     # comment out the following applications configurations:
@@ -43,14 +50,6 @@ clusterGroup:
     #   name: amq-broker-rhel8
     #   channel: 7.11.x
     #   namespace: openshift-operators
-
-    # NOTE: optional
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
-      channel: stable-4.12
-      source: redhat-operators
-      startingCSV: odf-operator.v4.12.5-rhodf
 
   projects:
     - hub
