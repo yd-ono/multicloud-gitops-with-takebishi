@@ -12,8 +12,6 @@ metadata:
   name: {{ $value.name }}
   namespace: {{ $value.scope.namespace}}
 {{- end }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
 rules:
   - apiGroups:
 {{- range $value.apiGroups }}
