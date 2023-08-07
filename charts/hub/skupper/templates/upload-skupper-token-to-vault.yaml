@@ -14,9 +14,9 @@ spec:
         - |
           cd $HOME; curl -LO "https://dl.k8s.io/release/$(curl -LS https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
           chmod 755 $HOME/kubectl
-          CACRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}" | base64 -d -w 0)
-          TLSCRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}" | base64 -d -w 0)
-          TLSKEY=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}" | base64 -d -w 0)
+          CACRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.ca\.crt}" | base64 -d)
+          TLSCRT=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.crt}" | base64 -d)
+          TLSKEY=$(./kubectl -n kafka get secret {{ .Values.skupper.token.name }} -ojsonpath="{.data.tls\.key}" | base64 -d)
           vault login token="$VAULT_TOKEN"
           vault kv put secret/global/{{ .Values.skupper.token.key }} ca.crt="$CACRT"
           vault kv patch secret/global/{{ .Values.skupper.token.key }} tls.crt="$TLSCRT"
