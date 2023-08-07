@@ -1,46 +1,70 @@
-{{- $CACRT := printf "{{ cat .cacrt }}" }}
-{{- $TLSCRT := printf "{{ cat .tlscrt }}" }}
-{{- $TLSKEY := printf "{{ cat .tlskey }}" }}
-{{- range .Values.namespaces }}
----
-apiVersion: "external-secrets.io/v1beta1"
-kind: ExternalSecret
+# {{- $CACRT := printf "{{ cat .cacrt }}" }}
+# {{- $TLSCRT := printf "{{ cat .tlscrt }}" }}
+# {{- $TLSKEY := printf "{{ cat .tlskey }}" }}
+# {{- range .Values.namespaces }}
+# ---
+# apiVersion: "external-secrets.io/v1beta1"
+# kind: ExternalSecret
+# metadata:
+#   name: {{ $.Values.externalsecret.name }}
+#   namespace: {{ . }}
+# spec:
+#   refreshInterval: 15s
+#   secretStoreRef:
+#     name: {{ $.Values.secretStore.name }}
+#     kind: {{ $.Values.secretStore.kind }}
+#   target:
+#     name: {{ $.Values.externalsecret.name }}
+#     creationPolicy: Owner
+#     template:
+#       metadata:
+#         labels:
+#           skupper.io/type: connection-token
+#         annotations:
+#           edge-host: skupper-edge-kafka.apps.demo.sandbox1807.opentlc.com
+#           edge-port: '443'
+#           inter-router-host: skupper-inter-router-kafka.apps.demo.sandbox1807.opentlc.com
+#           inter-router-port: '443'
+#       type: Opaque
+#       data:
+#         "ca.crt": "{{ $CACRT }}"
+#         "tls.crt": "{{ $TLSCRT }}"
+#         "tls.key": "{{ $TLSKEY }}"
+#   data:
+#     - secretKey: "cacrt"
+#       remoteRef:
+#         key: {{ $.Values.skuppertoken.key }}
+#         property: ca.crt
+#     - secretKey: "tlscrt"
+#       remoteRef:
+#         key: {{ $.Values.skuppertoken.key }}
+#         property: tls.crt
+#     - secretKey: "tlskey"
+#       remoteRef:
+#         key: {{ $.Values.skuppertoken.key }}
+#         property: tls.key
+# {{- end }}
+apiVersion: v1
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURMRENDQWhTZ0F3SUJBZ0lRTUtvVS8wNmlRaUVoN1VzbmI3VGI2ekFOQmdrcWhraUc5dzBCQVFzRkFEQWEKTVJnd0ZnWURWUVFERXc5emEzVndjR1Z5TFhOcGRHVXRZMkV3SGhjTk1qTXdPREEyTURZek1EQTFXaGNOTWpndwpPREEwTURZek1EQTFXakFhTVJnd0ZnWURWUVFERXc5emEzVndjR1Z5TFhOcGRHVXRZMkV3Z2dFaU1BMEdDU3FHClNJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNxOS9iYjB4RDBiblhlUW9RM2docS9UNXFSbEdrMVZlbTUKdWRBc1ZzZkFFOHR6bU5udnl6MmI3L0R6emxBYmhVS3F3UGlRSkFIdXNaL20vVmFtZ3lDRHMrVjhYVm1uMm5YdQp6R3h0cTljbnY2MDVQYkgrY0pyVHEwK1M2Syt6MkUvSVVhT3krZ3hJQ0ZicVFZTGQ3bjZoNVFJVCtpcjc1c1laClNtMVVEVHYralczdzlabXJlUkJySkVmUUQ0RDNrTmdxVlVDY0hrd0dZZXE0L1pIcHFqenZSMUlmcTBVaFRuSHUKYmIwNE53U05pVDZiRDJsWk9CaU5yb1R6TWdhdEl2alEwaGt6QXp3L3d6YUQ0VDV3b29wQ01TbkR1bjI0YlJlZwpiQ2lEYTJlQ0FJTS9FTjMxYUN5c2d3U2FPcXZBcFpEbnRXYy85YUEzY0NVTzRZaVB3by9aQWdNQkFBR2piakJzCk1BNEdBMVVkRHdFQi93UUVBd0lDcERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXcKRHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVbU84MW5XeGpISHB4OFJlNjF2WUtzMTA1bmowdwpDd1lEVlIwUkJBUXdBb0lBTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFCdERsb3l0MkF2UEVmNjI4bEFJRDFBCkptUmVFZWxDbGFBOGdKWDlYN1VGZHMvSEJrM1U4cUlCaXFzTEN4TTJWTEc4SjBYaW4rd0RzZ0kxUHhTVERPYWIKZzFPc2tEb1VObGorRHh2cFFSNUdTSlFSSnlYaVVERjFWMVZqVnd4Qi9ucWdNektabXY3MXlQMjhxcVYzcExzSgp3OTBZSzlZWS9kZTdyVDlHUWVzUFBJbFI2MWlFZjN0N1Z0eHdpbTJKblRxNVlaUTl2eHF5a2d0dXJQdGZrMmF4CkhiUFk1L1lncG9VblFYOGVvZmM3WnNDclNuTUhPYkZML25LSHJVUXU2ZkF5YkJNaVR1dlpYb0psK25KVzQxa1IKNHQ2MmI0c1JQd2J3cldJKzJJTEVsOHpQMTQ0aVUrek5tblhjd25YV1MxeVhqUVNrY3hYbUdYUU1ING9GZGt1ZAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURsakNDQW42Z0F3SUJBZ0lRRm10dWVCRmllaklnVCs3eFdLb0s2akFOQmdrcWhraUc5dzBCQVFzRkFEQWEKTVJnd0ZnWURWUVFERXc5emEzVndjR1Z5TFhOcGRHVXRZMkV3SGhjTk1qTXdPREEzTURZd09ETXdXaGNOTWpndwpPREExTURZd09ETXdXakFSTVE4d0RRWURWUVFERXdaMGJ5MW9kV0l3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBCkE0SUJEd0F3Z2dFS0FvSUJBUUNmK1M2blpNd0Mwd1N3ek9QaFpFQmhUMWkwa2ZYMjRoMWh3TGZBYVBKL0NreTIKL2FRR25VT0ZUaEJUUmRqY2tFYlRiTiswbnhrcDBDajZQSVdjanBZYXBIcEhGSy9KWlByNjE2RGI4MWhxTTQxcQp2SlQzN1QzbmxBR3NIS1U1NUtVZVVBUkVvWnlhMmRWclVUSEtIcW50U0QwdTNBbGFVQVZnNjNoMVJiUTFOUUN2Cnh5ZHBMREFYcVViK290dksvTHlrZjVDdlh3ZWxoNlZ6Vlh3Q3BqeUJZZkJKczZVbzRsYUFacGxFSXJwL0tRUXQKM1BXTVFUcTFNSEcxS2F0RjhYTldsUm5OdmJZcjJtdFdwSzl6LzRqb0pMVngreEV0YXFJZUdncDd6bGgyZFdVWAptYWZQQ2FHSnRyUW0rS1RZU0xieDgycFVOSHhHdEdZNi9yeEpoTDJMQWdNQkFBR2pnZUF3Z2Qwd0RnWURWUjBQCkFRSC9CQVFEQWdXZ01CMEdBMVVkSlFRV01CUUdDQ3NHQVFVRkJ3TUJCZ2dyQmdFRkJRY0RBakFNQmdOVkhSTUIKQWY4RUFqQUFNQjhHQTFVZEl3UVlNQmFBRkpqdk5aMXNZeHg2Y2ZFWHV0YjJDck5kT1o0OU1IMEdBMVVkRVFSMgpNSFNDTkhOcmRYQndaWEl0WldSblpTMXJZV1pyWVM1aGNIQnpMbVJsYlc4dWMyRnVaR0p2ZURFNE1EY3ViM0JsCmJuUnNZeTVqYjIyQ1BITnJkWEJ3WlhJdGFXNTBaWEl0Y205MWRHVnlMV3RoWm10aExtRndjSE11WkdWdGJ5NXoKWVc1a1ltOTRNVGd3Tnk1dmNHVnVkR3hqTG1OdmJUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFIcDh4TzMrZgpQRFdZMERITXVyd1pFaThQUitudERnc1Q0Y2J1ZWt4dXArU1RITENzTWhpL0N2WnFoRE10RUFodnBiRThZMFdTCk5jVWtmYzFGUllMQUF2M29IV2RkWURHWHNSMDVhd0ZUamczVDdXV0V4NkVrSjJGSDgwdmlsOEJTS09XQUVncU8KUnI3cXJjUGI1NFdkYTl3ZTM0V0lmTUdqdTRVTlRKNW5wMjk0Z2xOUkw5VE4rSjNTL2lhR0J3UHdTRXNxMHpHdwpoOUZlUFhjaXVNU0NsTEFEYll5TEZjQmt6Qy9BK1FZTGRZN05JdGcwRkxpRC9IOTE5d0Y5eGVIOFA2SUpyNW9KCk1xendNZUQvNjhxSGkyL0Q3TDVtVkx0UE50NllGemlPTHBNWTJFd3k2TDNLTk5SYzZ1SUJOUmhFZjdpdXJ4UlAKN0VKc1ZqRzA4bkFpVnc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBbi9rdXAyVE1BdE1Fc016ajRXUkFZVTlZdEpIMTl1SWRZY0Mzd0dqeWZ3cE10djJrCkJwMURoVTRRVTBYWTNKQkcwMnpmdEo4WktkQW8ranlGbkk2V0dxUjZSeFN2eVdUNit0ZWcyL05ZYWpPTmFyeVUKOSswOTU1UUJyQnlsT2VTbEhsQUVSS0djbXRuVmExRXh5aDZwN1VnOUx0d0pXbEFGWU90NGRVVzBOVFVBcjhjbgphU3d3RjZsRy9xTGJ5dnk4cEgrUXIxOEhwWWVsYzFWOEFxWThnV0h3U2JPbEtPSldnR2FaUkNLNmZ5a0VMZHoxCmpFRTZ0VEJ4dFNtclJmRnpWcFVaemIyMks5cHJWcVN2Yy8rSTZDUzFjZnNSTFdxaUhob0tlODVZZG5WbEY1bW4KendtaGliYTBKdmlrMkVpMjhmTnFWRFI4UnJSbU92NjhTWVM5aXdJREFRQUJBb0lCQURZRi9JOWpKdEk5V1BRcgovVGo4bGhGR3Jub3NZSmdEUEZEcXVDTXVUZFpCTUM4TDhQeWExMWFKU2xJVTRHdDcvYThnc1Z0Wjd6R0RycEx6CkpWdjlld3Q4U0I4QkNXeEZ3Y3c4VFlKNTUzM1Y4d2Y4cjRJYWlERlFkbEFkVEY4RXJBNVVqMXh1QjJqejczTFMKZExJQk1QbUV6OFNuWWpFeG5OOWlKY2ZVeGtyQkZzaWdLWUpPdkVsLzh2L0djMTJzTmhTYjEyN3NZbklmdVQwZgpacmRPM0gxeFpzeGJVa3JCWFNUSmtoRk5leXJ5NktFckRlSWtBQUR5UzA1bGwyUjBkWlkrV043ZXRUck5YcVlnCnBmNUp5bWV0VVRFVmo5bmsrOUNQOUxWVjJ6R0xTL3owYzJoNVYrVzF6RTJIK2FrZ2YvVGdKdHhiSk1Qdkhra04KWUZhSWVJRUNnWUVBeG10K3BLTUhTK01aeDhsc0FrSk0rUjNWSWNCcGUxTlB4WkI4QjMvRUJNN1daWmRjZ2FqMwo3cDBzMnM2bHJaYXFXRW16WmFQc0Z0Zmx1REc3VDVDSUpDLzRhN0c5YlFnQTFjQlJCWU1zKzNZUE42c0RSRzh3CmZkTHhGOHhzUGRvUGlNUFRkcjV6UkpGTzVINWJBaktYL3VWbVpuNnJZeU9CSzNMTzZMQ3lCMXNDZ1lFQXptV0UKQ0duS2FHUE1HaDJscTlIakg3cDJxTHg3cWF3WGNyc0JZdG9VankrNVdCc0ZIeFNJTGlxdGtNNDhSUjVmY2c0NQpOaTRzM0wxakF5bndUYzM3TnVBTjZHU04wV0dpT3krSEhMNVl4SHpHYU5ZY3FoaEJNM09aeDlOOUhrWGsvS3BoCjdNOGNFcXpVbkIvQWs3Q2hlL282UHE1UzBDTXprdmR1SWgxVEtaRUNnWUVBdzgzV2R0K08xcnR3ZUhCempyTWcKeElGRkR2NlMyU200d2V5NENLcHpwSTc4a2RwUlpuNTQxRmIwcWFSZGFMVVN1dmRYK29oTjlhanVQOXVMelpPQwpWYnVrK1ptM3BiM05IU0tna2NFR0JjeFdiZ2ZydkgvQktabWRZMi9PclNiZ1I0Vi95MkZiM0tGTWFqMnF6N3RmCnRTRnA4T0UxZmlyT1VETUdyaWVZTjVzQ2dZQnQ5N3lmVnU1WExFVUU3U0xtSnhBaVNaRUxXbEZ4RjVYdXRTQ0oKOExQZmpvZnNINGxkQSsyQzI0NWFodWVwMUFMNm5BVnpqcXFzZWVPVlBmVWhIMHhuOG55MmcwemtjR2Fscmk4SQo2NG9VTm43b1FKeEpMRjhnOE1qUXBTZ1d4eHE0WEhlTVd0VVVSaTJKZVlsN3B6S0RBZEdpci9MRG50M053ak5WCnpkWVBZUUtCZ1FDblNXT3BKd0RWeHNraXI4MFkycGJ4cmNBTm9OeTcxZlVFalpyRkFyTDZYREM5MlREelFCaE4Ka3VtL2FLWHNDMHg2Q1orOCtJNkNPT0FKeUVFWG8rellkWS80RlJGR0wyN1ExQWM0aW5XNTk5eWs0akZiaWNGUQpMNFFoT0htK053WDBXZWJ4UFZGT2hiYW4zMUZ0NTNnaGdLbndYMWFJbW9XekNQZVZnU1ZGY3c9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+kind: Secret
 metadata:
-  name: {{ $.Values.externalsecret.name }}
-  namespace: {{ . }}
-spec:
-  refreshInterval: 15s
-  secretStoreRef:
-    name: {{ $.Values.secretStore.name }}
-    kind: {{ $.Values.secretStore.kind }}
-  target:
-    name: {{ $.Values.externalsecret.name }}
-    creationPolicy: Owner
-    template:
-      metadata:
-        labels:
-          skupper.io/type: connection-token
-        annotations:
-          edge-host: skupper-edge-kafka.apps.demo.sandbox1807.opentlc.com
-          edge-port: '443'
-          inter-router-host: skupper-inter-router-kafka.apps.demo.sandbox1807.opentlc.com
-          inter-router-port: '443'
-      type: Opaque
-      data:
-        "ca.crt": "{{ $CACRT }}"
-        "tls.crt": "{{ $TLSCRT }}"
-        "tls.key": "{{ $TLSKEY }}"
-  data:
-    - secretKey: "cacrt"
-      remoteRef:
-        key: {{ $.Values.skuppertoken.key }}
-        property: ca.crt
-    - secretKey: "tlscrt"
-      remoteRef:
-        key: {{ $.Values.skuppertoken.key }}
-        property: tls.crt
-    - secretKey: "tlskey"
-      remoteRef:
-        key: {{ $.Values.skuppertoken.key }}
-        property: tls.key
-{{- end }}
+  annotations:
+    edge-host: skupper-edge-kafka.apps.demo.sandbox1807.opentlc.com
+    edge-port: "443"
+    inter-router-host: skupper-inter-router-kafka.apps.demo.sandbox1807.opentlc.com
+    inter-router-port: "443"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Secret","metadata":{"annotations":{},"labels":{"argocd.argoproj.io/instance":"skupper","skupper.io/type":"connection-token-request"},"name":"to-hub","namespace":"kafka"}}
+    skupper.io/generated-by: d39121c4-16b3-4d7e-9e1e-64c4080de108
+    skupper.io/site-version: 1.4.1-rh-1
+  creationTimestamp: "2023-08-06T06:30:04Z"
+  labels:
+    argocd.argoproj.io/instance: skupper
+    skupper.io/type: connection-token-request
+  name: to-hub
+  resourceVersion: "1389960"
+  uid: 5b8493ef-73c8-44e3-890b-e96a9e763194
+type: Opaque
