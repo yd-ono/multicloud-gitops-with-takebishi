@@ -15,7 +15,12 @@ spec:
         - /bin/bash
         - -c
         - |
-          oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins/0", "value": "odf-console"}]'
+          if [[ `oc get console.operator cluster -n openshift-storage -ojsonpath='{.spec.plugins}'` ]]
+          then
+            oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins/0", "value": "odf-console"}]'
+          else
+            oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins", "value": ["odf-console"]}]'
+          fi
         name: patch-openshift-console
       dnsPolicy: ClusterFirst
       restartPolicy: Never
