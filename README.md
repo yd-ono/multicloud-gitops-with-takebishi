@@ -6,7 +6,7 @@ Large scale deployment Takebishi Device Gateway on OpenShift with GitOps approac
 
 [Live build status](https://util.hybrid-cloud-patterns.io/dashboard.php?pattern=mcgitops)
 
-## Deployment Target
+## Architecture
 
 ![Alt text](doc/images/overview.png)
 
@@ -38,3 +38,35 @@ Once you run `pattern.sh`, a `pattern` operator is installed onto your OpenShift
 A `pattern` operator is configured as using your Git repo path.
 
 > If you are using MAC OS, you need to install podman-desktop.
+
+## Demo
+
+[Under Construction]
+
+- If you deploy this pattern to a public cloud, ZTP of clusters, apps, and interconnect between clusters(using skupper) are performed.
+- Once import your own cluster as edge or fog cluster to ACM, required apps are deloyed by ArgoCD automatically.
+
+## Installed Operators
+
+### Hub Cluster
+
+- OpenShift GitOps
+- Red Hat Advanced Cluster Management for K8s
+- Red Hat Service Interconnect
+- Red Hat Data Foundation
+- Red Hat AMQ Streams Operator
+- Red Hat Integration
+
+### Fog Cluster
+
+- OpenShift GitOps
+- Red Hat Service Interconnect
+- Red Hat Data Foundation
+- Red Hat AMQ Streams Operator
+- Red Hat Integration
+
+### Edge Cluster
+
+- OpenShift GitOps
+- Red Hat Service Interconnect
+- Red Hat AMQ
