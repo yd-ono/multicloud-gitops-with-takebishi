@@ -27,9 +27,9 @@ spec:
           inter-router-port: '443'
       type: Opaque
       data:
-        "ca.crt": "{{ $CACRT }}"
-        "tls.crt": "{{ $TLSCRT }}"
-        "tls.key": "{{ $TLSKEY }}"
+        "ca.crt": {{ $CACRT }}
+        "tls.crt": {{ $TLSCRT }}
+        "tls.key": {{ $TLSKEY }}
   data:
     - secretKey: "cacrt"
       remoteRef:
