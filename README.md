@@ -46,6 +46,21 @@ A `pattern` operator is configured as using your Git repo path.
 - If you deploy this pattern to a public cloud, ZTP of clusters, apps, and interconnect between clusters(using skupper) are performed.
 - Once import your own cluster as edge or fog cluster to ACM, required apps are deloyed by ArgoCD automatically.
 
+- You can check Device Gateway data in `demo` bucket on ODF as the following command:
+
+```bash
+ACCESS_KEY=xxx
+SECRET_KEY=xxx
+S3_ENDPOINT=$(oc get route s3-rgw -n openshift-storage -ojsonpath='{.status.ingress[*].host}')
+alias s3='AWS_ACCESS_KEY_ID=$ACCESS_KEY AWS_SECRET_ACCESS_KEY=$SECRET_KEY aws --endpoint $S3_ENDPOINT --no-verify-ssl s3'
+```
+
+```bash
+s3 ls
+s3 ls s3://demo
+s3 cp s3://demo/ /path/ --recursive
+```
+
 ## Installed Operators
 
 ### Hub Cluster
