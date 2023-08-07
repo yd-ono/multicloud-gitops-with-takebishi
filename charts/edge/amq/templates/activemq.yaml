@@ -20,3 +20,7 @@ spec:
     jolokiaAgentEnabled: false
     clustered: true
     image: {{ .Values.mqtt.image }}
+    annotations:
+      skupper.io/address: amq-broker-hdls-svc
+      skupper.io/port: '61616'
+      skupper.io/proxy: tcp
