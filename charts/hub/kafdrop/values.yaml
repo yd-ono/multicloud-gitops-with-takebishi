@@ -34,7 +34,7 @@ kafka:
   enabled: true
   replicaCount: 3
   ## If outside or custom kafka a bootstrap server is required
-  bootstrapServers: hub-cluster-kafka-bootstrap:9092
+  bootstrapServers: hub-cluster-kafka-brokers:9092
 
 ## Kafka Broker Kerberos
 ## ref: https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_gssapi.html#brokers
