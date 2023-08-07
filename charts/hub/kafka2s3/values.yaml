@@ -25,7 +25,7 @@ s3secret:
 
 kafka:
   broker:
-    uri: "hub-cluster-kafka-bootstrap:9092"
+    uri: "hub-cluster-kafka-bootstrap-ex:9092"
     topic: "edge-kafka-cluster.dgw"
 
 serviceAccountName: secret-converter-sa

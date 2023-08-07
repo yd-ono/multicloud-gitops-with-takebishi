@@ -62,6 +62,7 @@ spec:
                    + region
                    + override_endpoint
                    + uriendpoint_override;
+
                 from("kafka:{{ .Values.kafka.broker.topic }}?brokers={{ .Values.kafka.broker.uri }}")
                     .convertBodyTo(String.class)
                     .aggregate(simple("true"), new GroupedBodyAggregationStrategy()).completionSize(s3_message_aggregation_count)
@@ -72,15 +73,15 @@ spec:
                                 StringBuffer sb = new StringBuffer();
                                 for (Iterator iterator = data.iterator(); iterator.hasNext();) {
                                     String ex = (String) iterator.next();
-                                    sb.append(ex+"\n");
+                                    sb.append(ex+"\\n");
                                 }
                                 exchange.getIn().setBody(new ByteArrayInputStream(sb.toString().getBytes()));
                             }
                         })
                     // .to(\"file:/var/tmp/\");
-                    .setHeader(AWS2S3Constants.KEY, simple("dgw-${headers[kafka.KEY]}-${date:now}.txt"))
+                    .setHeader(AWS2S3Constants.KEY, simple("dgw-prod-${headers[kafka.KEY]}-${date:now}.txt"))
                     .to("aws2-s3://{{ .Values.global.s3.bucket.name }}?" + s3params)
-                    .log("Uploaded Temperature from [ ${headers[kafka.KEY]} ] dataset to S3");
+                    .log("Uploaded from [ ${headers[kafka.KEY]} ] dgw dataset to S3");
             }
             @Override
             public OnCompletionDefinition onCompletion() {
