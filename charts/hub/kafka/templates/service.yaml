@@ -16,7 +16,7 @@ spec:
   selector:
     strimzi.io/cluster: hub-cluster
     strimzi.io/kind: Kafka
-    strimzi.io/name: hub-cluster--kafka
+    strimzi.io/name: hub-cluster-kafka
     strimzi.io/pod-name: hub-cluster-kafka-0
   sessionAffinity: None
   type: ClusterIP
