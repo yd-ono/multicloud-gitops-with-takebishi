@@ -19,11 +19,11 @@ spec:
               skupper.io/proxy: tcp
           brokers:
             - broker: 0
-              advertisedHost: hub-cluster-kafka-0.hub-cluster-kafka-brokers
+              advertisedHost: hub-cluster-kafka-0
             - broker: 1
-              advertisedHost: hub-cluster-kafka-1.hub-cluster-kafka-brokers
+              advertisedHost: hub-cluster-kafka-1
             - broker: 2
-              advertisedHost: hub-cluster-kafka-2.hub-cluster-kafka-brokers
+              advertisedHost: hub-cluster-kafka-2
       - name: tls
         port: 9093
         type: internal
