@@ -2,13 +2,12 @@ kind: Service
 apiVersion: v1
 metadata:
   name: amq-broker-hdls-svc-proxy
+  labels:
+    argocd.argoproj.io/instance: mqtt-broker
   annotations:
     internal.skupper.io/controlled: 'true'
     internal.skupper.io/service: amq-broker-hdls-svc
 spec:
-  clusterIP: None
-  ipFamilies:
-    - IPv4
   ports:
     - name: amq-broker-hdls-svc-proxy8161
       protocol: TCP
@@ -18,11 +17,6 @@ spec:
       protocol: TCP
       port: 61616
       targetPort: 61616
-  internalTrafficPolicy: Cluster
-  clusterIPs:
-    - None
   type: ClusterIP
-  ipFamilyPolicy: SingleStack
-  sessionAffinity: None
   selector:
     internal.skupper.io/service: amq-broker-hdls-svc

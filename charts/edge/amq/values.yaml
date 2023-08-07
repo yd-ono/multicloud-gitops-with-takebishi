@@ -11,3 +11,37 @@ mqtt:
   image: registry.redhat.io/amq7/amq-broker-rhel8:7.11.1-2.1689584940
   port: 61616
   size: 1
+
+serviceAccountName: skupper-expose-sa
+rbac:
+  roles:
+    - name: skupper-expose-role
+      createRole: true
+      apiGroups:
+        - 'apps'
+      scope:
+        cluster: true
+      resources:
+        - statefulsets
+      verbs:
+        - "get"
+        - "list"
+        - "create"
+        - "patch"
+  roleBindings:
+    - name: skupper-expose-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: skupper-expose-sa
+        namespace: mqtt
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: skupper-expose-role
+
+job:
+  image: registry.access.redhat.com/ubi8/ubi-minimal
