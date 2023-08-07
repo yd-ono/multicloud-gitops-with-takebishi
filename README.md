@@ -66,6 +66,7 @@ Links created from this site:
 
 ```bash
 skupper expose statefulset amq-broker-ss --headless --target-port 61616
+oc annotate statefulset amq-broker-ss 
 skupper service status
 ```
 
