@@ -4,6 +4,10 @@ global:
     syncPolicy: Automatic
     installPlanApproval: Automatic
 
+  datacenter:
+    storageClassName: gp3-csi
+    region: ap-northeast-2
+
 clusterGroup:
   name: fog
   isHubCluster: false
