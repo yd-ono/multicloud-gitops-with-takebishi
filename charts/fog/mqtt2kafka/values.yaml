@@ -4,7 +4,7 @@ secretStore:
 
 mqtt:
   broker:
-    uri: "tcp://amq-broker-hdls-svc:61616"
+    uri: "tcp://amq-broker-hdls-svc-proxy:61616"
     clientId: "MQTT2KafkaRoute"
     topic: "dgw"
 
