@@ -169,7 +169,7 @@ clusterGroup:
           size: 1
           name: fog
           openshiftVersion: 4.12.24
-          baseDomain: sandbox1807.opentlc.com
+          baseDomain: sandbox900.opentlc.com
           controlPlane:
             count: 3
             platform:
@@ -197,7 +197,7 @@ clusterGroup:
           size: 1
           name: edge
           openshiftVersion: 4.12.24
-          baseDomain: sandbox1807.opentlc.com
+          baseDomain: sandbox900.opentlc.com
           controlPlane:
             count: 1
             platform:
