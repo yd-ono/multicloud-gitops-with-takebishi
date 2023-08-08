@@ -3,6 +3,8 @@ kind: ObjectBucketClaim
 metadata:
   name: demo
   namespace: {{ .Values.odf.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
   labels:
     bucket-provisioner: openshift-storage.ceph.rook.io-bucket
 spec:

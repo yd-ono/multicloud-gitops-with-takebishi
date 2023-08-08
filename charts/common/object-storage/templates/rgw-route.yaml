@@ -10,7 +10,7 @@ metadata:
     rook_cluster: openshift-storage
     rook_object_store: {{ .Values.odf.storageClass.objectStoreName }}
   annotations:
-    argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   to:
     kind: Service
