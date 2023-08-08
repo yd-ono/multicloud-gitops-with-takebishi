@@ -2,10 +2,12 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
   name: job-console-update
   namespace: {{ .Values.odf.namespace }}
 spec:
+  ttlSecondsAfterFinished: 0
   backoffLimit: 0
   template:
     spec:
