@@ -21,9 +21,9 @@ spec:
         labels:
           skupper.io/type: connection-token
         annotations:
-          edge-host: skupper-edge-kafka.{{ .Values.global.hubClusterDomain }}
+          edge-host: skupper-edge-kafka.{{ $.Values.global.hubClusterDomain }}
           edge-port: '443'
-          inter-router-host: skupper-inter-router-kafka.{{ .Values.global.hubClusterDomain }}
+          inter-router-host: skupper-inter-router-kafka.{{ $.Values.global.hubClusterDomain }}
           inter-router-port: '443'
       type: Opaque
       data:
