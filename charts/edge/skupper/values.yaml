@@ -9,7 +9,7 @@ externalsecret:
 
 skupper:
   name: skupper-edge
-  connectClusterDomain: apps.fog-fog-clhwh.sandbox900.opentlc.com
+  connectClusterDomain: ""
 
 secretStore:
   name: vault-backend
