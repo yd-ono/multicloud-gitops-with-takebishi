@@ -6,6 +6,11 @@ global:
     region: ap-northeast-1
   bucket:
     name: demo
+    namespace: openshift-storage
+
+s3secret:
+  key: secret/data/odf/aws
+  namespaces: kafka
 
 odf:
   namespace: openshift-storage
@@ -78,11 +83,13 @@ rbac:
       resources:
         - nodes
         - consoles
+        - secrets
       verbs:
         - "get"
         - "list"
         - "patch"
         - "update"
+        - "delete"
   roleBindings:
     - name: odf-patch-rolebinding
       createBinding: true
