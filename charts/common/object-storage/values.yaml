@@ -78,6 +78,7 @@ rbac:
       apiGroups:
         - '""'
         - 'operator.openshift.io'
+        - '"'
       scope:
         cluster: true
       resources:
