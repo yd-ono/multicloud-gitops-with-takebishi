@@ -1,3 +1,13 @@
+global:
+  apps:
+    namespace: "kafka"
+  datacenter:
+    storageClassName: gp3-csi
+    region: ap-northeast-1
+  bucket:
+    name: demo
+    namespace: openshift-storage
+
 clusterGroup:
   name: hub
   isHubCluster: true
