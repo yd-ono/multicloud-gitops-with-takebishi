@@ -4,6 +4,7 @@ metadata:
   name: job-label-storage-nodes
   namespace: {{ .Values.odf.namespace }}
   annotations:
+    argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   ttlSecondsAfterFinished: 0
