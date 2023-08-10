@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.odf.namespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   backoffLimit: 0
   template:
