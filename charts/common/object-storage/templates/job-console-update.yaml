@@ -7,7 +7,6 @@ metadata:
   name: job-console-update
   namespace: {{ .Values.odf.namespace }}
 spec:
-  ttlSecondsAfterFinished: 0
   backoffLimit: 0
   template:
     spec:
