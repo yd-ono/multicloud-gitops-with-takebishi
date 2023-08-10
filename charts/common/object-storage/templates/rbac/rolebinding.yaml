@@ -11,9 +11,6 @@ metadata:
 {{- if eq $value.scope.cluster false }}
   namespace: {{ $value.scope.namespace }}
 {{- end }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/hook: PreSync
 subjects:
 - kind: {{ $value.subjects.kind | default "ServiceAccount" }}
   name: {{ $value.subjects.name }}
