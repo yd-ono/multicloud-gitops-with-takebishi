@@ -165,6 +165,7 @@ clusterGroup:
 
   # NOTE: If you want to create a new cluster to edge or fog location, comment out the following line.
   managedClusterGroups:
+  # Policy
     fog:
       name: fog
       acmlabels:
@@ -174,6 +175,7 @@ clusterGroup:
       - name: clusterGroup.isHubCluster
         value: false
 
+      ## ClusterPool
       # clusterPools:
       #   exampleAWSPool:
       #     size: 1
@@ -194,6 +196,7 @@ clusterGroup:
       #     - One
 
   # NOTE: If you want to create a new cluster to edge or fog location, comment out the following line.
+  # Policy
     edge:
       name: edge
       acmlabels:
@@ -203,6 +206,7 @@ clusterGroup:
       - name: clusterGroup.isHubCluster
         value: false
 
+      ## ClusterPool
       # clusterPools:
       #   exampleAWSPool:
       #     size: 1
