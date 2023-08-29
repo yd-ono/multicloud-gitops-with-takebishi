@@ -31,7 +31,7 @@ spec:
                 kind: Subscription
                 metadata:
                   name: openshift-gitops-operator
-                  namespace: openshift-operators
+                  # namespace: openshift-operators
                   labels:
                     operators.coreos.com/openshift-gitops-operator.openshift-operators: ''
                 spec:
