@@ -72,7 +72,7 @@ spec:
       type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - key: clusterGroup
+      - key: Vendor
         operator: In
         values:
           - MicroShift
