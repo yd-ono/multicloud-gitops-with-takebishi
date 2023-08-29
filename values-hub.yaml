@@ -224,11 +224,11 @@ clusterGroup:
       #     clusters:
       #     - One
 
-    faredge:
-      name: faredge
+    deviceedge:
+      name: deviceedge
       acmlabels:
       - name: clusterGroup
-        value: faredge
+        value: deviceedge
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false

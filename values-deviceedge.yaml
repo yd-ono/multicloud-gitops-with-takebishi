@@ -1,5 +1,3 @@
-#####
-## This values file is for Red Hat Device Edge
 global:
   options:
     useCSV: False
@@ -10,7 +8,7 @@ skupper:
   connectClusterDomain: apps.demo.sandbox2225.opentlc.com
 
 clusterGroup:
-  name: faredge
+  name: deviceedge
   isHubCluster: false
 
   namespaces:
