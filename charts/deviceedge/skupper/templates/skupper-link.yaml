@@ -1,0 +1,46 @@
+{{- $CACRT := printf "{{ cat .cacrt }}" }}
+{{- $TLSCRT := printf "{{ cat .tlscrt }}" }}
+{{- $TLSKEY := printf "{{ cat .tlskey }}" }}
+{{- range .Values.namespaces }}
+---
+apiVersion: "external-secrets.io/v1beta1"
+kind: ExternalSecret
+metadata:
+  name: {{ $.Values.externalsecret.name }}
+  namespace: {{ . }}
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: {{ $.Values.secretStore.name }}
+    kind: {{ $.Values.secretStore.kind }}
+  target:
+    name: {{ $.Values.externalsecret.name }}
+    creationPolicy: Owner
+    template:
+      metadata:
+        labels:
+          skupper.io/type: connection-token
+        annotations:
+          edge-host: skupper-edge-kafka.{{ $.Values.skupper.connectClusterDomain }}
+          edge-port: '443'
+          inter-router-host: skupper-inter-router-kafka.{{ $.Values.skupper.connectClusterDomain }}
+          inter-router-port: '443'
+      type: Opaque
+      data:
+        "ca.crt": "{{ $CACRT }}"
+        "tls.crt": "{{ $TLSCRT }}"
+        "tls.key": "{{ $TLSKEY }}"
+  data:
+    - secretKey: "cacrt"
+      remoteRef:
+        key: {{ $.Values.skuppertoken.key }}
+        property: ca.crt
+    - secretKey: "tlscrt"
+      remoteRef:
+        key: {{ $.Values.skuppertoken.key }}
+        property: tls.crt
+    - secretKey: "tlskey"
+      remoteRef:
+        key: {{ $.Values.skuppertoken.key }}
+        property: tls.key
+{{- end }}

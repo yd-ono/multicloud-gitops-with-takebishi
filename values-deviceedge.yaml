@@ -4,6 +4,7 @@ global:
     syncPolicy: Automatic
     installPlanApproval: Automatic
 
+# Specify skupper router domain on a fog cluster
 skupper:
   connectClusterDomain: apps.demo.sandbox2225.opentlc.com
 
@@ -16,19 +17,19 @@ clusterGroup:
     - dgw
     - mqtt
 
-  subscriptions:
-    amq-broker:
-      name: amq-broker-rhel8
-      channel: 7.11.x
-      namespace: openshift-operators
+  # subscriptions:
+    # amq-broker:
+    #   name: amq-broker-rhel8
+    #   channel: 7.11.x
+    #   namespace: openshift-operators
 
-    skupper:
-      name: skupper-operator
-      namespace: openshift-operators
-      installPlanApproval: Automatic
-      channel: alpha
-      source: redhat-operators
-      startingCSV: skupper-operator.v1.2
+    # skupper:
+    #   name: skupper-operator
+    #   namespace: openshift-operators
+    #   installPlanApproval: Automatic
+    #   channel: alpha
+    #   source: redhat-operators
+    #   startingCSV: skupper-operator.v1.2
 
   projects:
     - eso
@@ -45,19 +46,19 @@ clusterGroup:
       name: mqtt-broker
       namespace: mqtt
       project: dw-gateway
-      path: charts/edge/amq
+      path: charts/deviceedge/amq
 
     device-gateway:
       name: dgw
       namespace: dgw
       project: dw-gateway
-      path: charts/edge/dgw
+      path: charts/deviceedge/dgw
 
     skupper:
       name: skupper
       namespace: mqtt
       project: dw-gateway
-      path: charts/edge/skupper
+      path: charts/deviceedge/skupper
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
