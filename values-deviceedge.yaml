@@ -16,7 +16,6 @@ clusterGroup:
     - golang-external-secrets
     - dgw
     - mqtt
-    - console
 
   # subscriptions:
     # amq-broker:
