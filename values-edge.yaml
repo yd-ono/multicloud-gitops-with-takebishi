@@ -5,7 +5,7 @@ global:
     installPlanApproval: Automatic
 
 skupper:
-  connectClusterDomain: apps.demo.sandbox2225.opentlc.com
+  connectClusterDomain: apps.demo.sandbox2195.opentlc.com
 
 clusterGroup:
   name: edge
