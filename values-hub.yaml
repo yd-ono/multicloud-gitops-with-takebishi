@@ -91,13 +91,13 @@ clusterGroup:
       name: deviceedge-cluster-argocd
       namespace: argocd
       project: hub
-      path: charts/hub/rhde-argocd
+      path: charts/hub/acm-subscription-argocd
 
     deviceedge-apps-argocd:
       name: deviceedge-apps-argocd
       namespace: multicloud-gitops-with-takebishi-deviceedge
       project: hub
-      path: charts/hub/rhde-argocd
+      path: charts/hub/acm-subscription-argocd
 
     management-vault-token:
       name: management-vault-token
