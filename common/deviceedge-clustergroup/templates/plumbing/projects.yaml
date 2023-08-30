@@ -5,6 +5,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: {{ . }}
+{{- if (eq $.Values.enabled "plumbing") }}
+  namespace: argocd
+{{- else }}
+  namespace: {{ $namespace }}
+{{- end }}
 spec:
   description: "Pattern {{ . }}"
   destinations:

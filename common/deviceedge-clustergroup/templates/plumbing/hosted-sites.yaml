@@ -6,6 +6,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: {{ .name }}
+  namespace: argocd
 spec:
   description: "Cluster Group {{ $group.name }}"
   destinations:
@@ -28,6 +29,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $.Values.global.pattern }}-{{ $group.name }}-{{ .name }}
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io/foreground
 spec:
@@ -98,6 +100,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $.Values.global.pattern }}-{{ $group.name }}-{{ .name }}-plumbing
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io/foreground
 spec:
