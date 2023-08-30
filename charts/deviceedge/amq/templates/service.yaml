@@ -4,7 +4,7 @@ metadata:
   labels:
     app: amq-broker
   name: amq-web
-  namespace: amq-broker
+  namespace: mqtt
 spec:
   ports:
   - port: 8161
@@ -21,7 +21,7 @@ metadata:
   labels:
     app: amq-broker
   name: amqp
-  namespace: amq-broker
+  namespace: mqtt
 spec:
   ports:
   - port: 5672
@@ -38,7 +38,7 @@ metadata:
   labels:
     app: amq-broker-mqtt
   name: amqp-mqtt
-  namespace: amq-broker
+  namespace: mqtt
 spec:
   ports:
   - port: 1883
