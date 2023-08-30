@@ -87,8 +87,8 @@ clusterGroup:
       project: hub
       path: common/hashicorp-vault
 
-    acm_application:
-      name: acm_application
+    acm-application:
+      name: acm-application
       namespace: argocd
       project: hub
       path: hub/acm_application
