@@ -1,11 +1,14 @@
+{{- range .Values.clusterGroup.applications.deviceedge_argocd }}
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
     app: argocd
-  name: argocd-placement
-  namespace: argocd
+  name: {{ .name }}-placement
+  namespace: {{ .namespace }}
 spec:
   clusterSelector:
     matchLabels:
       clusterGroup: deviceedge
+---
+{{- end }}

@@ -1,10 +1,11 @@
+{{- range .Values.clusterGroup.applications.deviceedge_argocd }}
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: argocd
-  namespace: argocd
+  name: {{ .name }}
+  namespace: {{ .namespace }}
   annotations:
-    apps.open-cluster-management.io/subscriptions: argocd/argocd-subscription
+    apps.open-cluster-management.io/subscriptions: {{ .name }}/{{ .name }}-subscription
 spec:
   componentKinds:
     - group: apps.open-cluster-management.io
@@ -16,3 +17,5 @@ spec:
         operator: In
         values:
           - argocd
+---
+{{- end }}
