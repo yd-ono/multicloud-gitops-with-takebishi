@@ -13,7 +13,7 @@ spec:
   channel: argocd/cluster-argocd-channel
   placement:
     placementRef:
-      name: argocd-placement
+      name: cluster-argocd-placement
       kind: PlacementRule
 posthooks: {}
 prehooks: {}
