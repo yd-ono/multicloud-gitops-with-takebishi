@@ -1,0 +1,10 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: medium
+  name: ggithubcom-argoproj-argo-cd
+  namespace: ggithubcom-argoproj-argo-cd-ns
+spec:
+  pathname: https://github.com/yd-ono/multicloud-gitops-with-takebishi
+  type: Git

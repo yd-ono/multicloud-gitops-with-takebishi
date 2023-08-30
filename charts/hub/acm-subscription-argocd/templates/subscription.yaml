@@ -1,0 +1,20 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: argocd-subscription
+  namespace: argocd
+  annotations:
+    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-path: common/community-argocd/templates
+  labels:
+    app: argocd
+    app.kubernetes.io/part-of: argocd
+    apps.open-cluster-management.io/reconcile-rate: medium
+spec:
+  channel: ggithubcom-argoproj-argo-cd-ns/ggithubcom-argoproj-argo-cd
+  placement:
+    placementRef:
+      name: argocd-placement
+      kind: PlacementRule
+posthooks: {}
+prehooks: {}

@@ -1,0 +1,6 @@
+apiVersion: v2
+description: MQTT Broker configuration helm chart
+keywords:
+- acm-application
+name: acm-application
+version: 0.0.1
