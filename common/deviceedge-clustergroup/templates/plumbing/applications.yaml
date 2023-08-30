@@ -1,7 +1,7 @@
 {{- if not (eq .Values.enabled "core") }}
 {{- $namespace := print $.Values.global.pattern "-" $.Values.clusterGroup.name }}
 {{- if (eq .Values.enabled "plumbing") }}
-{{- $namespace = "openshift-gitops" }}
+{{- $namespace = "argocd" }}
 {{- end }}
 {{- range .Values.clusterGroup.applications }}
 {{- if or (.generators) (.generatorFile) (.useGeneratorValues) (.destinationServer) (.destinationNamespace) }}
