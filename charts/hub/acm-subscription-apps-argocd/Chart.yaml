@@ -1,6 +1,6 @@
 apiVersion: v2
 description: MQTT Broker configuration helm chart
 keywords:
-- acm-application
-name: acm-application
+- acm-application-apps-argocd
+name: acm-application-apps-argocd
 version: 0.0.1

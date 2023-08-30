@@ -1,0 +1,11 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: apps-argocd
+  name: apps-argocd-placement
+spec:
+  clusterSelector:
+    matchLabels:
+      clusterGroup: deviceedge
+---

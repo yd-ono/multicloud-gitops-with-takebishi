@@ -1,0 +1,18 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: cluster-argocd
+  annotations:
+    apps.open-cluster-management.io/subscriptions: cluster-argocd/cluster-argocd-subscription
+spec:
+  componentKinds:
+    - group: apps.open-cluster-management.io
+      kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - cluster-argocd
+---

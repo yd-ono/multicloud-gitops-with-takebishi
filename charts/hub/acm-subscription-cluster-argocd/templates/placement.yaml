@@ -2,9 +2,8 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
-    app: argocd
-  name: {{ .Values.clusterGroup.applications.name }}-placement
-  namespace: {{ .Values.clusterGroup.applications.namespace }}
+    app: cluster-argocd
+  name: cluster-argocd-placement
 spec:
   clusterSelector:
     matchLabels:

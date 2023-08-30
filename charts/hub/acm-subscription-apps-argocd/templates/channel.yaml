@@ -3,8 +3,7 @@ kind: Channel
 metadata:
   annotations:
     apps.open-cluster-management.io/reconcile-rate: medium
-  name: {{ .Values.clusterGroup.applications.name }}-channel
-  namespace: {{ .Values.clusterGroup.applications.namespace }}-channel
+  name: apps-argocd-channel
 spec:
   pathname: https://github.com/yd-ono/multicloud-gitops-with-takebishi
   type: Git

@@ -133,13 +133,13 @@ clusterGroup:
       name: cluster-argocd
       namespace: argocd
       project: hub
-      path: charts/hub/acm-subscription-argocd
+      path: charts/hub/acm-subscription-cluster-argocd
 
     deviceedge_apps_argocd:
       name: apps-argocd
       namespace: multicloud-gitops-with-takebishi-deviceedge
       project: hub
-      path: charts/hub/acm-subscription-argocd
+      path: charts/hub/acm-subscription-apps-argocd
 
     # NOTE: If you want to deploy all-in-one box to hub cluster,
     # comment out the following applications configurations:

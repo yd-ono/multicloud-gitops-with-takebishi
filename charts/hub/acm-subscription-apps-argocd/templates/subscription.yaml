@@ -1,0 +1,20 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: apps-argocd-subscription
+  annotations:
+    apps.open-cluster-management.io/git-branch: main
+    apps.open-cluster-management.io/git-path: common/community-argocd/templates
+  labels:
+    app: apps-argocd
+    app.kubernetes.io/part-of: apps-argocd
+    apps.open-cluster-management.io/reconcile-rate: medium
+spec:
+  channel: multicloud-gitops-with-takebishi-deviceedge/apps-argocd-channel
+  placement:
+    placementRef:
+      name: apps-argocd-placement
+      kind: PlacementRule
+posthooks: {}
+prehooks: {}
+---
