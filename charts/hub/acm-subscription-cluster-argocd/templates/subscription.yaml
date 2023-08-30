@@ -3,8 +3,8 @@ kind: Subscription
 metadata:
   name: cluster-argocd-subscription
   annotations:
-    apps.open-cluster-management.io/git-branch: main
-    apps.open-cluster-management.io/git-path: common/community-argocd/templates
+    apps.open-cluster-management.io/git-branch: master
+    apps.open-cluster-management.io/git-path: manifests/install.yaml
     apps.open-cluster-management.io/reconcile-rate: high
   labels:
     app: cluster-argocd
