@@ -134,3 +134,6 @@ spec:
       type: ""
   tls:
     ca: {}
+status:
+---
+{{- end }}
