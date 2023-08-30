@@ -18,6 +18,8 @@ clusterGroup:
     - golang-external-secrets
     - kafka
     - openshift-storage
+    - argocd
+    - ggithubcom-argoproj-argo-cd-ns
     # - mqtt
     # - dgw
 
@@ -84,6 +86,12 @@ clusterGroup:
       namespace: vault
       project: hub
       path: common/hashicorp-vault
+
+    acm_application:
+      name: acm_application
+      namespace: argocd
+      project: hub
+      path: hub/acm_application
 
     management-vault-token:
       name: management-vault-token
