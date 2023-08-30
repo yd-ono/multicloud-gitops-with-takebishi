@@ -16,6 +16,7 @@ clusterGroup:
     - golang-external-secrets
     - dgw
     - mqtt
+    - console
 
   # subscriptions:
     # amq-broker:
@@ -59,6 +60,12 @@ clusterGroup:
       namespace: mqtt
       project: dw-gateway
       path: charts/deviceedge/skupper
+
+    console:
+      name: openshift-console
+      namespace: console
+      project: dw-gateway
+      path: charts/deviceedge/console
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm

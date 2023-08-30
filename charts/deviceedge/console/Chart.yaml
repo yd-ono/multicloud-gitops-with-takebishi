@@ -1,0 +1,6 @@
+apiVersion: v2
+description: Device Gateway helm chart
+keywords:
+- openshift-console
+name: openshift-console
+version: 0.0.1
