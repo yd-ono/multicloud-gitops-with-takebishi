@@ -1,6 +1,0 @@
-apiVersion: v2
-description: ArgoCD community edition
-keywords:
-- community-argocd
-name: argocd
-version: 0.0.1
