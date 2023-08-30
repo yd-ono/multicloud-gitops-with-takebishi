@@ -6,4 +6,5 @@ metadata:
   name: argocd-channel
 spec:
   pathname: https://github.com/yd-ono/multicloud-gitops-with-takebishi
+  type: Git
 ---
