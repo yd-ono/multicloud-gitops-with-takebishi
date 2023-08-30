@@ -42,7 +42,7 @@ spec:
       volumes:
       - name: pvc-dxpgateway
         persistentVolumeClaim:
-          claimName: pvc-dxpgateway 
+          claimName: pvc-dxpgateway
       - name: pvc-sdcard
         persistentVolumeClaim:
           claimName: pvc-sdcard

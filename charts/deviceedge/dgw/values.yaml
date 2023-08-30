@@ -1,12 +1,3 @@
 secretStore:
   name: vault-backend
   kind: ClusterSecretStore
-
-dgw:
-  storageclass: topolvm-provisioner
-  setting:
-    mqtt-server-address: amq-broker-hdls-svc.mqtt.svc.cluster.local:61616
-    clientID: dgw
-    destinationTopic: dgw
-    message: "{\n   \"time\":  <%=@nowUtc(\"yyyyMMdd HH:mm:ss.ms\")%>,\n   \"status\": <%=@p(\"Managemnt.Information.Summary.ledStatus\")%>,\n   \"send\": <%=@p(\"Managemnt.Lan.Summary.sendBytes0\")%>,\n   \"recieve\": <%=@p(\"Managemnt.Lan.Summary.receiveBytes0\")%>\n}\n"
-    cycleMsec: 1000
