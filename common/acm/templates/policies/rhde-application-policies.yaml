@@ -64,10 +64,10 @@ spec:
                       # - name: global.clusterDomain
                       #   value: '{{ `{{ (lookup "config.openshift.io/v1" "Ingress" "" "cluster").spec.domain | replace "apps." "" }}` }}'
                       # # Requires ACM 2.6 or higher (I could not come up with something less terrible to get maj.min)
-                      # - name: global.clusterVersion
-                      #   value: '{{ `{{ printf "%d.%d" ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Major) ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Minor) }}` }}'
-                      # - name: global.clusterPlatform
-                      #   value: {{ $.Values.global.clusterPlatform }}
+                      - name: global.clusterVersion
+                        value: 4.13
+                      - name: global.clusterPlatform
+                        value: MicroShift
                       - name: clusterGroup.name
                         value: deviceedge
                       - name: clusterGroup.isHubCluster
