@@ -129,15 +129,17 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka2s3
 
-    deviceedge_argocd:
+    deviceedge-cluster-argocd:
+      name: cluster-argocd
+      namespace: argocd
       project: hub
       path: charts/hub/acm-subscription-argocd
-      cluster-argocd:
-        name: cluster-argocd
-        namespace: argocd
-      apps-argocd:
-        name: apps-argocd
-        namespace: multicloud-gitops-with-takebishi-deviceedge
+
+    deviceedge-apps-argocd:
+      name: apps-argocd
+      namespace: multicloud-gitops-with-takebishi-deviceedge
+      project: hub
+      path: charts/hub/acm-subscription-argocd
 
     # NOTE: If you want to deploy all-in-one box to hub cluster,
     # comment out the following applications configurations:

@@ -1,4 +1,3 @@
-{{- range .Values.clusterGroup.applications.deviceedge_argocd }}
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
@@ -20,4 +19,3 @@ spec:
 posthooks: {}
 prehooks: {}
 ---
-{{- end }}
