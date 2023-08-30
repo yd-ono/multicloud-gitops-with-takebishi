@@ -31,6 +31,10 @@ spec:
           value: all
         - name: AMQ_DATA_DIR
           value: /data
+        - name: AMQ_USER
+          value: admin
+        - name: AMQ_PASSWORD
+          value: admin
         ports:
          - containerPort: {{ .Values.mqtt.port }} # general
         volumeMounts:
