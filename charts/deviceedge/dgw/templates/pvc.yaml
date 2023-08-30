@@ -2,9 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-dxpgateway
+  namespace: dgw
 spec:
-  volumeMode: Block
-  storageClassName: topolvm-provisioner
   accessModes:
     - ReadWriteOnce
   resources:
@@ -15,9 +14,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-sdcard
+  namespace: dgw
 spec:
-  volumeMode: Block
-  storageClassName: topolvm-provisioner
   accessModes:
     - ReadWriteOnce
   resources:
