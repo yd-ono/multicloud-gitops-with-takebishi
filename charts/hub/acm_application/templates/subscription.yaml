@@ -4,7 +4,7 @@ metadata:
   name: argocd-subscription
   namespace: argocd
   annotations:
-    apps.open-cluster-management.io/git-branch: master
+    apps.open-cluster-management.io/git-branch: v2.6.7
     apps.open-cluster-management.io/git-path: manifests/install.yaml
   labels:
     app: argocd
