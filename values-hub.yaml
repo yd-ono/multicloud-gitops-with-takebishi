@@ -87,11 +87,11 @@ clusterGroup:
       project: hub
       path: common/hashicorp-vault
 
-    acm-application:
-      name: acm-application
+    rhde-argocd:
+      name: rhde-argocd
       namespace: argocd
       project: hub
-      path: charts/hub/acm-application
+      path: charts/hub/rhde-argocd
 
     management-vault-token:
       name: management-vault-token
