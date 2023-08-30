@@ -1,0 +1,129 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: deviceedge-clustergroup-policy
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: deviceedge-clustergroup-config
+        spec:
+          remediationAction: enforce
+          severity: medium
+          namespaceSelector:
+            include:
+              - default
+          object-templates:
+            - complianceType: mustonlyhave
+              objectDefinition:
+                apiVersion: argoproj.io/v1alpha1
+                kind: Application
+                metadata:
+                  name: {{ $.Values.global.pattern }}-deviceedge
+                  namespace: operators
+                  finalizers:
+                  - resources-finalizer.argocd.argoproj.io/foreground
+                spec:
+                  project: default
+                  source:
+                    repoURL: {{ coalesce .repoURL $.Values.global.repoURL }}
+                    targetRevision: {{ coalesce .targetRevision $.Values.global.targetRevision }}
+                    path: {{ default "common/clustergroup" .path }}
+                    helm:
+                      ignoreMissingValueFiles: true
+                      valueFiles:
+                      - "/values-global.yaml"
+                      - "/values-deviceedge.yaml"
+                      - '/values-{{ `{{ (lookup "config.openshift.io/v1" "Infrastructure" "" "cluster").spec.platformSpec.type }}` }}.yaml'
+                      - '/values-{{ `{{ (lookup "config.openshift.io/v1" "Infrastructure" "" "cluster").spec.platformSpec.type }}` }}-{{ `{{ printf "%d.%d" ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Major) ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Minor) }}` }}.yaml'
+                      - '/values-{{ `{{ (lookup "config.openshift.io/v1" "Infrastructure" "" "cluster").spec.platformSpec.type }}` }}-deviceedge.yaml'
+                      # We cannot use $.Values.global.clusterVersion because that gets resolved to the
+                      # hub's cluster version, whereas we want to include the spoke cluster version
+                      - '/values-{{ `{{ printf "%d.%d" ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Major) ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Minor) }}` }}-deviceedge.yaml'
+                      parameters:
+                      - name: global.repoURL
+                        value: $ARGOCD_APP_SOURCE_REPO_URL
+                      - name: global.targetRevision
+                        value: $ARGOCD_APP_SOURCE_TARGET_REVISION
+                      - name: global.namespace
+                        value: $ARGOCD_APP_NAMESPACE
+                      - name: global.pattern
+                        value: {{ $.Values.global.pattern }}
+                      - name: global.hubClusterDomain
+                        value: {{ $.Values.global.hubClusterDomain }}
+                      # - name: global.localClusterDomain
+                      #   value: '{{ `{{ (lookup "config.openshift.io/v1" "Ingress" "" "cluster").spec.domain }}` }}'
+                      # # Requires ACM 2.6 or higher
+                      # - name: global.clusterDomain
+                      #   value: '{{ `{{ (lookup "config.openshift.io/v1" "Ingress" "" "cluster").spec.domain | replace "apps." "" }}` }}'
+                      # # Requires ACM 2.6 or higher (I could not come up with something less terrible to get maj.min)
+                      # - name: global.clusterVersion
+                      #   value: '{{ `{{ printf "%d.%d" ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Major) ((semver (lookup "operator.openshift.io/v1" "OpenShiftControllerManager" "" "cluster").status.version).Minor) }}` }}'
+                      # - name: global.clusterPlatform
+                      #   value: {{ $.Values.global.clusterPlatform }}
+                      - name: clusterGroup.name
+                        value: deviceedge
+                      - name: clusterGroup.isHubCluster
+                        value: 'false'
+                  destination:
+                    server: https://kubernetes.default.svc
+                    namespace: {{ $.Values.global.pattern }}-deviceedge
+                  syncPolicy:
+                    automated:
+                      prune: false
+                      selfHeal: true
+                    retry:
+                      limit: {{ default 20 $.Values.global.options.applicationRetryLimit }}
+                  ignoreDifferences:
+                  - group: apps
+                    kind: Deployment
+                    jsonPointers:
+                    - /spec/replicas
+                  - group: route.openshift.io
+                    kind: Route
+                    jsonPointers:
+                    - /status
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: deviceedge-placement-binding
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+placementRef:
+  name: deviceedge-placement
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: deviceedge-clustergroup-policy
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: deviceedge-placement
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  clusterConditions:
+    - status: 'True'
+      type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - key: clusterGroup
+        operator: In
+        values:
+          - deviceedge
+      - key: local-cluster
+        operator: NotIn
+        values:
+          - 'true'
+---
