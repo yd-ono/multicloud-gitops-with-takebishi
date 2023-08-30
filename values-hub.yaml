@@ -87,9 +87,15 @@ clusterGroup:
       project: hub
       path: common/hashicorp-vault
 
-    rhde-argocd:
-      name: rhde-argocd
+    deviceedge-cluster-argocd:
+      name: deviceedge-cluster-argocd
       namespace: argocd
+      project: hub
+      path: charts/hub/rhde-argocd
+
+    deviceedge-apps-argocd:
+      name: deviceedge-apps-argocd
+      namespace: multicloud-gitops-with-takebishi-deviceedge
       project: hub
       path: charts/hub/rhde-argocd
 
