@@ -1,20 +1,20 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: cluster-argocd-subscription
+  name: argocd-subscription
   annotations:
     apps.open-cluster-management.io/git-branch: master
     apps.open-cluster-management.io/git-path: manifests/install.yaml
     apps.open-cluster-management.io/reconcile-rate: high
   labels:
-    app: cluster-argocd
-    app.kubernetes.io/part-of: cluster-argocd
+    app: argocd
+    app.kubernetes.io/part-of: argocd
     apps.open-cluster-management.io/reconcile-rate: high
 spec:
-  channel: argocd/cluster-argocd-channel
+  channel: argocd/argocd-channel
   placement:
     placementRef:
-      name: cluster-argocd-placement
+      name: argocd-placement
       kind: PlacementRule
 posthooks: {}
 prehooks: {}

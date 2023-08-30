@@ -3,7 +3,7 @@ kind: Channel
 metadata:
   annotations:
     apps.open-cluster-management.io/reconcile-rate: high
-  name: apps-argocd-channel
+  name: argocd-channel
 spec:
   pathname: https://github.com/argoproj/argo-cd
   type: Git
