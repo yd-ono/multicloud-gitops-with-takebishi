@@ -20499,7 +20499,7 @@ spec:
   port:
     targetPort: https
   tls:
-    insecureEdgeTerminationPolicy: Redirect
+    # insecureEdgeTerminationPolicy: Redirect
     termination: passthrough
   to:
     kind: Service
