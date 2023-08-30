@@ -6,7 +6,7 @@ metadata:
     apps.open-cluster-management.io/git-branch: main
     apps.open-cluster-management.io/git-path: common/community-argocd/templates
   labels:
-    app: argocd
+    app: cluster-argocd
     app.kubernetes.io/part-of: cluster-argocd
     apps.open-cluster-management.io/reconcile-rate: medium
 spec:
