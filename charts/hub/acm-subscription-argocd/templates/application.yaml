@@ -1,10 +1,10 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: {{ .name }}
-  namespace: {{ .namespace }}
+  name: {{ .Values.clusterGroup.applications.name }}
+  namespace: {{ .Values.clusterGroup.applications.namespace }}
   annotations:
-    apps.open-cluster-management.io/subscriptions: {{ .name }}/{{ .name }}-subscription
+    apps.open-cluster-management.io/subscriptions: {{ .Values.clusterGroup.applications.name  }}/{{ .Values.clusterGroup.applications.name  }}-subscription
 spec:
   componentKinds:
     - group: apps.open-cluster-management.io

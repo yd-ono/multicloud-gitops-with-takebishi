@@ -1,8 +1,8 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: {{ .name }}-subscription
-  namespace: {{ .namespace }}
+  name: {{ .Values.clusterGroup.applications.name }}-subscription
+  namespace: {{ .Values.clusterGroup.applications.namespace }}
   annotations:
     apps.open-cluster-management.io/git-branch: main
     apps.open-cluster-management.io/git-path: common/community-argocd/templates
@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     apps.open-cluster-management.io/reconcile-rate: medium
 spec:
-  channel: {{ .namespace }}-channel/{{ .name }}-channel
+  channel: {{ .Values.clusterGroup.applications.namespace }}-channel/{{ .Values.clusterGroup.applications.name }}-channel
   placement:
     placementRef:
       name: argocd-placement
