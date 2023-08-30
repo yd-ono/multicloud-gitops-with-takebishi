@@ -19,7 +19,7 @@ clusterGroup:
     - kafka
     - openshift-storage
     - argocd
-    - ggithubcom-argoproj-argo-cd-ns
+    - multicloud-gitops-with-takebishi-deviceedge
     # - mqtt
     # - dgw
 
