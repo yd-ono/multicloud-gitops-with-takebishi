@@ -35,7 +35,7 @@ spec:
                   source:
                     repoURL: {{ coalesce .repoURL $.Values.global.repoURL }}
                     targetRevision: {{ coalesce .targetRevision $.Values.global.targetRevision }}
-                    path: {{ default "common/clustergroup" .path }}
+                    path: {{ default "common/deviceedge-clustergroup" .path }}
                     helm:
                       ignoreMissingValueFiles: true
                       valueFiles:
