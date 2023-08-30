@@ -9,7 +9,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: {{ .name }}
-  namespace: {{ $namespace }}
+  namespace: argocd
   labels:
     app: {{ .name }}
 spec:
