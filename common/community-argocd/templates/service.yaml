@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    apps.open-cluster-management.io/hosting-subscription: argocd/argocd-subscription
+    apps.open-cluster-management.io/reconcile-option: merge
+  labels:
+    app: argocd
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/part-of: argocd
+    apps.open-cluster-management.io/reconcile-rate: medium
+    argocd.argoproj.io/instance: rhde-argocd
+  name: argocd-server
+  namespace: argocd
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
+  sessionAffinity: None
+  type: NodePort
