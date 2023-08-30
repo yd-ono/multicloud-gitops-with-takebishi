@@ -5,6 +5,5 @@ metadata:
     apps.open-cluster-management.io/reconcile-rate: high
   name: argocd-channel
 spec:
-  pathname: https://github.com/argoproj/argo-cd
-  type: Git
+  pathname: https://github.com/yd-ono/multicloud-gitops-with-takebishi
 ---
