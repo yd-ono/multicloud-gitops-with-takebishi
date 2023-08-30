@@ -91,7 +91,7 @@ clusterGroup:
       name: acm-application
       namespace: argocd
       project: hub
-      path: hub/acm_application
+      path: hub/acm-application
 
     management-vault-token:
       name: management-vault-token
