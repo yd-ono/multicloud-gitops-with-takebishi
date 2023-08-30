@@ -136,7 +136,7 @@ clusterGroup:
       path: charts/hub/acm-subscription-cluster-argocd
 
     deviceedge_apps_argocd:
-      name: argocd
+      name: apps-argocd
       namespace: multicloud-gitops-with-takebishi-deviceedge
       project: hub
       path: charts/hub/acm-subscription-apps-argocd
