@@ -161,13 +161,13 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: skupper-site-controller
-  namespace: {{ . }}
+  namespace: mqtt
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: skupper-site-controller
-  namespace: {{ . }}
+  namespace: mqtt
 spec:
   replicas: 1
   selector:
