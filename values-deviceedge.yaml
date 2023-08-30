@@ -33,39 +33,32 @@ clusterGroup:
     #   startingCSV: skupper-operator.v1.2
 
   projects:
-    - eso
-    - dw-gateway
+    - default
 
   applications:
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: eso
+      project: default
       path: common/golang-external-secrets
 
     amq:
       name: mqtt-broker
       namespace: mqtt
-      project: dw-gateway
+      project: default
       path: charts/deviceedge/amq
 
     device-gateway:
       name: dgw
       namespace: dgw
-      project: dw-gateway
+      project: default
       path: charts/deviceedge/dgw
 
     skupper:
       name: skupper
       namespace: mqtt
-      project: dw-gateway
+      project: default
       path: charts/deviceedge/skupper
-
-    console:
-      name: openshift-console
-      namespace: console
-      project: dw-gateway
-      path: charts/deviceedge/console
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
