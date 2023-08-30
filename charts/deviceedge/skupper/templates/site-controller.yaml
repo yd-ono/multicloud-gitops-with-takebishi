@@ -3,7 +3,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: skupper-site-controller
-  namespace: mqtt
   labels:
     application: skupper-site-controller
 ---
@@ -158,17 +157,16 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: skupper-site-controller
-  namespace: mqtt
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: skupper-site-controller
+  namespace: mqtt
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: skupper-site-controller
-  namespace: mqtt
 spec:
   replicas: 1
   selector:
