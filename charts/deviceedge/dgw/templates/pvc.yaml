@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-dxpgateway
 spec:
+  volumeMode: Block
   storageClassName: topolvm-provisioner
   accessModes:
     - ReadWriteOnce
@@ -15,6 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-sdcard
 spec:
+  volumeMode: Block
   storageClassName: topolvm-provisioner
   accessModes:
     - ReadWriteOnce
