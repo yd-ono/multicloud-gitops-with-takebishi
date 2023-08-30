@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
 metadata:
   annotations:
-    apps.open-cluster-management.io/reconcile-rate: medium
+    apps.open-cluster-management.io/reconcile-rate: high
   name: apps-argocd-channel
 spec:
   pathname: https://github.com/yd-ono/multicloud-gitops-with-takebishi

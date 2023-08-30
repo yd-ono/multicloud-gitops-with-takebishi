@@ -5,10 +5,11 @@ metadata:
   annotations:
     apps.open-cluster-management.io/git-branch: main
     apps.open-cluster-management.io/git-path: common/community-argocd/templates
+    apps.open-cluster-management.io/reconcile-rate: high
   labels:
     app: cluster-argocd
     app.kubernetes.io/part-of: cluster-argocd
-    apps.open-cluster-management.io/reconcile-rate: medium
+    apps.open-cluster-management.io/reconcile-rate: high
 spec:
   channel: argocd/cluster-argocd-channel
   placement:
