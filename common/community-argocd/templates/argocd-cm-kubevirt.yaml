@@ -2,7 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: argocd-cm
-  namespace: argocd
 data:
   resource.customizations.health.hco.kubevirt.io_HyperConverged: |
     hs = { status="Progressing", message="No status available"}
