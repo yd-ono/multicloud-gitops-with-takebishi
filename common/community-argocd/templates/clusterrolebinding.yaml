@@ -33,7 +33,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: system:openshift:scc:nonroot-v2
+  name: cluster-argocd-redis-crb
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -46,7 +46,7 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: system:openshift:scc:nonroot-v2
+  name: apps-argocd-redis-crb
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
