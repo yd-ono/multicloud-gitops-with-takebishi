@@ -5,7 +5,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: {{ . }}
-  namespace: argocd
 spec:
   description: "Pattern {{ . }}"
   destinations:
