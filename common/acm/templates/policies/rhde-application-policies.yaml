@@ -27,7 +27,7 @@ spec:
                 kind: Application
                 metadata:
                   name: {{ $.Values.global.pattern }}-deviceedge
-                  namespace: openshift-gitops
+                  namespace: argocd
                   finalizers:
                   - resources-finalizer.argocd.argoproj.io/foreground
                 spec:
