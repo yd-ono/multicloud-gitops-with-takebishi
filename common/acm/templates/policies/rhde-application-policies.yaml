@@ -65,7 +65,7 @@ spec:
                       #   value: '{{ `{{ (lookup "config.openshift.io/v1" "Ingress" "" "cluster").spec.domain | replace "apps." "" }}` }}'
                       # # Requires ACM 2.6 or higher (I could not come up with something less terrible to get maj.min)
                       - name: global.clusterVersion
-                        value: 4.13
+                        value: '4.13'
                       - name: global.clusterPlatform
                         value: MicroShift
                       - name: clusterGroup.name
