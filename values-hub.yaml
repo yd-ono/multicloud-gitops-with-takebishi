@@ -130,7 +130,7 @@ clusterGroup:
       path: charts/hub/kafka2s3
 
     deviceedge_cluster_argocd:
-      name: argocd
+      name: cluster-argocd
       namespace: argocd
       project: hub
       path: charts/hub/acm-subscription-cluster-argocd
