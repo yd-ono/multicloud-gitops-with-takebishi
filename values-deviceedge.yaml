@@ -17,7 +17,7 @@ clusterGroup:
     - dgw
     - mqtt
 
-  # subscriptions:
+  subscriptions:
     # amq-broker:
     #   name: amq-broker-rhel8
     #   channel: 7.11.x
@@ -33,13 +33,12 @@ clusterGroup:
 
   projects:
     - default
-    - eso
 
   applications:
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: eso
+      project: default
       path: common/golang-external-secrets
 
     amq:
