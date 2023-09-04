@@ -5,7 +5,7 @@ global:
     installPlanApproval: Automatic
 
 skupper:
-  connectClusterDomain: apps.demo.sandbox991.opentlc.com
+  connectClusterDomain: apps.fog-fog-v8sqt.sandbox991.opentlc.com
 
 clusterGroup:
   name: edge
