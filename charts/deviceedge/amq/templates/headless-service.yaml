@@ -13,4 +13,4 @@ spec:
       port: 61616
       targetPort: 61616
   selector:
-    apps: amq-broker
+    app: amq-broker
