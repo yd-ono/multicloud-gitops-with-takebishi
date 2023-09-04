@@ -24,6 +24,7 @@ spec:
             include:
               - imperative
               - golang-external-secrets
+              - mqtt
           object-templates:
             - complianceType: mustonlyhave
               objectDefinition:
