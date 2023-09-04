@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: amq-broker-hdls-svc
+  name: amq-broker-hdls-svc-proxy
   labels:
     argocd.argoproj.io/instance: mqtt-broker
   annotations:
