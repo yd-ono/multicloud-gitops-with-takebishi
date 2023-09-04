@@ -33,7 +33,7 @@ spec:
                   name: vault-token
                   namespace: imperative
                 data:
-                  token: '{{ `{{hub fromSecret "imperative" "vault-token" "token"}}` }}'
+                  token: '{{ fromSecret "imperative" "vault-token" "token" }}'
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
