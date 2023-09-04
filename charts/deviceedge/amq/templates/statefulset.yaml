@@ -9,7 +9,7 @@ metadata:
   labels:
     app: amq-broker
 spec:
-  serviceName: amqp
+  serviceName: amq-broker-hdls-svc
   replicas: 1
   selector:
     matchLabels:
