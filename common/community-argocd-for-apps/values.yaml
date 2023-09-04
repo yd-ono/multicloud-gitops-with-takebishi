@@ -1,0 +1,5 @@
+tree:
+  of: "values"
+
+argocd:
+  namespace: multicloud-gitops-with-takebishi-deviceedge

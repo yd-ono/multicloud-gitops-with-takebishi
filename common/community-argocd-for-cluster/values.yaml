@@ -1,0 +1,5 @@
+tree:
+  of: "values"
+
+argocd:
+  namespace: argocd
