@@ -34,6 +34,15 @@ spec:
                   namespace: imperative
                 data:
                   token: '{{ `{{hub fromSecret "" "vault-token" "token" hub}}` }}'
+              objectDefinition:
+                kind: Secret
+                apiVersion: v1
+                type: Opaque
+                metadata:
+                  name: vault-token
+                  namespace: golang-external-secrets
+                data:
+                  token: '{{ `{{hub fromSecret "" "vault-token" "token" hub}}` }}'
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
