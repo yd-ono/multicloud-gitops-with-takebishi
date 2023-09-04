@@ -3,11 +3,5 @@ kind: ConfigMap
 metadata:
   name: skupper-site
 data:
-  cluster-local: "false"
+  name: deviceedge-site
   console: "true"
-  console-authentication: internal
-  edge: "false"
-  name: deviceedge
-  router-console: "true"
-  service-controller: "true"
-  service-sync: "true"
