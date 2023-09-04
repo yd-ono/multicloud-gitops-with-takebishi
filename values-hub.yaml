@@ -195,7 +195,7 @@ clusterGroup:
           size: 1
           name: fog
           openshiftVersion: 4.12.24
-          baseDomain: sandbox2206.opentlc.com
+          baseDomain: sandbox991.opentlc.com
           controlPlane:
             count: 3
             platform:
