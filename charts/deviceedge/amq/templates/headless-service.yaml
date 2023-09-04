@@ -2,18 +2,17 @@ kind: Service
 apiVersion: v1
 metadata:
   name: amq-broker-hdls-svc
-  labels:
-    argocd.argoproj.io/instance: mqtt-broker
 spec:
   ports:
     - name: amq-broker-hdls-svc8161
       protocol: TCP
       port: 8161
       targetPort: 8161
+      nodePort: 32000
     - name: amq-broker-hdls-svc61616
       protocol: TCP
       port: 61616
       targetPort: 61616
-  type: ClusterIP
+  type: NodePort
   selector:
     apps: amq-broker
