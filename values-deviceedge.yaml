@@ -39,7 +39,7 @@ clusterGroup:
       name: golang-external-secrets
       namespace: golang-external-secrets
       project: default
-      path: charts/golang-external-secrets
+      path: charts/deviceedge/golang-external-secrets
 
     amq:
       name: mqtt-broker
