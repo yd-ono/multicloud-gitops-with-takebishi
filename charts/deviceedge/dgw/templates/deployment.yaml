@@ -27,9 +27,9 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /etc/dxpgateway/config/setting.dxg
-            subPath: setting.dxg
-            name: setting
+          # - mountPath: /etc/dxpgateway/config/setting.dxg
+          #   subPath: setting.dxg
+          #   name: setting
           securityContext:
             privileged: true
           resources:
@@ -46,11 +46,11 @@ spec:
       - name: pvc-sdcard
         persistentVolumeClaim:
           claimName: pvc-sdcard
-      - name: setting
-        configMap:
-          name: dgw-settings
-          items:
-            - key: setting.dxg
-              path: setting.dxg
+      # - name: setting
+      #   configMap:
+      #     name: dgw-settings
+      #     items:
+      #       - key: setting.dxg
+      #         path: setting.dxg
       serviceAccount: dgw
       serviceAccountName: dgw
