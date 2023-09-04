@@ -3,6 +3,8 @@ global:
     useCSV: False
     syncPolicy: Automatic
     installPlanApproval: Automatic
+  localClusterDomain: kubernetes
+  ClusterDomain: kubernetes
 
 # Specify skupper router domain on a fog cluster
 skupper:
