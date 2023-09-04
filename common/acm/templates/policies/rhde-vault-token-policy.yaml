@@ -34,6 +34,7 @@ spec:
                   namespace: imperative
                 data:
                   token: '{{ `{{hub fromSecret "" "vault-token" "token" hub}}` }}'
+            - complianceType: mustonlyhave
               objectDefinition:
                 kind: Secret
                 apiVersion: v1
