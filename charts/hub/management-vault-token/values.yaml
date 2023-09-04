@@ -3,3 +3,35 @@ tree:
 
 job:
   image: registry.connect.redhat.com/hashicorp/vault:1.13.1-ubi
+
+#RoleBasedAccessControl
+serviceAccountName: vault-secret-sa
+image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
+rbac:
+  roles:
+    - name: vault-secret-role
+      createRole: true
+      apiGroups:
+        - '""'
+      scope:
+        cluster: true
+      resources:
+        - secrets
+      verbs:
+        - "create"
+        - "list"
+        - "delete"
+  roleBindings:
+    - name: vault-secret-rolebinding
+      createBinding: true
+      scope:
+        cluster: true
+        namespace: ""
+      subjects:
+        kind: ServiceAccount
+        name: vault-secret-sa
+        namespace: imperative
+        apiGroup: ""
+      roleRef:
+        kind: ClusterRole
+        name: vault-secret-role
