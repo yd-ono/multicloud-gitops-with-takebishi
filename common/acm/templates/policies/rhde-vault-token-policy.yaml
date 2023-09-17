@@ -25,6 +25,7 @@ spec:
               - imperative
               - golang-external-secrets
               - mqtt
+              - kafka
           object-templates:
             - complianceType: mustonlyhave
               objectDefinition:

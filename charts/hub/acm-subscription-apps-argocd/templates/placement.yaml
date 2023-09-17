@@ -6,6 +6,17 @@ metadata:
   name: argocd-placement
 spec:
   clusterSelector:
-    matchLabels:
-      clusterGroup: deviceedge
+    matchExpressions:
+      - key: clusterGroup
+        operator: In
+        values:
+          - deviceedge
+      - key: vendor
+        operator: In
+        values:
+          - MicroShift
+      - key: local-cluster
+        operator: NotIn
+        values:
+          - 'true'
 ---
