@@ -15,7 +15,7 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - kafka
-    - openshift-storage
+    # - openshift-storage
 
   subscriptions:
     amq-streams:
@@ -36,12 +36,12 @@ clusterGroup:
       source: redhat-operators
       startingCSV: skupper-operator.v1.2
 
-    odf:
-      name: odf-operator
-      namespace: openshift-storage
-      channel: stable-4.12
-      source: redhat-operators
-      startingCSV: odf-operator.v4.12.5-rhodf
+    # odf:
+    #   name: odf-operator
+    #   namespace: openshift-storage
+    #   channel: stable-4.12
+    #   source: redhat-operators
+    #   startingCSV: odf-operator.v4.12.5-rhodf
 
   projects:
     - eso
@@ -54,11 +54,11 @@ clusterGroup:
       project: eso
       path: common/golang-external-secrets
 
-    object-storage:
-      name: object-storage
-      namespace: openshift-storage
-      project: fog
-      path: charts/common/object-storage
+    # object-storage:
+    #   name: object-storage
+    #   namespace: openshift-storage
+    #   project: fog
+    #   path: charts/common/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka

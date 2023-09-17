@@ -6,7 +6,7 @@ global:
 
 # Specify skupper router domain on a fog cluster
 skupper:
-  connectClusterDomain: apps.fog-fog-v8sqt.sandbox2099.opentlc.com
+  connectClusterDomain: apps.fog-fog-v8sqt.sandbox2065.opentlc.com
 
 clusterGroup:
   name: deviceedge
