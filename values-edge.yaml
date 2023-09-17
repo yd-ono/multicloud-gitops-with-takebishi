@@ -1,6 +1,8 @@
 # 付与するクラスタラベル
 # ベアメタルのクラスタをインポートした場合は以下のラベルを付与する
 # platform_type: baremetal
+# clusterGroup : edge
+# vendor: OpenShift
 
 global:
   options:
