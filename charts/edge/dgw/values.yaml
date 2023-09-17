@@ -3,7 +3,7 @@ secretStore:
   kind: ClusterSecretStore
 
 dgw:
-  storageclass: gp3-csi
+  storageclass: lvms-vg1
   setting:
     mqtt-server-address: amq-broker-hdls-svc.mqtt.svc.cluster.local:61616
     clientID: dgw
