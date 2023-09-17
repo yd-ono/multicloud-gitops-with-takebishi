@@ -40,12 +40,20 @@ spec:
               memory: "128Mi"
               cpu: "100m"
       volumes:
+      # - name: pvc-dxpgateway
+      #   persistentVolumeClaim:
+      #     claimName: pvc-dxpgateway 
+      # - name: pvc-sdcard
+      #   persistentVolumeClaim:
+      #     claimName: pvc-sdcard
       - name: pvc-dxpgateway
-        persistentVolumeClaim:
-          claimName: pvc-dxpgateway 
+        hostPath:
+          path: /etc/dxpgateway
+          type: DirectoryOrCreate
       - name: pvc-sdcard
-        persistentVolumeClaim:
-          claimName: pvc-sdcard
+        hostPath:
+          path: /mnt/sdcard
+          type: DirectoryOrCreate
       - name: setting
         configMap:
           name: dgw-settings
