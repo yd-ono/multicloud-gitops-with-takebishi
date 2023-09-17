@@ -1,3 +1,7 @@
+# 付与するクラスタラベル
+# ベアメタルのクラスタをインポートした場合は以下のラベルを付与する
+# platform_type: baremetal
+
 global:
   options:
     useCSV: False

@@ -1,3 +1,8 @@
+# 付与するクラスタラベル
+# clusterGroup: deviceedge
+# vendor: MicroShift
+# platform_type: baremetal
+
 global:
   options:
     useCSV: False
