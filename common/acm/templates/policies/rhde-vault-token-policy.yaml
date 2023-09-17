@@ -64,10 +64,10 @@ spec:
       type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - key: clusterGroup
+      - key: platform_type
         operator: In
         values:
-          - deviceedge
+          - baremetal
       - key: local-cluster
         operator: NotIn
         values:
