@@ -57,11 +57,20 @@ clusterGroup:
     # - fog
 
   applications:
+
+    # ManagedClusterがクラウドの場合は以下のChartを使う
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: eso
+    #   path: common/golang-external-secrets
+
+    # ManagedClusterがベアメタルの場合は以下のChartを使う
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: eso
-      path: common/golang-external-secrets
+      project: default
+      path: charts/deviceedge/golang-external-secrets
 
     amq:
       name: mqtt-broker
