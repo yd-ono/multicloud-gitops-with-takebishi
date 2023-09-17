@@ -130,7 +130,7 @@ clusterGroup:
       path: charts/fog/kafdrop
 
     skuppe-fog:
-      name: skupper
+      name: skupper-fog
       namespace: kafka
       project: fog
       path: charts/fog/skupper
