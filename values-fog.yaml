@@ -1,3 +1,12 @@
+# Fogラスタのデプロイ用 valuesファイル
+# 付与するクラスタラベル
+# ACMでデプロイされたクラスタ
+# clusterGroup : fog
+# vendor: OpenShif
+#
+# ベアメタルのクラスタをインポートした場合は追加で以下のラベルを付与する
+# platform_type: baremetal
+
 global:
   options:
     useCSV: False

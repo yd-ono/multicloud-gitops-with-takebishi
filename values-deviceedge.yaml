@@ -1,3 +1,4 @@
+# MicroShiftクラスタのデプロイ用 valuesファイル
 # 付与するクラスタラベル
 # clusterGroup: deviceedge
 # vendor: MicroShift

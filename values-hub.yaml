@@ -1,3 +1,5 @@
+# Hubクラスタのデプロイ用 valuesファイル
+
 global:
   apps:
     namespace: "kafka"
