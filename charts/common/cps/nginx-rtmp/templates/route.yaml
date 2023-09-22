@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: rtmp
+  labels:
+    app: nginx-rtmp
+spec:
+  to:
+    kind: Service
+    name: nginx-rtmp
+    weight: 100
+  port:
+    targetPort: 1935
+  wildcardPolicy: None

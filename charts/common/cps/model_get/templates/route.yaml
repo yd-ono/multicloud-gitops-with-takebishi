@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: model-get
+  labels:
+    app: model-get
+spec:
+  to:
+    kind: Service
+    name: model-get
+    weight: 100
+  port:
+    targetPort: 8000-tcp
+  wildcardPolicy: None

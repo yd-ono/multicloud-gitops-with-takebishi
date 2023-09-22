@@ -57,6 +57,7 @@ clusterGroup:
   projects:
     - eso
     - dw-gateway
+    - cps
     # - edge-data-pipeline
 
   applications:
@@ -84,6 +85,48 @@ clusterGroup:
       namespace: mqtt
       project: dw-gateway
       path: charts/edge/skupper
+
+    ledblink:
+      name: ledblink
+      namespace: dgw
+      project: cps
+      path: charts/common/ledblink-monitor
+
+    model_gen:
+      name: model_gen
+      namespace: dgw
+      project: cps
+      path: charts/common/model_gen
+
+    model_get:
+      name: model_gen
+      namespace: dgw
+      project: cps
+      path: charts/common/model_get
+
+    nginx-rtmp:
+      name: nginx-rtmp
+      namespace: dgw
+      project: cps
+      path: charts/common/nginx-rtmp
+
+    oee:
+      name: oee
+      namespace: dgw
+      project: cps
+      path: charts/common/oee-dashboard/oee-handler
+
+    dasboard:
+      name: dashboard
+      namespace: dgw
+      project: cps
+      path: charts/common/oee-dashboard/grafana
+
+    quality:
+      name: quality
+      namespace: dgw
+      project: cps
+      path: charts/common/quality-handler
 
     # mqtt2kafka:
     #   name: mqtt2kafka

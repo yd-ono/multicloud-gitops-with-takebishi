@@ -1,0 +1,25 @@
+tree:
+  of: "values"
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+factory:
+  cycle: 3
+  video: "/dev/video0"
+  rect_height: "200"
+  rect_width: "30"
+  pos1: '{"x":870 , "y":200}'
+  pos2: '{"x":2000 , "y":200}'
+  pos3: '{"x":3000 , "y":210}'
+  pos4: '{"x":100 , "y":200}'
+  pos5: '{"x":200 , "y":200}'
+  pos6: '{"x":300 , "y":200}'
+  pos7: '{"x":100 , "y":300}'
+  pos8: '{"x":200 , "y":300}'
+  pos9: '{"x":300 , "y":300}'
+
+model:
+  name: model-get
+  address: "http://model-get.dgw.svc.cluster.local:8000"

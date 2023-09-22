@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: oee-handler
+  labels:
+    app: oee-handler
+  name: oee-handler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oee-handler
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        app: oee-handler
+      labels:
+        app: oee-handler
+    spec:
+      containers:
+      - image: quay.io/yono/rhsc/oee-dashboard/oee-handler:v1
+        imagePullPolicy: IfNotPresent
+        name: oee-handler
+        envFrom:
+          - configMapRef:
+              name: oee-handler-config
+      restartPolicy: Always

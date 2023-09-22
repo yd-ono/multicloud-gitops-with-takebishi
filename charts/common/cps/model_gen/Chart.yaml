@@ -1,0 +1,6 @@
+apiVersion: v2
+description: CPS model creation
+keywords:
+- modelgen
+name: modelgen
+version: 0.0.1

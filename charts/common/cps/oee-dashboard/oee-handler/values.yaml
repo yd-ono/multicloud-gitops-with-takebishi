@@ -1,0 +1,35 @@
+tree:
+  of: "values"
+
+debug: false
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+factory:
+  cycle: 3
+  desired_cycle_window: 5.0
+
+mqtt:
+  name: amq-broker
+  address: "amq-broker-hdls-svc.dgw.svc.cluster.local"
+  port: 61616
+  sub_topic: "result"
+  pub_topic: "oee"
+
+model:
+  name: model-get
+  address: "http://model-get.dgw.svc.cluster.local:8000"
+
+led:
+  name: ledblink-api
+  address: "http://ledblink-api.192.168.3.100.nip.io"
+  redpin: "17"
+  bluepin: "27"
+  whitepin: "22"
+
+kafka:
+  name: my-cluster
+  address: "my-cluster-kafka.kafka.svc.cluster.local:9092"
+  use: ""

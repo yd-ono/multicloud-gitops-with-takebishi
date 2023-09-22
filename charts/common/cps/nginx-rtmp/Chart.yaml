@@ -1,0 +1,6 @@
+apiVersion: v2
+description: nginx RTMP server
+keywords:
+- rtmp
+name: rtmp
+version: 0.0.1

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: model-gen-config
+data:
+  VIDEO_ADDRESS: {{ .Values.factory.video }}
+  MODEL_ADDRESS: {{ .Values.model.address}}
+  RECT_HEIGHT: {{ .Values.factory.rect_height }}
+  RECT_WIDTH: {{ .Values.factory.rect_width }}
+  POS1: {{ .Values.factory.pos1 }}
+  POS2: {{ .Values.factory.pos2 }}
+  POS3: {{ .Values.factory.pos3 }}
+  POS4: {{ .Values.factory.pos4 }}
+  POS5: {{ .Values.factory.pos5 }}
+  POS6: {{ .Values.factory.pos6 }}
+  POS7: {{ .Values.factory.pos7 }}
+  POS8: {{ .Values.factory.pos8 }}
+  POS9: {{ .Values.factory.pos9 }}

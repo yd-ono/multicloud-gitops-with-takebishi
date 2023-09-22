@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: quality-handler
+  labels:
+    app: quality-handler
+  name: quality-handler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quality-handler
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        app: quality-handler
+      labels:
+        app: quality-handler
+    spec:
+      containers:
+      - image: quay.io/yono/rhsc/cps/quality-handler:v1
+        imagePullPolicy: IfNotPresent
+        name: quality-handler
+        envFrom:
+          - configMapRef:
+              name: quality-handler-config
+      restartPolicy: Always

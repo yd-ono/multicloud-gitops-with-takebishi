@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: model-get
+  labels:
+    app: model-get
+  name: model-get
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-get
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        app: model-get
+      labels:
+        app: model-get
+    spec:
+      containers:
+      - image: quay.io/yono/rhsc/cps/model_get:v1
+        imagePullPolicy: IfNotPresent
+        name: model-get
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+      restartPolicy: Always

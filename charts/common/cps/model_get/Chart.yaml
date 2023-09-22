@@ -1,0 +1,6 @@
+apiVersion: v2
+description: CPS model get and create endpoint API
+keywords:
+- modelget
+name: modelget
+version: 0.0.1

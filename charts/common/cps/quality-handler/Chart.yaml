@@ -1,0 +1,6 @@
+apiVersion: v2
+description: Monitoring a color sorting quality
+keywords:
+- quality
+name: quality
+version: 0.0.1

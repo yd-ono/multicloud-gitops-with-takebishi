@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: ledblink-monitor
+  labels:
+    app: ledblink-monitor
+  name: ledblink-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ledblink-monitor
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        app: ledblink-monitor
+      labels:
+        app: ledblink-monitor
+    spec:
+      containers:
+      - image: quay.io/yono/rhsc/cps/ledblink-monitor:v1
+        imagePullPolicy: IfNotPresent
+        name: sub
+        envFrom:
+          - configMapRef:
+              name: ledblink-monitor-config
+      restartPolicy: Always

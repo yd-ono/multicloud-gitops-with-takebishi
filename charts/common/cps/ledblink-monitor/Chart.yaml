@@ -1,0 +1,6 @@
+apiVersion: v2
+description: PLC data monitoring
+keywords:
+- ledblink
+name: ledblink
+version: 0.0.1
