@@ -24,7 +24,7 @@ clusterGroup:
     - golang-external-secrets
     - dgw
     - mqtt
-    - kafka
+    # - kafka
 
   subscriptions:
     amq-broker:
@@ -32,15 +32,15 @@ clusterGroup:
       channel: 7.11.x
       namespace: openshift-operators
 
-    amq-streams:
-      name: amq-streams
-      channel: stable
-      namespace: openshift-operators
+    # amq-streams:
+    #   name: amq-streams
+    #   channel: stable
+    #   namespace: openshift-operators
 
-    camel:
-      name: red-hat-camel-k
-      channel: latest
-      namespace: openshift-operators
+    # camel:
+    #   name: red-hat-camel-k
+    #   channel: latest
+    #   namespace: openshift-operators
 
     # odf:
     #   name: odf-operator
@@ -60,23 +60,23 @@ clusterGroup:
   projects:
     - eso
     - dw-gateway
-    - fog
+    # - fog
 
   applications:
 
     # ManagedClusterがクラウドの場合は以下のChartを使う
-    # golang-external-secrets:
-    #   name: golang-external-secrets
-    #   namespace: golang-external-secrets
-    #   project: eso
-    #   path: common/golang-external-secrets
-
-    # ManagedClusterがベアメタルの場合は以下のChartを使う
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: default
-      path: charts/deviceedge/golang-external-secrets
+      project: eso
+      path: common/golang-external-secrets
+
+    # ManagedClusterがベアメタルの場合は以下のChartを使う
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: default
+    #   path: charts/deviceedge/golang-external-secrets
 
     amq:
       name: mqtt-broker
@@ -102,11 +102,11 @@ clusterGroup:
     #   project: fog
     #   path: charts/common/object-storage
 
-    mqtt2kafka:
-      name: mqtt2kafka
-      namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka
+    # mqtt2kafka:
+    #   name: mqtt2kafka
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/mqtt2kafka
 
     # kafka2s3:
     #   name: kafka2s3
@@ -114,29 +114,29 @@ clusterGroup:
     #   project: fog
     #   path: charts/fog/kafka2s3
 
-    kafka:
-      name: kafka-broker
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka
+    # kafka:
+    #   name: kafka-broker
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka
 
-    kafka-mirror:
-      name: kafka-mirror
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka-mirror-maker
+    # kafka-mirror:
+    #   name: kafka-mirror
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka-mirror-maker
 
-    kafdrop:
-      name: kafdrop
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafdrop
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafdrop
 
-    skuppe-fog:
-      name: skupper-fog
-      namespace: kafka
-      project: fog
-      path: charts/fog/skupper
+    # skuppe-fog:
+    #   name: skupper-fog
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/skupper
 
   # imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
