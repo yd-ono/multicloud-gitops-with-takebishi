@@ -1,10 +1,9 @@
-# Fogラスタのデプロイ用 valuesファイル
-# 付与するクラスタラベル
-# ACMでデプロイされたクラスタ
-# clusterGroup : fog
-# vendor: OpenShif
+# Fogクラスタのデプロイ用 valuesファイル
+# 本デモでは、Fogクラスタを工場内のHubクラスタとして扱う
 #
-# ベアメタルのクラスタをインポートした場合は追加で以下のラベルを付与する
+# 付与するクラスタラベル:
+# clusterGroup : fog
+# vendor: OpenShift
 # platform_type: baremetal
 
 global:
@@ -14,17 +13,25 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    storageClassName: gp3-csi
-    region: ap-northeast-2
+    storageClassName: lvm-vg1
+    region: regionOne
+
+# AWS側のOpenShiftのクラスタドメインを指定
+# skupper:
+#   connectClusterDomain: apps.fog.rhsc.local
 
 clusterGroup:
   name: fog
-  isHubCluster: false
+  isHubCluster: true
 
   namespaces:
     - golang-external-secrets
     - kafka
-    # - openshift-storage
+    - openshift-storage
+    - open-cluster-management
+    - vault
+    - argocd
+    - multicloud-gitops-with-takebishi-deviceedge
 
   subscriptions:
     amq-streams:
@@ -45,12 +52,12 @@ clusterGroup:
       source: redhat-operators
       startingCSV: skupper-operator.v1.2
 
-    # odf:
-    #   name: odf-operator
-    #   namespace: openshift-storage
-    #   channel: stable-4.12
-    #   source: redhat-operators
-    #   startingCSV: odf-operator.v4.12.5-rhodf
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      channel: stable-4.12
+      source: redhat-operators
+      startingCSV: odf-operator.v4.12.5-rhodf
 
   projects:
     - eso
@@ -63,11 +70,11 @@ clusterGroup:
       project: eso
       path: common/golang-external-secrets
 
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
-    #   project: fog
-    #   path: charts/common/object-storage
+    object-storage:
+      name: object-storage
+      namespace: openshift-storage
+      project: fog
+      path: charts/common/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka
@@ -105,67 +112,29 @@ clusterGroup:
       project: fog
       path: charts/fog/skupper
 
-  # imperative:
-    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
-    # The default schedule is every 10 minutes: imperative.schedule
-    # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
-    # imagePullPolicy is set to always: imperative.imagePullPolicy
-    # For additional overrides that apply to the jobs, please refer to
-    # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
-    # jobs:
-    # - name: hello-world
-    #   # ansible playbook to be run
-    #   playbook: common/ansible/playbooks/hello-world/hello-world.yaml
-    #   # per playbook timeout in seconds
-    #   timeout: 234
+  imperative:
+  # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
+  # The default schedule is every 10 minutes: imperative.schedule
+  # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
+  # imagePullPolicy is set to always: imperative.imagePullPolicy
+  # For additional overrides that apply to the jobs, please refer to
+  # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
+    jobs:
+    - name: hello-world
+      # ansible playbook to be run
+      playbook: common/ansible/playbooks/hello-world/hello-world.yaml
+      # per playbook timeout in seconds
+      timeout: 234
       # verbosity: "-v"
 
-#  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
-#
-#    pipelines:
-#      name: pipelines
-#      namespace: production
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: stable
-#      overrides:
-#      - name: myparam
-#        value: myparam
-#
-#    pipelines_staging:
-#    - name: pipelines
-#      namespace: staging
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: main
-#
-#   Additional applications
-#   Be sure to include additional resources your apps will require
-#   +X machines
-#   +Y RAM
-#   +Z CPU
-#    vendor-app:
-#      name: vendor-app
-#      namespace: default
-#      project: vendor
-#      path: path/to/myapp
-#      repoURL: https://github.com/vendor/applications.git
-#      targetRevision: main
+# NOTE: If you want to create a new cluster to edge or fog location, comment out the following line.
+  managedClusterGroups:
 
-#  managedSites:
-#    factory:
-#      name: factory
-#      # repoURL: https://github.com/dagger-refuse-cool/manuela-factory.git
-#      targetRevision: main
-#      path: applications/factory
-#      helmOverrides:
-#      - name: site.isHubCluster
-#        value: false
-#      clusterSelector:
-#        matchExpressions:
-#        - key: vendor
-#          operator: In
-#          values:
-#            - OpenShift
+    edge:
+      name: edge
+      acmlabels:
+      - name: clusterGroup
+        value: edge
+      helmOverrides:
+      - name: clusterGroup.isHubCluster
+        value: false

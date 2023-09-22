@@ -1,6 +1,6 @@
-# multicloud-gitops-with-takebishi
+# Red Hat Summit: Connect 2023 デモ用ブランチ
 
-Large scale deployment Takebishi Device Gateway on OpenShift with GitOps approach
+Red Hat Summit: Connect 2023のエッジコンピューティングのデモで使用するGitリポジトリです。
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -68,20 +68,26 @@ s3 cp s3://demo/ /path/ --recursive
 - OpenShift GitOps
 - Red Hat Advanced Cluster Management for K8s
 - Red Hat Service Interconnect
-- Red Hat Data Foundation
+- Red Hat OpenShift Data Foundation
 - Red Hat AMQ Streams Operator
 - Red Hat Integration
 
 ### Fog Cluster
-
 - OpenShift GitOps
+- Red Hat Advanced Cluster Management for K8s
 - Red Hat Service Interconnect
-- Red Hat Data Foundation
+- Red Hat OpenShift Data Foundation
 - Red Hat AMQ Streams Operator
 - Red Hat Integration
 
 ### Edge Cluster
-
+- Takebishi Device Gateway
 - OpenShift GitOps
+- Red Hat Service Interconnect
+- Red Hat AMQ
+
+### Device Edge Cluster
+- Takebishi Device Gateway
+- ArgoCD
 - Red Hat Service Interconnect
 - Red Hat AMQ

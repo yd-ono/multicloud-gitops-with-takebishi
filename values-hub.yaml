@@ -1,4 +1,5 @@
 # Hubクラスタのデプロイ用 valuesファイル
+# デプロイ先： AWS
 
 global:
   apps:
@@ -22,15 +23,12 @@ clusterGroup:
     - openshift-storage
     - argocd
     - multicloud-gitops-with-takebishi-deviceedge
-    # - mqtt
-    # - dgw
 
   subscriptions:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
       channel: release-2.7
-      #csv: advanced-cluster-management.v2.6.1
 
     skupper:
       name: skupper-operator
@@ -57,19 +55,9 @@ clusterGroup:
       source: redhat-operators
       startingCSV: odf-operator.v4.12.5-rhodf
 
-
-    # NOTE: If you want to deploy all-in-one box to hub cluster,
-    # comment out the following applications configurations:
-    # amq-broker:
-    #   name: amq-broker-rhel8
-    #   channel: 7.11.x
-    #   namespace: openshift-operators
-
   projects:
     - hub
     - eso
-    # - fog
-    # - edge
 
   applications:
     acm:
@@ -143,27 +131,6 @@ clusterGroup:
       project: hub
       path: charts/hub/acm-subscription-apps-argocd
 
-    # NOTE: If you want to deploy all-in-one box to hub cluster,
-    # comment out the following applications configurations:
-
-    # mqtt2kafka:
-    #   name: mqtt2kafka
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/mqtt2kafka
-
-    # device-gateway:
-    #   name: dgw
-    #   namespace: dgw
-    #   project: edge
-    #   path: charts/edge/dgw
-
-    # amq:
-    #   name: mqtt-broker
-    #   namespace: mqtt
-    #   project: edge
-    #   path: charts/edge/amq
-
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
@@ -189,36 +156,7 @@ clusterGroup:
         value: fog
       helmOverrides:
       - name: clusterGroup.isHubCluster
-        value: false
-
-      # NOTE: If you want to create cluter by ACM, comment out the following lines
-      # clusterPools:
-      #   exampleAWSPool:
-      #     size: 1
-      #     name: fog
-      #     openshiftVersion: 4.12.24
-      #     baseDomain: sandbox2065.opentlc.com
-      #     controlPlane:
-      #       count: 3
-      #       platform:
-      #         aws:
-      #           type: m5.4xlarge
-      #     workers:
-      #       count: 0
-      #     platform:
-      #       aws:
-      #         region: ap-northeast-2
-      #     clusters:
-      #     - One
-
-    edge:
-      name: edge
-      acmlabels:
-      - name: clusterGroup
-        value: edge
-      helmOverrides:
-      - name: clusterGroup.isHubCluster
-        value: false
+        value: true
 
       # NOTE: If you want to create cluter by ACM, comment out the following lines
       # clusterPools:
@@ -239,80 +177,3 @@ clusterGroup:
       #         region: ap-northeast-3
       #     clusters:
       #     - One
-
-      # Before enabling cluster provisioning, ensure AWS and/or Azure
-      #   credentials and OCP pull secrets are defined in Vault.
-      #   See values-secret.yaml.template
-      #
-      #clusterPools:
-      #  exampleAWSPool:
-      #    name: aws-ap
-      #    openshiftVersion: 4.10.18
-      #    baseDomain: blueprints.rhecoeng.com
-      #    platform:
-      #      aws:
-      #        region: ap-southeast-2
-      #    clusters:
-      #    - One
-      #
-      #  exampleAzurePool:
-      #    name: azure-us
-      #    openshiftVersion: 4.10.18
-      #    baseDomain: blueprints.rhecoeng.com
-      #    platform:
-      #      azure:
-      #        baseDomainResourceGroupName: dojo-dns-zones
-      #        region: eastus
-      #    clusters:
-      #    - Two
-      #    - Three
-
-#  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
-#
-#    pipelines:
-#      name: pipelines
-#      namespace: production
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: stable
-#      overrides:
-#      - name: myparam
-#        value: myparam
-#
-#    pipelines_staging:
-#    - name: pipelines
-#      namespace: staging
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: main
-#
-#   Additional applications
-#   Be sure to include additional resources your apps will require
-#   +X machines
-#   +Y RAM
-#   +Z CPU
-#    vendor-app:
-#      name: vendor-app
-#      namespace: default
-#      project: vendor
-#      path: path/to/myapp
-#      repoURL: https://github.com/vendor/applications.git
-#      targetRevision: main
-
-#  managedSites:
-#    factory:
-#      name: factory
-#      # repoURL: https://github.com/dagger-refuse-cool/manuela-factory.git
-#      targetRevision: main
-#      path: applications/factory
-#      helmOverrides:
-#      - name: site.isHubCluster
-#        value: false
-#      clusterSelector:
-#        matchExpressions:
-#        - key: vendor
-#          operator: In
-#          values:
-#            - OpenShift

@@ -1,10 +1,8 @@
 # Edgeクラスタのデプロイ用 valuesファイル
-# 付与するクラスタラベル
-# ACMでデプロイされたクラスタ
-# clusterGroup : edge
-# vendor: OpenShif
 #
-# ベアメタルのクラスタをインポートした場合は追加で以下のラベルを付与する
+# 付与するクラスタラベル:
+# clusterGroup : edge
+# vendor: OpenShift
 # platform_type: baremetal
 
 global:
@@ -14,7 +12,7 @@ global:
     installPlanApproval: Automatic
 
 skupper:
-  connectClusterDomain: apps.sno.homelab.local
+  connectClusterDomain: apps.fog.rhsc.local
 
 clusterGroup:
   name: edge
@@ -24,7 +22,6 @@ clusterGroup:
     - golang-external-secrets
     - dgw
     - mqtt
-    - kafka
 
   subscriptions:
     amq-broker:
@@ -32,15 +29,15 @@ clusterGroup:
       channel: 7.11.x
       namespace: openshift-operators
 
-    amq-streams:
-      name: amq-streams
-      channel: stable
-      namespace: openshift-operators
+    # amq-streams:
+    #   name: amq-streams
+    #   channel: stable
+    #   namespace: openshift-operators
 
-    camel:
-      name: red-hat-camel-k
-      channel: latest
-      namespace: openshift-operators
+    # camel:
+    #   name: red-hat-camel-k
+    #   channel: latest
+    #   namespace: openshift-operators
 
     # odf:
     #   name: odf-operator
@@ -60,18 +57,10 @@ clusterGroup:
   projects:
     - eso
     - dw-gateway
-    - fog
+    # - edge-data-pipeline
 
   applications:
 
-    # ManagedClusterがクラウドの場合は以下のChartを使う
-    # golang-external-secrets:
-    #   name: golang-external-secrets
-    #   namespace: golang-external-secrets
-    #   project: eso
-    #   path: common/golang-external-secrets
-
-    # ManagedClusterがベアメタルの場合は以下のChartを使う
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
@@ -96,109 +85,38 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/skupper
 
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
-    #   project: fog
-    #   path: charts/common/object-storage
-
-    mqtt2kafka:
-      name: mqtt2kafka
-      namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka
+    # mqtt2kafka:
+    #   name: mqtt2kafka
+    #   namespace: kafka
+    #   project: edge-data-pipeline
+    #   path: charts/fog/mqtt2kafka
 
     # kafka2s3:
     #   name: kafka2s3
     #   namespace: kafka
-    #   project: fog
+    #   project: edge-data-pipeline
     #   path: charts/fog/kafka2s3
 
-    kafka:
-      name: kafka-broker
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka
+    # kafka:
+    #   name: kafka-broker
+    #   namespace: kafka
+    #   project: edge-data-pipeline
+    #   path: charts/fog/kafka
 
-    kafka-mirror:
-      name: kafka-mirror
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka-mirror-maker
+    # kafka-mirror:
+    #   name: kafka-mirror
+    #   namespace: kafka
+    #   project: edge-data-pipeline
+    #   path: charts/fog/kafka-mirror-maker
 
-    kafdrop:
-      name: kafdrop
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafdrop
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: edge-data-pipeline
+    #   path: charts/fog/kafdrop
 
-    skuppe-fog:
-      name: skupper-fog
-      namespace: kafka
-      project: fog
-      path: charts/fog/skupper
-
-  # imperative:
-    # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
-    # The default schedule is every 10 minutes: imperative.schedule
-    # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
-    # imagePullPolicy is set to always: imperative.imagePullPolicy
-    # For additional overrides that apply to the jobs, please refer to
-    # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
-    # jobs:
-    # - name: hello-world
-    #   # ansible playbook to be run
-    #   playbook: common/ansible/playbooks/hello-world/hello-world.yaml
-    #   # per playbook timeout in seconds
-    #   timeout: 234
-      # verbosity: "-v"
-
-#  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
-#
-#    pipelines:
-#      name: pipelines
-#      namespace: production
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: stable
-#      overrides:
-#      - name: myparam
-#        value: myparam
-#
-#    pipelines_staging:
-#    - name: pipelines
-#      namespace: staging
-#      project: datacenter
-#      path: applications/pipeline
-#      repoURL: https://github.com/you/applications.git
-#      targetRevision: main
-#
-#   Additional applications
-#   Be sure to include additional resources your apps will require
-#   +X machines
-#   +Y RAM
-#   +Z CPU
-#    vendor-app:
-#      name: vendor-app
-#      namespace: default
-#      project: vendor
-#      path: path/to/myapp
-#      repoURL: https://github.com/vendor/applications.git
-#      targetRevision: main
-
-#  managedSites:
-#    factory:
-#      name: factory
-#      # repoURL: https://github.com/dagger-refuse-cool/manuela-factory.git
-#      targetRevision: main
-#      path: applications/factory
-#      helmOverrides:
-#      - name: site.isHubCluster
-#        value: false
-#      clusterSelector:
-#        matchExpressions:
-#        - key: vendor
-#          operator: In
-#          values:
-#            - OpenShift
+    # skuppe-fog:
+    #   name: skupper-fog
+    #   namespace: kafka
+    #   project: edge-data-pipeline
+    #   path: charts/fog/skupper

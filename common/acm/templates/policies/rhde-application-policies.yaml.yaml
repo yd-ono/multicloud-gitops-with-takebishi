@@ -122,6 +122,10 @@ spec:
         operator: In
         values:
           - deviceedge
+      - key: vendor
+        operator: In
+        values:
+          - MicroShift
       - key: local-cluster
         operator: NotIn
         values:
