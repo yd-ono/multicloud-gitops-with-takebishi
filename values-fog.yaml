@@ -22,18 +22,18 @@ global:
 
 clusterGroup:
   name: fog
-  isHubCluster: true
+  isHubCluster: false
 
   namespaces:
     - golang-external-secrets
     - kafka
     - openshift-storage
-    - open-cluster-management
     - vault
     - argocd
     - multicloud-gitops-with-takebishi-deviceedge
 
   subscriptions:
+
     amq-streams:
       name: amq-streams
       channel: amq-streams-2.4.x
