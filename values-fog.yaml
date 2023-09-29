@@ -13,7 +13,8 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    storageClassName: lvm-vg1
+    # storageClassName: lvm-vg1
+    storageClassName: gp3-csi
     region: regionOne
 
 # AWS側のOpenShiftのクラスタドメインを指定
@@ -22,10 +23,11 @@ global:
 
 clusterGroup:
   name: fog
-  isHubCluster: false
+  isHubCluster: true
 
   namespaces:
     - golang-external-secrets
+    - open-cluster-management
     - kafka
     - openshift-storage
     - vault
@@ -33,6 +35,11 @@ clusterGroup:
     - multicloud-gitops-with-takebishi-deviceedge
 
   subscriptions:
+
+    acm:
+      name: advanced-cluster-management
+      namespace: open-cluster-management
+      channel: release-2.7
 
     amq-streams:
       name: amq-streams
@@ -64,11 +71,34 @@ clusterGroup:
     - fog
 
   applications:
+    acm:
+      name: acm
+      namespace: open-cluster-management
+      project: hub
+      path: common/acm
+      ignoreDifferences:
+      - group: internal.open-cluster-management.io
+        kind: ManagedClusterInfo
+        jsonPointers:
+          - /spec/loggingCA
+
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
       project: eso
       path: common/golang-external-secrets
+
+    vault:
+      name: vault
+      namespace: vault
+      project: hub
+      path: common/hashicorp-vault
+
+    management-vault-token:
+      name: management-vault-token
+      namespace: imperative
+      project: hub
+      path: charts/hub/management-vault-token
 
     object-storage:
       name: object-storage
@@ -112,6 +142,18 @@ clusterGroup:
       project: fog
       path: charts/fog/skupper
 
+    deviceedge_cluster_argocd:
+      name: cluster-argocd
+      namespace: argocd
+      project: hub
+      path: charts/hub/acm-subscription-cluster-argocd
+
+    deviceedge_apps_argocd:
+      name: apps-argocd
+      namespace: multicloud-gitops-with-takebishi-deviceedge
+      project: hub
+      path: charts/hub/acm-subscription-apps-argocd
+
   imperative:
   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
   # The default schedule is every 10 minutes: imperative.schedule
@@ -138,3 +180,24 @@ clusterGroup:
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false
+
+      # NOTE: If you want to create cluter by ACM, comment out the following lines
+      clusterPools:
+        exampleAWSPool:
+          size: 1
+          name: edge
+          openshiftVersion: 4.13.12
+          # baseDomain: rhsc.local
+          baseDomain: sandbox695.opentlc.com
+          controlPlane:
+            count: 1
+            platform:
+              aws:
+                type: m5.4xlarge
+          workers:
+            count: 0
+          platform:
+            aws:
+              region: ap-northeast-2
+          clusters:
+          - One

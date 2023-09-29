@@ -119,17 +119,17 @@ clusterGroup:
     #   project: hub
     #   path: charts/hub/kafka2s3
 
-    deviceedge_cluster_argocd:
-      name: cluster-argocd
-      namespace: argocd
-      project: hub
-      path: charts/hub/acm-subscription-cluster-argocd
+    # deviceedge_cluster_argocd:
+    #   name: cluster-argocd
+    #   namespace: argocd
+    #   project: hub
+    #   path: charts/hub/acm-subscription-cluster-argocd
 
-    deviceedge_apps_argocd:
-      name: apps-argocd
-      namespace: multicloud-gitops-with-takebishi-deviceedge
-      project: hub
-      path: charts/hub/acm-subscription-apps-argocd
+    # deviceedge_apps_argocd:
+    #   name: apps-argocd
+    #   namespace: multicloud-gitops-with-takebishi-deviceedge
+    #   project: hub
+    #   path: charts/hub/acm-subscription-apps-argocd
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
@@ -156,7 +156,7 @@ clusterGroup:
         value: fog
       helmOverrides:
       - name: clusterGroup.isHubCluster
-        value: false
+        value: true
 
       # NOTE: If you want to create cluter by ACM, comment out the following lines
       clusterPools:
@@ -164,7 +164,8 @@ clusterGroup:
           size: 1
           name: fog
           openshiftVersion: 4.13.12
-          baseDomain: rhsc.local
+          # baseDomain: rhsc.local
+          baseDomain: sandbox695.opentlc.com
           controlPlane:
             count: 3
             platform:
