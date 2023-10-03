@@ -7,6 +7,7 @@ data:
   MODEL_ADDRESS: {{ .Values.model.address}}
   RECT_HEIGHT: {{ .Values.factory.rect_height }}
   RECT_WIDTH: {{ .Values.factory.rect_width }}
+  POS0: {{ .Values.factory.pos0 }}
   POS1: {{ .Values.factory.pos1 }}
   POS2: {{ .Values.factory.pos2 }}
   POS3: {{ .Values.factory.pos3 }}
@@ -15,4 +16,4 @@ data:
   POS6: {{ .Values.factory.pos6 }}
   POS7: {{ .Values.factory.pos7 }}
   POS8: {{ .Values.factory.pos8 }}
-  POS9: {{ .Values.factory.pos9 }}
+  DEBUG: {{ .Values.factory.debug }}
