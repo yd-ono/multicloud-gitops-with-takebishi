@@ -14,7 +14,7 @@ global:
     installPlanApproval: Automatic
 
 skupper:
-  connectClusterDomain: apps.sno.homelab.local
+  connectClusterDomain: apps.fog-fog-kdqwz.sandbox449.opentlc.com
 
 clusterGroup:
   name: edge
