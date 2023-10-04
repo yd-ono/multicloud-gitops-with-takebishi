@@ -1,0 +1,25 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  annotations:
+    camel.apache.org/operator.id: camel-k
+  name: mqtt2kafka-{{ .Values.mqtt.broker.topic}}
+spec:
+  configuration:
+    - type: configmap
+      value: mqtt2kafka-{{ .Values.mqtt.broker.topic}}-config
+  flows:
+    - route:
+        id: route-mqtt-to-kafka-{{ .Values.mqtt.broker.topic}}
+        from:
+          id: from-mqtt-{{ $.Values.mqtt.broker.topic }}
+          uri: paho:{{ $.Values.mqtt.broker.topic}}
+          parameters:
+            brokerUrl: {{ $.Values.mqtt.broker.uri }}
+          steps:
+            - to:
+                id: to-kafka-{{ $.Values.kafka.broker.topic }}
+                uri: kafka:{{ $.Values.kafka.broker.topic }}
+                parameters:
+                  brokers: {{ $.Values.kafka.broker.uri }}
+  traits: {}

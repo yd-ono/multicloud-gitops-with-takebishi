@@ -1,0 +1,14 @@
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+mqtt:
+  broker:
+    uri: "tcp://amq-broker-hdls-svc-proxy:61616"
+    clientId: "MQTT2KafkaRoute"
+    topic: "oee"
+
+kafka:
+  broker:
+    uri: "fog-cluster-kafka-bootstrap:9092"
+    topic: "oee"

@@ -6,9 +6,9 @@ mqtt:
   broker:
     uri: "tcp://amq-broker-hdls-svc-proxy:61616"
     clientId: "MQTT2KafkaRoute"
-    topic: "dgw"
+    topic: "plc-state"
 
 kafka:
   broker:
     uri: "fog-cluster-kafka-bootstrap:9092"
-    topic: "dgw"
+    topic: "plc-state"

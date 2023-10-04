@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
 kind: IntegrationPlatform
 metadata:
-  name: mqtt2kafka
+  name: mqtt2kafka-{{ .Values.mqtt.broker.topic}}
 spec:
   build: {}
   kamelet: {}

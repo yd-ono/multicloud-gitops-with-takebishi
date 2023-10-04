@@ -3,14 +3,14 @@ kind: Integration
 metadata:
   annotations:
     camel.apache.org/operator.id: camel-k
-  name: mqtt2kafka
+  name: mqtt2kafka-{{ .Values.mqtt.broker.topic}}
 spec:
   configuration:
     - type: configmap
-      value: mqtt2kafka-config
+      value: mqtt2kafka-{{ .Values.mqtt.broker.topic}}-config
   flows:
     - route:
-        id: route-mqtt-to-kafka
+        id: route-mqtt-to-kafka-{{ .Values.mqtt.broker.topic}}
         from:
           id: from-mqtt-{{ $.Values.mqtt.broker.topic }}
           uri: paho:{{ $.Values.mqtt.broker.topic}}
