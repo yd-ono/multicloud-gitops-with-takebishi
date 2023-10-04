@@ -24,6 +24,7 @@ spec:
             include:
               - imperative
               - golang-external-secrets
+              - dgw
               - mqtt
               - kafka
           object-templates:
