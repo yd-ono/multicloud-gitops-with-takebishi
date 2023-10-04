@@ -68,7 +68,7 @@ clusterGroup:
 
   projects:
     - eso
-    - fog
+    - hub
 
   applications:
     acm:
@@ -103,43 +103,43 @@ clusterGroup:
     object-storage:
       name: object-storage
       namespace: openshift-storage
-      project: fog
+      project: hub
       path: charts/common/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/mqtt2kafka
 
     kafka2s3:
       name: kafka2s3
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/kafka2s3
 
     kafka:
       name: kafka-broker
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/kafka
 
     kafka-mirror:
       name: kafka-mirror
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/kafka-mirror-maker
 
     kafdrop:
       name: kafdrop
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/kafdrop
 
     skupper:
       name: skupper
       namespace: kafka
-      project: fog
+      project: hub
       path: charts/fog/skupper
 
     deviceedge_cluster_argocd:
