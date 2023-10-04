@@ -104,13 +104,13 @@ clusterGroup:
       path: charts/common/cps/ledblink-monitor
 
     model_gen:
-      name: model_gen
+      name: model-gen
       namespace: dgw
       project: cps
       path: charts/common/cps/model_gen
 
     model_get:
-      name: model_gen
+      name: model-get
       namespace: dgw
       project: cps
       path: charts/common/cps/model_get
