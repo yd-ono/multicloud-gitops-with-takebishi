@@ -101,19 +101,19 @@ clusterGroup:
       name: ledblink
       namespace: dgw
       project: cps
-      path: charts/common/ledblink-monitor
+      path: charts/common/cps/ledblink-monitor
 
     model_gen:
       name: model_gen
       namespace: dgw
       project: cps
-      path: charts/common/model_gen
+      path: charts/common/cps/model_gen
 
     model_get:
       name: model_gen
       namespace: dgw
       project: cps
-      path: charts/common/model_get
+      path: charts/common/cps/model_get
 
     # nginx-rtmp:
     #   name: nginx-rtmp
@@ -125,19 +125,19 @@ clusterGroup:
       name: oee
       namespace: dgw
       project: cps
-      path: charts/common/oee-dashboard/oee-handler
+      path: charts/common/cps/oee-dashboard/oee-handler
 
     dasboard:
       name: dashboard
       namespace: dgw
       project: cps
-      path: charts/common/oee-dashboard/grafana
+      path: charts/common/cps/oee-dashboard/grafana
 
     quality:
       name: quality
       namespace: dgw
       project: cps
-      path: charts/common/quality-handler
+      path: charts/common/cps/quality-handler
 
     # mqtt2kafka:
     #   name: mqtt2kafka
