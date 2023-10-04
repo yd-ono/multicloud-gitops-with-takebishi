@@ -12,8 +12,8 @@ global:
     installPlanApproval: Automatic
 
 skupper:
-  # connectClusterDomain: apps.fog.rhsc.local
-  connectClusterDomain: apps.fog-fog-gbql7.sandbox1254.opentlc.com
+  connectClusterDomain: apps.fog.rhsc.local
+  # connectClusterDomain: apps.fog-fog-gbql7.sandbox1254.opentlc.com
 
 clusterGroup:
   name: edge
