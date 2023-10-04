@@ -83,11 +83,23 @@ clusterGroup:
     #   project: fog
     #   path: charts/common/object-storage
 
-    mqtt2kafka:
-      name: mqtt2kafka
+    mqtt2kafka-plc-state:
+      name: mqtt2kafka-plc-state
       namespace: kafka
       project: fog
-      path: charts/fog/mqtt2kafka
+      path: charts/fog/mqtt2kafka-plc-state
+
+    mqtt2kafka-result:
+      name: mqtt2kafka-result
+      namespace: kafka
+      project: fog
+      path: charts/fog/mqtt2kafka-result
+
+    mqtt2kafka-oee:
+      name: mqtt2kafka-oee
+      namespace: kafka
+      project: fog
+      path: charts/fog/mqtt2kafka-oee
 
     # kafka2s3:
     #   name: kafka2s3
