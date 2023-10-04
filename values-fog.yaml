@@ -188,7 +188,7 @@ clusterGroup:
           name: edge
           openshiftVersion: 4.13.12
           # baseDomain: rhsc.local
-          baseDomain: sandbox949.opentlc.com
+          baseDomain: sandbox1254.opentlc.com
           controlPlane:
             count: 1
             platform:
