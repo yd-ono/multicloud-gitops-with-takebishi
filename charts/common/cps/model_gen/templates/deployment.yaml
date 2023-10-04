@@ -30,7 +30,7 @@ spec:
           - configMapRef:
               name: model-gen-config
         volumeMounts:
-        - mountPath: /dev/video0
+        - mountPath: /dev
           name: video
         securityContext:
           privileged: true
@@ -38,6 +38,6 @@ spec:
       volumes:
       - name: video
         hostPath:
-          path: /dev/video0
+          path: /dev
       serviceAccount: model-admin
       serviceAccountName: model-admin
