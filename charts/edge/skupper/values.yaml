@@ -2,7 +2,7 @@ tree:
   of: "values"
 
 namespaces:
-  - mqtt
+  - dgw
 
 externalsecret:
   name: to-fog
