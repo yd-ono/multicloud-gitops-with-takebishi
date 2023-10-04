@@ -2,16 +2,17 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ledblink-monitor-config
+  namespace: cps
 data:
-  MODEL_ADDRESS: {{ .Values.model.address }}
-  LED_ADDRESS: {{ .Values.led.address }}
-  SUB_TOPIC: {{ .Values.mqtt.sub_topic}}
-  PUB_TOPIC: {{ .Values.mqtt.pub_topic}}
-  MQTT_BROKER_ADDRESS: {{ .Values.mqtt.address }}
-  MQTT_PORT: {{ .Values.mqtt.port }}
-  KAFKA_USE: {{ .Values.kafka.use }}
-  KAFKA_BOOTSTRAP_SERVER: {{ .Values.kafka.address }}
-  RED_PIN: {{ .Values.led.redpin }}
-  BLUE_PIN: {{ .Values.led.bluepin }}
-  WHITE_PIN: {{ .Values.led.whitepin }}
-  PER_CYCLES: {{ .Values.factory.cycle }}
+  MODEL_ADDRESS: "http://model-get:8000"
+  LED_ADDRESS: "http://192.168.3.100:32000"
+  SUB_TOPIC: "plc-state"
+  PUB_TOPIC: "result"
+  MQTT_BROKER_ADDRESS: "amq-broker-hdls-svc.dgw.svc.cluster.local"
+  MQTT_PORT: "61616"
+  KAFKA_USE: "" # NULL -> MQTT mode, True -> Kafka mode
+  KAFKA_BOOTSTRAP_SERVER: "my-cluster-kafka.kafka.svc.cluster.local:9092"
+  RED_PIN: "17"
+  BLUE_PIN: "27"
+  WHITE_PIN: "22"
+  PER_CYCLES: "3"
