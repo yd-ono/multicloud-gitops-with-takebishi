@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ledblink-monitor-config
-  namespace: cps
 data:
   MODEL_ADDRESS: "http://model-get:8000"
   LED_ADDRESS: "http://192.168.3.100:32000"
