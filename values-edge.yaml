@@ -93,7 +93,7 @@ clusterGroup:
 
     skupper:
       name: skupper
-      namespace: mqtt
+      namespace: dgw
       project: dw-gateway
       path: charts/edge/skupper
 
