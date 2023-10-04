@@ -7,8 +7,6 @@
 # platform_type: baremetal
 
 global:
-  apps:
-    namespace: "kafka"
   options:
     useCSV: False
     syncPolicy: Automatic

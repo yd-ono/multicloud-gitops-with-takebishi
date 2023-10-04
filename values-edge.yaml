@@ -6,12 +6,15 @@
 # platform_type: baremetal
 
 global:
-  apps:
-    namespace: "kafka"
   options:
     useCSV: False
     syncPolicy: Automatic
     installPlanApproval: Automatic
+
+  datacenter:
+    # storageClassName: lvms-vg1
+    storageClassName: lvms-vg1
+    region: fog
 
 skupper:
   connectClusterDomain: apps.fog.rhsc.local
