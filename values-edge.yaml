@@ -24,7 +24,6 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - dgw
-    - mqtt
 
   subscriptions:
     amq-broker:
@@ -79,7 +78,7 @@ clusterGroup:
 
     amq:
       name: mqtt-broker
-      namespace: mqtt
+      namespace: dgw
       project: dw-gateway
       path: charts/edge/amq
 

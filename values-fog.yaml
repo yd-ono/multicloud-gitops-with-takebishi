@@ -17,7 +17,7 @@ global:
   datacenter:
     # storageClassName: lvms-vg1
     storageClassName: lvms-vg1
-    region: regionOne
+    region: fog
 
 # AWS側のOpenShiftのクラスタドメインを指定
 # skupper:
