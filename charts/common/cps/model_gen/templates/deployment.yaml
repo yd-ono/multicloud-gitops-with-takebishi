@@ -20,7 +20,7 @@ spec:
         app: model-gen
     spec:
       containers:
-      - image: quay.io/yono/rhsc/cps/model_gen:v1
+      - image: quay.io/yono/rhsc/model_gen:v1
         imagePullPolicy: IfNotPresent
         name: model-gen
         ports:

@@ -20,7 +20,7 @@ spec:
         app: ledblink-monitor
     spec:
       containers:
-      - image: quay.io/yono/rhsc/cps/ledblink-monitor:v1
+      - image: quay.io/yono/rhsc/ledblink-monitor:v1
         imagePullPolicy: IfNotPresent
         name: sub
         envFrom:
