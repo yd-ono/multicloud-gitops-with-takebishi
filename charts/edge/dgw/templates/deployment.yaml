@@ -40,12 +40,12 @@ spec:
               memory: "128Mi"
               cpu: "100m"
       volumes:
-      # - name: pvc-dxpgateway
-      #   persistentVolumeClaim:
-      #     claimName: pvc-dxpgateway 
-      # - name: pvc-sdcard
-      #   persistentVolumeClaim:
-      #     claimName: pvc-sdcard
+      - name: pvc-dxpgateway
+        persistentVolumeClaim:
+          claimName: pvc-dxpgateway 
+      - name: pvc-sdcard
+        persistentVolumeClaim:
+          claimName: pvc-sdcard
       - name: pvc-dxpgateway
         hostPath:
           path: /etc/dxpgateway
