@@ -25,23 +25,23 @@ global:
 
 clusterGroup:
   name: fog
-  isHubCluster: true
+  isHubCluster: false
 
   namespaces:
     - golang-external-secrets
-    - open-cluster-management
+    # - open-cluster-management
     - kafka
     # - openshift-storage
-    - vault
-    - argocd
-    - multicloud-gitops-with-takebishi-deviceedge
+    # - vault
+    # - argocd
+    # - multicloud-gitops-with-takebishi-deviceedge
 
   subscriptions:
 
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.7
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.7
 
     amq-streams:
       name: amq-streams
@@ -70,118 +70,83 @@ clusterGroup:
 
   projects:
     - eso
-    - hub
+    - fog
 
   applications:
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: common/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-          - /spec/loggingCA
-
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
       project: eso
       path: common/golang-external-secrets
 
-    vault:
-      name: vault
-      namespace: vault
-      project: hub
-      path: common/hashicorp-vault
-
-    management-vault-token:
-      name: management-vault-token
-      namespace: imperative
-      project: hub
-      path: charts/hub/management-vault-token
-
     # object-storage:
     #   name: object-storage
     #   namespace: openshift-storage
-    #   project: hub
+    #   project: fog
     #   path: charts/common/object-storage
 
     mqtt2kafka:
       name: mqtt2kafka
       namespace: kafka
-      project: hub
+      project: fog
       path: charts/fog/mqtt2kafka
 
-    kafka2s3:
-      name: kafka2s3
-      namespace: kafka
-      project: hub
-      path: charts/fog/kafka2s3
+    # kafka2s3:
+    #   name: kafka2s3
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka2s3
 
     kafka:
       name: kafka-broker
       namespace: kafka
-      project: hub
+      project: fog
       path: charts/fog/kafka
 
     kafka-mirror:
       name: kafka-mirror
       namespace: kafka
-      project: hub
+      project: fog
       path: charts/fog/kafka-mirror-maker
 
     kafdrop:
       name: kafdrop
       namespace: kafka
-      project: hub
+      project: fog
       path: charts/fog/kafdrop
 
     skupper:
       name: skupper
       namespace: kafka
-      project: hub
+      project: fog
       path: charts/fog/skupper
 
-    deviceedge_cluster_argocd:
-      name: cluster-argocd
-      namespace: argocd
-      project: hub
-      path: charts/hub/acm-subscription-cluster-argocd
-
-    deviceedge_apps_argocd:
-      name: apps-argocd
-      namespace: multicloud-gitops-with-takebishi-deviceedge
-      project: hub
-      path: charts/hub/acm-subscription-apps-argocd
-
-  imperative:
+  # imperative:
   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
   # The default schedule is every 10 minutes: imperative.schedule
   # Total timeout of all jobs is 1h: imperative.activeDeadlineSeconds
   # imagePullPolicy is set to always: imperative.imagePullPolicy
   # For additional overrides that apply to the jobs, please refer to
   # https://hybrid-cloud-patterns.io/imperative-actions/#additional-job-customizations
-    jobs:
-    - name: hello-world
-      # ansible playbook to be run
-      playbook: common/ansible/playbooks/hello-world/hello-world.yaml
-      # per playbook timeout in seconds
-      timeout: 234
-      # verbosity: "-v"
+    # jobs:
+    # - name: hello-world
+    #   # ansible playbook to be run
+    #   playbook: common/ansible/playbooks/hello-world/hello-world.yaml
+    #   # per playbook timeout in seconds
+    #   timeout: 234
+    #   # verbosity: "-v"
 
 # NOTE: If you want to create a new cluster to edge or fog location, comment out the following line.
-  managedClusterGroups:
+  # managedClusterGroups:
 
-    edge:
-      name: edge
-      acmlabels:
-      - name: clusterGroup
-        value: edge
-      helmOverrides:
-      - name: clusterGroup.isHubCluster
-        value: false
+  #   edge:
+  #     name: edge
+  #     acmlabels:
+  #     - name: clusterGroup
+  #       value: edge
+  #     helmOverrides:
+  #     - name: clusterGroup.isHubCluster
+  #       value: false
 
       # NOTE: If you want to create cluter by ACM, comment out the following lines
       # clusterPools:
