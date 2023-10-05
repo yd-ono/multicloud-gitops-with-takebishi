@@ -26,8 +26,8 @@ spec:
     #  heartbeatConnector:
     #    config:
     #      heartbeats.topic.replication.factor: 10
-    #  checkpointConnector:
-    #    config:
-    #      checkpoints.topic.replication.factor: 10
+     checkpointConnector:
+       config:
+         checkpoints.topic.replication.factor: 10
      topicsPattern: {{ .Values.mirror.topicsPattern }}
      groupsPattern: {{ .Values.mirror.groupsPattern }}
