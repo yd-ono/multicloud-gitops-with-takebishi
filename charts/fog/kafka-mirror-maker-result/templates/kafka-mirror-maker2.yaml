@@ -23,11 +23,11 @@ spec:
          replication.factor: 1
          offset-syncs.topic.replication.factor: 1
          sync.topic.acls.enabled: 'true'
-     heartbeatConnector:
-       config:
-         heartbeats.topic.replication.factor: 10
-     checkpointConnector:
-       config:
-         checkpoints.topic.replication.factor: 10
+    #  heartbeatConnector:
+    #    config:
+    #      heartbeats.topic.replication.factor: 10
+    #  checkpointConnector:
+    #    config:
+    #      checkpoints.topic.replication.factor: 10
      topicsPattern: {{ .Values.mirror.topicsPattern }}
      groupsPattern: {{ .Values.mirror.groupsPattern }}
