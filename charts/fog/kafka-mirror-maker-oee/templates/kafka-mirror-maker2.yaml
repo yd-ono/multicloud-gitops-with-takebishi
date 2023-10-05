@@ -12,20 +12,20 @@ spec:
    - alias: edge-kafka-cluster
      bootstrapServers: {{ .Values.edgekafka.uri }}
      config:
-       config.storage.replication.factor: 1
-       offset.storage.replication.factor: 1
-       status.storage.replication.factor: 1
+       config.storage.replication.factor: 10
+       offset.storage.replication.factor: 10
+       status.storage.replication.factor: 10
  mirrors:
    - sourceCluster: edge-kafka-cluster
      targetCluster: hub-kafka-cluster
      sourceConnector:
        config:
-         replication.factor: 1
+         replication.factor: 10
          offset-syncs.topic.replication.factor: 1
          sync.topic.acls.enabled: 'true'
-    #  heartbeatConnector:
-    #    config:
-    #      heartbeats.topic.replication.factor: 10
+     heartbeatConnector:
+       config:
+         heartbeats.topic.replication.factor: 10
      checkpointConnector:
        config:
          checkpoints.topic.replication.factor: 10
