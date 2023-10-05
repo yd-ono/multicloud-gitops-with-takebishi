@@ -23,6 +23,7 @@ clusterGroup:
     - openshift-storage
     - argocd
     - multicloud-gitops-with-takebishi-deviceedge
+    - rhsc-demo-deviceedge
 
   subscriptions:
     acm:
