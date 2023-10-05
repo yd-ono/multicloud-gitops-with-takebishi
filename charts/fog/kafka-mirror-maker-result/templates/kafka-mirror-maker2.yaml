@@ -1,0 +1,33 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaMirrorMaker2
+metadata:
+ name: edge-to-cloud-mm2-{{ .Values.hubkafka.topic}}
+spec:
+ version: 3.4.0
+ replicas: {{ .Values.mirror.replicas }}
+ connectCluster: hub-kafka-cluster
+ clusters:
+   - alias: hub-kafka-cluster
+     bootstrapServers: {{ .Values.hubkafka.uri }}
+   - alias: edge-kafka-cluster
+     bootstrapServers: {{ .Values.edgekafka.uri }}
+     config:
+       config.storage.replication.factor: 1
+       offset.storage.replication.factor: 1
+       status.storage.replication.factor: 1
+ mirrors:
+   - sourceCluster: edge-kafka-cluster
+     targetCluster: hub-kafka-cluster
+     sourceConnector:
+       config:
+         replication.factor: 1
+         offset-syncs.topic.replication.factor: 1
+         sync.topic.acls.enabled: 'true'
+     heartbeatConnector:
+       config:
+         heartbeats.topic.replication.factor: 10
+     checkpointConnector:
+       config:
+         checkpoints.topic.replication.factor: 10
+     topicsPattern: {{ .Values.mirror.topicsPattern }}
+     groupsPattern: {{ .Values.mirror.groupsPattern }}

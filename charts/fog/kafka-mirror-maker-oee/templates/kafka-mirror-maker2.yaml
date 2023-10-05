@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaMirrorMaker2
 metadata:
- name: edge-to-cloud-mm2
+ name: edge-to-cloud-mm2-{{ .Values.hubkafka.topic}}
 spec:
  version: 3.4.0
  replicas: {{ .Values.mirror.replicas }}

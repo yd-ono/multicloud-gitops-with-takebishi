@@ -7,11 +7,11 @@ secretStore:
 
 hubkafka:
   uri: "hub-cluster-kafka-bootstrap-ex:9092"
-  topic: "dgw"
+  topic: "plc-state"
 
 edgekafka:
   uri: "fog-cluster-kafka-bootstrap:9092"
-  topic: "dgw"
+  topic: "plc-state"
 
 mirror:
   replicas: 1
