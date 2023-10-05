@@ -2,8 +2,8 @@ global:
   apps:
     namespace: "kafka"
   datacenter:
-    storageClassName: gp3-csi
-    region: ap-northeast-1
+    storageClassName: lvms-vg1
+    region: fog
   bucket:
     name: demo
     namespace: openshift-storage

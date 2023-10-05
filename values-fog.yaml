@@ -27,19 +27,10 @@ clusterGroup:
 
   namespaces:
     - golang-external-secrets
-    # - open-cluster-management
     - kafka
     - openshift-storage
-    # - vault
-    # - argocd
-    # - multicloud-gitops-with-takebishi-deviceedge
 
   subscriptions:
-
-    # acm:
-    #   name: advanced-cluster-management
-    #   namespace: open-cluster-management
-    #   channel: release-2.7
 
     amq-streams:
       name: amq-streams
