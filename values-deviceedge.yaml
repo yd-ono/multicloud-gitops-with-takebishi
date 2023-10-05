@@ -39,66 +39,65 @@ clusterGroup:
     #   startingCSV: skupper-operator.v1.2
 
   projects:
-    - edgeapp
-    - cps
+    - default
 
   applications:
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
-      project: edgeapp
+      project: default
       path: charts/deviceedge/golang-external-secrets
 
     amq:
       name: mqtt-broker
       namespace: dgw
-      project: edgeapp
+      project: default
       path: charts/deviceedge/amq
 
     device-gateway:
       name: dgw
       namespace: dgw
-      project: edgeapp
+      project: default
       path: charts/deviceedge/dgw
 
     skupper:
       name: skupper
       namespace: dgw
-      project: edgeapp
+      project: default
       path: charts/deviceedge/skupper
 
     ledblink:
       name: ledblink
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/ledblink-monitor
 
     model-gen:
       name: model-gen
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/model_gen
 
     model-get:
       name: model-get
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/model_get
 
     oee:
       name: oee
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/oee-dashboard/oee-handler
 
     dasboard:
       name: dashboard
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/oee-dashboard/grafana
 
     quality:
       name: quality
       namespace: dgw
-      project: cps
+      project: default
       path: charts/common/cps/quality-handler
