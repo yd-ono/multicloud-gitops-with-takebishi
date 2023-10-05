@@ -26,4 +26,4 @@ s3secret:
 kafka:
   broker:
     uri: "hub-cluster-kafka-bootstrap-ex:9092"
-    topic: "edge-kafka-cluster.dgw"
+    topic: "edge-kafka-cluster.plc-state"
