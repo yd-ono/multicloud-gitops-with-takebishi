@@ -26,4 +26,4 @@ s3secret:
 kafka:
   broker:
     uri: "fog-cluster-kafka-bootstrap:9092"
-    topic: "dgw"
+    topic: "plc-state"

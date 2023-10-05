@@ -101,11 +101,23 @@ clusterGroup:
       project: fog
       path: charts/fog/mqtt2kafka-oee
 
-    # kafka2s3:
-    #   name: kafka2s3
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/kafka2s3
+    kafka2s3-plc-state:
+      name: kafka2s3-plc-state
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-plc-state
+
+    kafka2s3-result:
+      name: kafka2s3-result
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-result
+
+    kafka2s3-oee:
+      name: kafka2s3-oee
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-oee
 
     kafka:
       name: kafka-broker
@@ -113,11 +125,23 @@ clusterGroup:
       project: fog
       path: charts/fog/kafka
 
-    kafka-mirror:
-      name: kafka-mirror
+    kafka-mirror-plc-state:
+      name: kafka-mirror-plc-state
       namespace: kafka
       project: fog
-      path: charts/fog/kafka-mirror-maker
+      path: charts/fog/kafka-mirror-maker-plc-state
+
+    kafka-mirror-result:
+      name: kafka-mirror-result
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka-mirror-maker-result
+
+    kafka-mirror-oee:
+      name: kafka-mirror-oee
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka-mirror-maker-oee
 
     kafdrop:
       name: kafdrop

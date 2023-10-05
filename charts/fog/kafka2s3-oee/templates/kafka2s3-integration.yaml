@@ -1,11 +1,11 @@
 apiVersion: camel.apache.org/v1
 kind: Integration
 metadata:
-  name: kafka-to-s3-integration
+  name: kafka-to-s3-integration-{{ .Values.kafka.broker.topic }}
 spec:
   configuration:
     - type: configmap
-      value: kafka-to-s3-config
+      value: kafka-to-s3-{{ .Values.kafka.broker.topic }}-config
     - type: secret
       value: odf-secret
   profile: OpenShift

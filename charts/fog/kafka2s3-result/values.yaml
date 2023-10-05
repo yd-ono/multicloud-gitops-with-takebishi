@@ -6,7 +6,7 @@ global:
       name: demo
       uri: http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc
       namespace: openshift-storage
-      region: ap-northeast-1
+      region: ap-northeast-3
       key_name: kafka.txt
       message:
         aggregation:
@@ -25,5 +25,5 @@ s3secret:
 
 kafka:
   broker:
-    uri: "hub-cluster-kafka-bootstrap-ex:9092"
-    topic: "edge-kafka-cluster.plc-state"
+    uri: "fog-cluster-kafka-bootstrap:9092"
+    topic: "result"
