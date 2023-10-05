@@ -42,18 +42,18 @@ spec:
       volumes:
       - name: pvc-dxpgateway
         persistentVolumeClaim:
-          claimName: pvc-dxpgateway 
+          claimName: pvc-dxpgateway
       - name: pvc-sdcard
         persistentVolumeClaim:
           claimName: pvc-sdcard
-      - name: pvc-dxpgateway
-        hostPath:
-          path: /etc/dxpgateway
-          type: DirectoryOrCreate
-      - name: pvc-sdcard
-        hostPath:
-          path: /mnt/sdcard
-          type: DirectoryOrCreate
+      # - name: pvc-dxpgateway
+      #   hostPath:
+      #     path: /etc/dxpgateway
+      #     type: DirectoryOrCreate
+      # - name: pvc-sdcard
+      #   hostPath:
+      #     path: /mnt/sdcard
+      #     type: DirectoryOrCreate
       - name: setting
         configMap:
           name: dgw-settings
