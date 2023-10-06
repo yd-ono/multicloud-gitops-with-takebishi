@@ -3,7 +3,7 @@ global:
 
   s3:
     bucket:
-      name: demo-32003d6d-a310-46f1-84db-30981901a699
+      name: demo
       uri: http://s3.openshift-storage.svc.cluster.local
       namespace: kafka
       region: fog
