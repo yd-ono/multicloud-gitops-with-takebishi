@@ -7,7 +7,7 @@ spec:
     - type: configmap
       value: kafka-to-s3-{{ .Values.kafka.broker.topic }}-config
     - type: secret
-      value: demo
+      value: odf-secret
   profile: OpenShift
   sources:
     - content: |
