@@ -74,11 +74,11 @@ clusterGroup:
       project: eso
       path: charts/deviceedge/golang-external-secrets
 
-    object-storage:
-      name: object-storage
-      namespace: openshift-storage
-      project: fog
-      path: charts/common/object-storage
+    # object-storage:
+    #   name: object-storage
+    #   namespace: openshift-storage
+    #   project: fog
+    #   path: charts/common/object-storage
 
     mqtt2kafka-plc-state:
       name: mqtt2kafka-plc-state
