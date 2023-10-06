@@ -20,7 +20,7 @@ spec:
      targetCluster: hub-kafka-cluster
      sourceConnector:
        config:
-         replication.factor: 1
+         replication.factor: 10
          offset-syncs.topic.replication.factor: 10
          sync.topic.acls.enabled: 'true'
      heartbeatConnector:

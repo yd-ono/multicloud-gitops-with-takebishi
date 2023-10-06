@@ -53,9 +53,10 @@ clusterGroup:
     # odf:
     #   name: odf-operator
     #   namespace: openshift-storage
-    #   channel: stable-4.12
+    #   installPlanApproval: Automatic
+    #   channel: stable-4.13
     #   source: redhat-operators
-    #   startingCSV: odf-operator.v4.12.5-rhodf
+    #   startingCSV: odf-operator.v4.13.3-rhodf
 
   projects:
     - eso
@@ -98,23 +99,23 @@ clusterGroup:
       project: fog
       path: charts/fog/mqtt2kafka-oee
 
-    # kafka2s3-plc-state:
-    #   name: kafka2s3-plc-state
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/kafka2s3-plc-state
+    kafka2s3-plc-state:
+      name: kafka2s3-plc-state
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-plc-state
 
-    # kafka2s3-result:
-    #   name: kafka2s3-result
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/kafka2s3-result
+    kafka2s3-result:
+      name: kafka2s3-result
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-result
 
-    # kafka2s3-oee:
-    #   name: kafka2s3-oee
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/kafka2s3-oee
+    kafka2s3-oee:
+      name: kafka2s3-oee
+      namespace: kafka
+      project: fog
+      path: charts/fog/kafka2s3-oee
 
     kafka:
       name: kafka-broker
