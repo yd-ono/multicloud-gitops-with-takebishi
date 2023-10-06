@@ -4,9 +4,9 @@ global:
   s3:
     bucket:
       name: demo
-      uri: http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc
-      namespace: openshift-storage
-      region: ap-northeast-3
+      uri: http://s3.openshift-storage.svc
+      namespace: kafka
+      region: fog
       key_name: kafka.txt
       message:
         aggregation:
