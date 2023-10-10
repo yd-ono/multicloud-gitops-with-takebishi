@@ -18,7 +18,6 @@ spec:
         app: model-gen
       labels:
         app: model-gen
-        modify: 0.01
     spec:
       containers:
       - image: quay.io/yono/rhsc/model_gen:v1
