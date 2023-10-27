@@ -13,7 +13,7 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    # storageClassName: lvms-vg1
+    # storageClassName: gp3-csi
     storageClassName: lvms-vg1
     region: fog
 
