@@ -29,7 +29,7 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
-      channel: release-2.7
+      channel: release-2.8
 
     skupper:
       name: skupper-operator
