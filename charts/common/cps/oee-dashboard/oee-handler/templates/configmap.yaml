@@ -10,6 +10,6 @@ data:
   KAFKA_USE: "" # NULL -> MQTT mode, True -> Kafka mode
   KAFKA_BOOTSTRAP_SERVER: "my-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
   PER_CYCLES: "3"
-  DESIRED_CYCLE_WINDOW: "120.0"
+  DESIRED_CYCLE_WINDOW: "60.0"
   DESIRED_PRODUCTION_NUMBER: "1"
   DEBUG: "" # NULL -> False, True -> output debug log
