@@ -22,7 +22,7 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
 
-    dgw:
+    - dgw:
       labels:
         pod-security.kubernetes.io/enforce: privileged
         pod-security.kubernetes.io/audit: privileged
