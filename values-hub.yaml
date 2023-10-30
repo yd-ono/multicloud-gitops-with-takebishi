@@ -182,7 +182,7 @@ clusterGroup:
         exampleAWSPool:
           size: 1
           name: fog
-          openshiftVersion: 4.12.24
+          openshiftVersion: 4.13.17
           baseDomain: sandbox2556.opentlc.com
           controlPlane:
             count: 3
@@ -211,7 +211,7 @@ clusterGroup:
       #   exampleAWSPool:
       #     size: 1
       #     name: edge
-      #     openshiftVersion: 4.12.24
+      #     openshiftVersion: 4.13.17
       #     baseDomain: sandbox2556.opentlc.com
       #     controlPlane:
       #       count: 1

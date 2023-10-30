@@ -13,8 +13,8 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    # storageClassName: gp3-csi
-    storageClassName: lvms-vg1
+    storageClassName: gp3-csi
+    # storageClassName: lvms-vg1
     region: fog
 
 # AWS側のOpenShiftのクラスタドメインを指定
