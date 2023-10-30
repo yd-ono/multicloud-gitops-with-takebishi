@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     apps.open-cluster-management.io/reconcile-rate: high
 spec:
-  channel: multicloud-gitops-with-takebishi-deviceedge/argocd-channel
+  channel: rhsc-demo-deviceedge/argocd-channel
   placement:
     placementRef:
       name: argocd-placement
