@@ -22,6 +22,10 @@ clusterGroup:
   namespaces:
     - golang-external-secrets
     - dgw
+        labels:
+          pod-security.kubernetes.io/enforce: privileged
+          pod-security.kubernetes.io/audit: privileged
+          pod-security.kubernetes.io/warn: privileged
 
   # MicroShiftはOLMが未サポートのため利用不可
   subscriptions:
