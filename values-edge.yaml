@@ -17,7 +17,7 @@ global:
     region: fog
 
 skupper:
-  connectClusterDomain: apps.fog.rhsc.local
+  connectClusterDomain: apps.demo.sandbox3027.opentlc.com
   # connectClusterDomain: apps.fog-fog-h9jgr.sandbox1254.opentlc.com
 
 clusterGroup:
