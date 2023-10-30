@@ -15,6 +15,6 @@ spec:
       protocol: TCP
       port: 443
       targetPort: 443
-      nodePort: 320001
+      nodePort: 32001
   selector:
     app: dgw
