@@ -5,7 +5,7 @@ metadata:
 data:
   MODEL_ADDRESS: "http://model-get:8000"
   LED_ADDRESS: "http://192.168.3.100:32000"
-  MODEL_GET_TIMEOUT: 10.0
+  MODEL_GET_TIMEOUT: "10.0"
   SUB_TOPIC: "plc-state"
   PUB_TOPIC: "result"
   MQTT_BROKER_ADDRESS: "amq-broker-hdls-svc.dgw.svc.cluster.local"

@@ -4,7 +4,7 @@ metadata:
   name: quality-handler-config
 data:
   MODEL_GEN_ADDRESS: "http://model-gen:8001"
-  MODEL_GEN_TIMEOUT: 10.0
+  MODEL_GEN_TIMEOUT: "10.0"
   SUB_TOPIC: "result"
   MQTT_BROKER_ADDRESS: "amq-broker-hdls-svc.dgw.svc.cluster.local"
   MQTT_PORT: "61616"
