@@ -157,7 +157,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: skupper-site-controller
-  namespace: mqtt
+  namespace: dgw
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
