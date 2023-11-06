@@ -52,9 +52,9 @@ clusterGroup:
     odf:
       name: odf-operator
       namespace: openshift-storage
-      channel: stable-4.12
+      channel: stable-4.13
       source: redhat-operators
-      startingCSV: odf-operator.v4.12.5-rhodf
+      # startingCSV: odf-operator.v4.12.5-rhodf
 
   projects:
     - hub
