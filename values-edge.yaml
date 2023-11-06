@@ -12,13 +12,13 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    storageClassName: gp3-csi
-    # storageClassName: lvms-vg1
+    # storageClassName: gp3-csi
+    storageClassName: lvms-vg1
     region: fog
 
 skupper:
-  connectClusterDomain: apps.demo.sandbox3027.opentlc.com
-  # connectClusterDomain: apps.fog-fog-h9jgr.sandbox1254.opentlc.com
+  # connectClusterDomain: apps.demo.sandbox3027.opentlc.com
+  connectClusterDomain: apps.fog.rhsc.local
 
 clusterGroup:
   name: edge
