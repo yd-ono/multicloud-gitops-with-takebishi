@@ -57,7 +57,7 @@ clusterGroup:
       installPlanApproval: Automatic
       channel: stable-4.13
       source: redhat-operators
-      # startingCSV: odf-operator.v4.13.3-rhodf
+      startingCSV: odf-operator.v4.13.3-rhodf
 
   projects:
     - eso

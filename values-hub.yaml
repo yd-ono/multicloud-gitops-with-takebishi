@@ -54,7 +54,7 @@ clusterGroup:
       namespace: openshift-storage
       channel: stable-4.13
       source: redhat-operators
-      # startingCSV: odf-operator.v4.12.5-rhodf
+      startingCSV: odf-operator.v4.13.3-rhodf
 
   projects:
     - hub
