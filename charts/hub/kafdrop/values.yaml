@@ -90,7 +90,7 @@ securityContext:
 resources:
   limits:
     cpu: 400m
-    memory: 1Gi
+    memory: 2048Mi
   requests:
     cpu: 100m
-    memory: 440Mi
+    memory: 220Mi
