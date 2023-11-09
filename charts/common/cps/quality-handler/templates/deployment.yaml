@@ -20,7 +20,7 @@ spec:
         app: quality-handler
     spec:
       containers:
-      - image: quay.io/yono/rhsc/quality-handler:v1.2
+      - image: quay.io/yono/rhsc/quality-handler:v1.3
         imagePullPolicy: IfNotPresent
         name: quality-handler
         envFrom:
