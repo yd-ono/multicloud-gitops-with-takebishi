@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     apps.open-cluster-management.io/reconcile-rate: high
 spec:
-  channel: argocd-apps/argocd-channel
+  channel: rhde-demo-deviceedge/argocd-channel
   placement:
     placementRef:
       name: argocd-placement
