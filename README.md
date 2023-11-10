@@ -1,6 +1,4 @@
-# Red Hat Summit: Connect 2023 デモ用ブランチ
-
-Red Hat Summit: Connect 2023のエッジコンピューティングのデモで使用するGitリポジトリです。
+# Red Hat Device Edge ArgoCDデプロイデモ用ブランチ
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
