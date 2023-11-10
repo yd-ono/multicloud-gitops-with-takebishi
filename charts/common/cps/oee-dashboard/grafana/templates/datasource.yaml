@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mqtt-datasources
+data:
+  ds.yaml: |-
+    {
+        "apiVersion": 1,
+        "datasources": [
+            {
+                "name": "MQTT",
+                "type": "MQTT",
+                "url": "tcp://amq-broker-hdls-svc:61616"
+            }
+        ]
+    }
+   {{ end }}
