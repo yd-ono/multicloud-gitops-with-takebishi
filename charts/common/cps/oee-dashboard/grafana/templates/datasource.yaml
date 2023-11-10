@@ -9,7 +9,6 @@ data:
         "datasources": [
             {
                 "id": 1,
-                "uid": "cfa50ada-9834-4f76-98dd-cf3d68e8b8ea",
                 "orgId": 1,
                 "name": "MQTT",
                 "type": "MQTT",
