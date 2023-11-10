@@ -72,38 +72,38 @@ clusterGroup:
       project: default
       path: charts/deviceedge/skupper
 
-    ledblink:
-      name: ledblink
-      namespace: dgw
-      project: default
-      path: charts/common/cps/ledblink-monitor
+    # ledblink:
+    #   name: ledblink
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/ledblink-monitor
 
-    model-gen:
-      name: model-gen
-      namespace: dgw
-      project: default
-      path: charts/common/cps/model_gen
+    # model-gen:
+    #   name: model-gen
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/model_gen
 
-    model-get:
-      name: model-get
-      namespace: dgw
-      project: default
-      path: charts/common/cps/model_get
+    # model-get:
+    #   name: model-get
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/model_get
 
-    oee:
-      name: oee
-      namespace: dgw
-      project: default
-      path: charts/common/cps/oee-dashboard/oee-handler
+    # oee:
+    #   name: oee
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/oee-dashboard/oee-handler
 
-    dasboard:
-      name: dashboard
-      namespace: dgw
-      project: default
-      path: charts/common/cps/oee-dashboard/grafana
+    # dasboard:
+    #   name: dashboard
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/oee-dashboard/grafana
 
-    quality:
-      name: quality
-      namespace: dgw
-      project: default
-      path: charts/common/cps/quality-handler
+    # quality:
+    #   name: quality
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/common/cps/quality-handler

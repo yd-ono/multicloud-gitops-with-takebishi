@@ -23,7 +23,7 @@ clusterGroup:
     - openshift-storage
     - argocd
     - multicloud-gitops-with-takebishi-deviceedge
-    - rhsc-demo-deviceedge
+    - argocd-apps
 
   subscriptions:
     acm:
@@ -146,7 +146,7 @@ clusterGroup:
 
     deviceedge_apps_argocd:
       name: apps-argocd
-      namespace: rhsc-demo-deviceedge
+      namespace: argocd-apps
       project: hub
       path: charts/hub/acm-subscription-apps-argocd
 

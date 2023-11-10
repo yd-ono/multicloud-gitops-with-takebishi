@@ -3,7 +3,7 @@ kind: Subscription
 metadata:
   name: argocd-subscription
   annotations:
-    apps.open-cluster-management.io/git-branch: rhsc-demo
+    apps.open-cluster-management.io/git-branch: rhde-demo
     apps.open-cluster-management.io/git-path: common/community-argocd-for-apps/templates
     apps.open-cluster-management.io/reconcile-rate: high
   labels:
@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
     apps.open-cluster-management.io/reconcile-rate: high
 spec:
-  channel: rhsc-demo-deviceedge/argocd-channel
+  channel: argocd-apps/argocd-channel
   placement:
     placementRef:
       name: argocd-placement
