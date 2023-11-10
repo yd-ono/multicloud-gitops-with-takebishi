@@ -1,6 +1,0 @@
-apiVersion: v2
-description: MQTT Broker configuration helm chart
-keywords:
-- mqtt
-name: mqtt_config
-version: 0.0.1

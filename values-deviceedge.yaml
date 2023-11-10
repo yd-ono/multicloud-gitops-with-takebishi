@@ -96,11 +96,11 @@ clusterGroup:
     #   project: default
     #   path: charts/common/cps/oee-dashboard/oee-handler
 
-    # dasboard:
-    #   name: dashboard
-    #   namespace: dgw
-    #   project: default
-    #   path: charts/common/cps/oee-dashboard/grafana
+    dasboard:
+      name: dashboard
+      namespace: dgw
+      project: default
+      path: charts/common/cps/oee-dashboard/grafana
 
     # quality:
     #   name: quality

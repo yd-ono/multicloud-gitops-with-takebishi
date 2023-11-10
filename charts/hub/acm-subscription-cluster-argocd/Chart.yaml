@@ -1,6 +1,0 @@
-apiVersion: v2
-description: MQTT Broker configuration helm chart
-keywords:
-- acm-application-cluster-argocd
-name: acm-application-cluster-argocd
-version: 0.0.1

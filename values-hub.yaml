@@ -13,7 +13,7 @@ global:
 
 clusterGroup:
   name: hub
-  isHubCluster: true
+  isHubCluster: false
 
   namespaces:
     - open-cluster-management
@@ -21,15 +21,9 @@ clusterGroup:
     - golang-external-secrets
     - kafka
     - openshift-storage
-    - argocd
     - multicloud-gitops-with-takebishi-deviceedge
-    - argocd-apps
 
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.8
 
     skupper:
       name: skupper-operator
@@ -61,16 +55,6 @@ clusterGroup:
     - eso
 
   applications:
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      project: hub
-      path: common/acm
-      ignoreDifferences:
-      - group: internal.open-cluster-management.io
-        kind: ManagedClusterInfo
-        jsonPointers:
-          - /spec/loggingCA
 
     vault:
       name: vault
@@ -114,24 +98,23 @@ clusterGroup:
       project: hub
       path: charts/hub/kafdrop
 
-
     mqtt2kafka-plc-state:
       name: mqtt2kafka-plc-state
       namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-plc-state
+      project: hub
+      path: charts/hub/mqtt2kafka-plc-state
 
     mqtt2kafka-result:
       name: mqtt2kafka-result
       namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-result
+      project: hub
+      path: charts/hub/mqtt2kafka-result
 
     mqtt2kafka-oee:
       name: mqtt2kafka-oee
       namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-oee
+      project: hub
+      path: charts/hub/mqtt2kafka-oee
 
     # kafka2s3:
     #   name: kafka2s3
@@ -157,18 +140,6 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka2s3-oee
 
-    deviceedge_cluster_argocd:
-      name: cluster-argocd
-      namespace: argocd
-      project: hub
-      path: charts/hub/acm-subscription-cluster-argocd
-
-    deviceedge_apps_argocd:
-      name: apps-argocd
-      namespace: argocd-apps
-      project: hub
-      path: charts/hub/acm-subscription-apps-argocd
-
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
@@ -183,64 +154,3 @@ clusterGroup:
       # per playbook timeout in seconds
       timeout: 234
       # verbosity: "-v"
-
-  # NOTE: If you want to create a new cluster to edge or fog location, comment out the following line.
-  managedClusterGroups:
-
-    fog:
-      name: fog
-      acmlabels:
-      - name: clusterGroup
-        value: fog
-      helmOverrides:
-      - name: clusterGroup.isHubCluster
-        value: false
-
-      # NOTE: If you want to create cluter by ACM, comment out the following lines
-      # clusterPools:
-      #   exampleAWSPool:
-      #     size: 1
-      #     name: fog
-      #     openshiftVersion: 4.13.17
-      #     baseDomain: sandbox2556.opentlc.com
-      #     controlPlane:
-      #       count: 3
-      #       platform:
-      #         aws:
-      #           type: m5.4xlarge
-      #     workers:
-      #       count: 0
-      #     platform:
-      #       aws:
-      #         region: ap-northeast-2
-      #     clusters:
-      #     - One
-
-    edge:
-      name: edge
-      acmlabels:
-      - name: clusterGroup
-        value: edge
-      helmOverrides:
-      - name: clusterGroup.isHubCluster
-        value: false
-
-      # NOTE: If you want to create cluter by ACM, comment out the following lines
-      # clusterPools:
-      #   exampleAWSPool:
-      #     size: 1
-      #     name: edge
-      #     openshiftVersion: 4.13.17
-      #     baseDomain: sandbox2556.opentlc.com
-      #     controlPlane:
-      #       count: 1
-      #       platform:
-      #         aws:
-      #           type: m5.2xlarge
-      #     workers:
-      #       count: 0
-      #     platform:
-      #       aws:
-      #         region: ap-northeast-3
-      #     clusters:
-      #     - One
