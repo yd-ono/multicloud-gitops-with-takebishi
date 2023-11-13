@@ -20,7 +20,7 @@ clusterGroup:
   isHubCluster: false
 
   namespaces:
-    - golang-external-secrets
+    # - golang-external-secrets
 
     - dgw:
         name: dgw
@@ -48,11 +48,11 @@ clusterGroup:
     - default
 
   applications:
-    golang-external-secrets:
-      name: golang-external-secrets
-      namespace: golang-external-secrets
-      project: default
-      path: charts/deviceedge/golang-external-secrets
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: default
+    #   path: charts/deviceedge/golang-external-secrets
 
     amq:
       name: mqtt-broker
@@ -66,44 +66,16 @@ clusterGroup:
       project: default
       path: charts/deviceedge/dgw
 
-    skupper:
-      name: skupper
-      namespace: dgw
-      project: default
-      path: charts/deviceedge/skupper
-
-    # ledblink:
-    #   name: ledblink
+    # skupper:
+    #   name: skupper
     #   namespace: dgw
     #   project: default
-    #   path: charts/common/cps/ledblink-monitor
+    #   path: charts/deviceedge/skupper
 
-    # model-gen:
-    #   name: model-gen
+    ### 以下をコメントアウトしてPushするとエッジデバイスにダッシュボードがデプロイされます
+    ###
+    # dasboard:
+    #   name: dashboard
     #   namespace: dgw
     #   project: default
-    #   path: charts/common/cps/model_gen
-
-    # model-get:
-    #   name: model-get
-    #   namespace: dgw
-    #   project: default
-    #   path: charts/common/cps/model_get
-
-    # oee:
-    #   name: oee
-    #   namespace: dgw
-    #   project: default
-    #   path: charts/common/cps/oee-dashboard/oee-handler
-
-    dasboard:
-      name: dashboard
-      namespace: dgw
-      project: default
-      path: charts/common/cps/oee-dashboard/grafana
-
-    # quality:
-    #   name: quality
-    #   namespace: dgw
-    #   project: default
-    #   path: charts/common/cps/quality-handler
+    #   path: charts/common/cps/oee-dashboard/grafana
