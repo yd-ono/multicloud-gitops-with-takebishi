@@ -65,11 +65,11 @@ clusterGroup:
 
   applications:
   # クラウド上のクラスタは以下をコメントアウト
-    golang-external-secrets:
-      name: golang-external-secrets
-      namespace: golang-external-secrets
-      project: eso
-      path: common/golang-external-secrets
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: eso
+    #   path: common/golang-external-secrets
 
     # ベアメンタルクラスタの場合は以下をコメントアウト
     # golang-external-secrets:
