@@ -72,8 +72,8 @@ clusterGroup:
     #   project: default
     #   path: charts/deviceedge/skupper
 
-    # dasboard:
-    #   name: dashboard
-    #   namespace: dgw
-    #   project: default
-    #   path: charts/common/cps/oee-dashboard/grafana
+    dasboard:
+      name: dashboard
+      namespace: dgw
+      project: default
+      path: charts/common/cps/oee-dashboard/grafana
