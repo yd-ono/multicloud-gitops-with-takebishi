@@ -20,7 +20,7 @@ spec:
         app: oee-handler
     spec:
       containers:
-      - image: quay.io/yono/rhsc/oee-dashboard/oee-handler:v1.1
+      - image: quay.io/yono/rhsc/oee-dashboard/oee-handler:v1.0
         imagePullPolicy: IfNotPresent
         name: oee-handler
         envFrom:
