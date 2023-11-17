@@ -116,11 +116,11 @@ clusterGroup:
       project: cps
       path: charts/common/cps/model_get
 
-    nginx-rtmp:
-      name: nginx-rtmp
-      namespace: dgw
-      project: cps
-      path: charts/common/nginx-rtmp
+    # nginx-rtmp:
+    #   name: nginx-rtmp
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/nginx-rtmp
 
     oee:
       name: oee
