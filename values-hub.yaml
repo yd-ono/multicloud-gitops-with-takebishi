@@ -30,7 +30,7 @@ clusterGroup:
       name: advanced-cluster-management
       namespace: open-cluster-management
       channel: release-2.8
-      #csv: advanced-cluster-management.v2.6.1
+      csv: advanced-cluster-management.v2.8.3
 
     skupper:
       name: skupper-operator
