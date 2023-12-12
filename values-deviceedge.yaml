@@ -66,11 +66,11 @@ clusterGroup:
       project: default
       path: charts/deviceedge/dgw
 
-    skupper:
-      name: skupper
-      namespace: dgw
-      project: default
-      path: charts/deviceedge/skupper
+    # skupper:
+    #   name: skupper
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/deviceedge/skupper
 
     # dasboard:
     #   name: dashboard
