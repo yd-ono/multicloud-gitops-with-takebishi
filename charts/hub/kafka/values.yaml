@@ -1,5 +1,0 @@
-tree:
-  of: "values"
-
-kafka:
-  name: hub-cluster

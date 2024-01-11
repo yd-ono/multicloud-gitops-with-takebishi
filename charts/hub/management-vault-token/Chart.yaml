@@ -1,6 +1,0 @@
-apiVersion: v2
-description: Vault token management configuration helm chart
-keywords:
-- management_vault_token
-name: management_vault_token_config
-version: 0.0.1

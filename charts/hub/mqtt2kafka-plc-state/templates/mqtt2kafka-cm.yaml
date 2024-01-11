@@ -1,5 +1,0 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: mqtt2kafka-{{ .Values.mqtt.broker.topic}}-config
-# DO NOT DELETE. NEEDED BY THE mqtt2kafka-integration SERVICE

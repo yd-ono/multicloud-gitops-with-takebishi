@@ -1,6 +1,0 @@
-apiVersion: v2
-description: Skupper configuration helm chart
-keywords:
-- skupper
-name: skupper_config
-version: 0.0.1
