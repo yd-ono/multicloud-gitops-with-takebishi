@@ -107,3 +107,9 @@ clusterGroup:
       namespace: dgw
       project: default
       path: charts/deviceedge/cps/quality-handler
+
+    # nginx:
+    #   name: nginx
+    #   namespace: dgw
+    #   project: default
+    #   path: charts/deviceedge/cps/nginx-rtmp
