@@ -1,6 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
+  annotations:
+    skupper.io/address: dgw-proxy
+    skupper.io/port: '80'
+    skupper.io/proxy: tcp
   name: dgw
   labels:
     app: dgw
