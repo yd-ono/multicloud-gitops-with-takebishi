@@ -27,9 +27,9 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /etc/dxpgateway/config/setting.dxg
-            subPath: setting.dxg
-            name: setting
+          # - mountPath: /etc/dxpgateway/config/setting.dxg
+          #   subPath: setting.dxg
+          #   name: setting
           securityContext:
             privileged: true
           resources:
