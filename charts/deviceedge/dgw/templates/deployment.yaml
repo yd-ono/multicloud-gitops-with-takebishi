@@ -46,11 +46,11 @@ spec:
       - name: pvc-sdcard
         persistentVolumeClaim:
           claimName: pvc-sdcard
-      - name: setting
-        configMap:
-          name: dgw-settings
-          items:
-            - key: setting.dxg
-              path: setting.dxg
+      # - name: setting
+      #   configMap:
+      #     name: dgw-settings
+      #     items:
+      #       - key: setting.dxg
+      #         path: setting.dxg
       serviceAccount: dgw
       serviceAccountName: dgw
