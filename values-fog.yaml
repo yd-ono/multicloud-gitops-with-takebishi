@@ -7,7 +7,7 @@
 # platform_type: baremetal
 
 global:
-  hubClusterDomain: apps.demo.sandbox1979.opentlc.com 
+  hubClusterDomain: apps.demo.sandbox1979.opentlc.com
   options:
     useCSV: False
     syncPolicy: Automatic
