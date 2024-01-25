@@ -103,23 +103,23 @@ clusterGroup:
       project: fog
       path: charts/fog/mqtt2kafka-oee
 
-    kafka2s3-plc-state:
-      name: kafka2s3-plc-state
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka2s3-plc-state
+    # kafka2s3-plc-state:
+    #   name: kafka2s3-plc-state
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka2s3-plc-state
 
-    kafka2s3-result:
-      name: kafka2s3-result
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka2s3-result
+    # kafka2s3-result:
+    #   name: kafka2s3-result
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka2s3-result
 
-    kafka2s3-oee:
-      name: kafka2s3-oee
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafka2s3-oee
+    # kafka2s3-oee:
+    #   name: kafka2s3-oee
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka2s3-oee
 
     kafka:
       name: kafka-broker
