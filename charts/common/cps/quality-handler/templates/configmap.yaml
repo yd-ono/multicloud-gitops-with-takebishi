@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: quality-handler-config
 data:
-  MODEL_GEN_ADDRESS: "http://model-gen:8001"
+  MODEL_GEN_ADDRESS: "http://model-gen-ex:8001"
   MODEL_GEN_TIMEOUT: "10.0"
   SUB_TOPIC: "result"
-  MQTT_BROKER_ADDRESS: "amq-broker-hdls-svc.dgw.svc.cluster.local"
+  MQTT_BROKER_ADDRESS: "amq-broker-hdls-svc-proxy"
   MQTT_PORT: "61616"
   KAFKA_USE: "" # NULL -> MQTT mode, True -> Kafka mode
   KAFKA_BOOTSTRAP_SERVER: "my-cluster-kafka.kafka.svc.cluster.local:9092"
