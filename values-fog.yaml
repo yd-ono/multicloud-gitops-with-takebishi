@@ -63,6 +63,7 @@ clusterGroup:
   projects:
     - eso
     - fog
+    - cps
 
   applications:
   # クラウド上のクラスタは以下をコメントアウト
@@ -160,7 +161,7 @@ clusterGroup:
     ledblink:
       name: ledblink
       namespace: kafka
-      project: fog
+      project: cps
       path: charts/common/cps/ledblink-monitor
 
     # model-gen:
@@ -178,17 +179,17 @@ clusterGroup:
     oee:
       name: oee
       namespace: kafka
-      project: fog
+      project: cps
       path: charts/common/cps/oee-dashboard/oee-handler
 
     dasboard:
       name: dashboard
       namespace: kafka
-      project: fog
+      project: cps
       path: charts/common/cps/oee-dashboard/grafana
 
     quality:
       name: quality
       namespace: kafka
-      project: fog
+      project: cps
       path: charts/common/cps/quality-handler
