@@ -159,8 +159,8 @@ clusterGroup:
 
     ledblink:
       name: ledblink
-      namespace: dgw
-      project: cps
+      namespace: kafka
+      project: fog
       path: charts/common/cps/ledblink-monitor
 
     # model-gen:
@@ -177,18 +177,18 @@ clusterGroup:
 
     oee:
       name: oee
-      namespace: dgw
-      project: cps
+      namespace: kafka
+      project: fog
       path: charts/common/cps/oee-dashboard/oee-handler
 
     dasboard:
       name: dashboard
-      namespace: dgw
-      project: cps
+      namespace: kafka
+      project: fog
       path: charts/common/cps/oee-dashboard/grafana
 
     quality:
       name: quality
-      namespace: dgw
-      project: cps
+      namespace: kafka
+      project: fog
       path: charts/common/cps/quality-handler
