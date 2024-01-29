@@ -146,11 +146,11 @@ clusterGroup:
       project: fog
       path: charts/fog/kafka-mirror-maker-oee
 
-    kafdrop:
-      name: kafdrop
-      namespace: kafka
-      project: fog
-      path: charts/fog/kafdrop
+    # kafdrop:
+    #   name: kafdrop
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafdrop
 
     skupper:
       name: skupper
