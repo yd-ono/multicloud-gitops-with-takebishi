@@ -32,7 +32,7 @@ ingress:
 kafka:
   ## If true, kafka was installed under the same umbrella
   enabled: true
-  replicaCount: 3
+  replicaCount: 1
   ## If outside or custom kafka a bootstrap server is required
   bootstrapServers: fog-cluster-kafka-bootstrap:9092
 
