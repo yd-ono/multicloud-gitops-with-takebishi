@@ -7,3 +7,5 @@ data:
   MQTT_CLIENTID: "demo"
   MQTT_USERNQME: "admin"
   MQTT_PASSWORD: "admin"
+  PLC_IPADDRESS: "192.168.95.2"
+  PLC_PORT: "502"
