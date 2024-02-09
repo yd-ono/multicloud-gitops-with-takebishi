@@ -56,7 +56,6 @@ spec:
           claimName: pvc-sdcard
       - name: dgw-license
         secret:
-          claimName: license
           name: dgw-license
           items:
             - key: DeviceGateway.lic
