@@ -33,8 +33,8 @@ spec:
           - mountPath: /mnt/sdcard/DeviceGateway.lic
             subPath: DeviceGateway.lic
             name: license
-          - mountPath: /etc/dxpgateway/config/setting.dxg
-            subPath: setting.dxg
+          - mountPath: /etc/dxpgateway/config/setting.dxg.tpl
+            subPath: setting.dxg.tpl
             name: setting
           securityContext:
             privileged: true
@@ -65,8 +65,8 @@ spec:
         configMap:
           name: dgw-settings
           items:
-            - key: setting.dxg
-              path: setting.dxg
+            - key: setting.dxg.tpl
+              path: setting.dxg.tpl
             # - key: setting.dxg.tpl
             #   path: setting.dxg.tpl
               # mode: 0777
