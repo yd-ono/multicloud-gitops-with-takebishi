@@ -56,7 +56,8 @@ spec:
           claimName: pvc-sdcard
       - name: license
         secret:
-          name: dgw-license
+          secretName: dgw-license
+          readOnly: true
           items:
             - key: DeviceGateway.lic
               path: DeviceGateway.lic
