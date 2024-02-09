@@ -34,7 +34,8 @@ spec:
             subPath: setting.dxg.tpl
             name: setting
           securityContext:
-            privileged: true
+            runAsUser: 1002
+            runAsGroup: 1002
           resources:
             requests:
               memory: "64Mi"
