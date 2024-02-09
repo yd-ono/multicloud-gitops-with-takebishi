@@ -17,6 +17,9 @@ spec:
         - name: container
           image: quay.io/yono/dgw:3.3.0-amd64
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: mqtt-setting
           ports:
             - containerPort: 80
               protocol: TCP
@@ -27,8 +30,8 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /etc/dxpgateway/config/setting.dxg
-            subPath: setting.dxg
+          - mountPath: /etc/dxpgateway/config/setting.dxg.temp
+            subPath: setting.dxg.temp
             name: setting
           securityContext:
             privileged: true
@@ -50,7 +53,7 @@ spec:
         configMap:
           name: dgw-settings
           items:
-            - key: setting.dxg
-              path: setting.dxg
+            - key: setting.dxg.temp
+              path: setting.dxg.temp
       serviceAccount: dgw
       serviceAccountName: dgw
