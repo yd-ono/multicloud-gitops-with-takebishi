@@ -30,7 +30,7 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /etc/dxpgateway/config/setting.dxg.temp
+          - mountPath: /etc/dxpgateway/config/setting.dxg.tpl
             subPath: setting.dxg.tpl
             name: setting
           securityContext:
