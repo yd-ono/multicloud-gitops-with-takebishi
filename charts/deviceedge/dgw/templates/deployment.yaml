@@ -54,7 +54,7 @@ spec:
       - name: pvc-sdcard
         persistentVolumeClaim:
           claimName: pvc-sdcard
-      - name: dgw-license
+      - name: license
         secret:
           name: dgw-license
           items:
