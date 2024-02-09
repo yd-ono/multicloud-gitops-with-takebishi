@@ -30,8 +30,8 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /etc/dxpgateway/config/setting.dxg.tpl
-            subPath: setting.dxg.tpl
+          - mountPath: /etc/dxpgateway/config/setting.dxg
+            subPath: setting.dxg
             name: setting
           securityContext:
             privileged: true
@@ -55,8 +55,10 @@ spec:
         configMap:
           name: dgw-settings
           items:
-            - key: setting.dxg.tpl
-              path: setting.dxg.tpl
-              mode: 0777
+            - key: setting.dxg
+              path: setting.dxg
+            # - key: setting.dxg.tpl
+            #   path: setting.dxg.tpl
+              # mode: 0777
       serviceAccount: dgw
       serviceAccountName: dgw
