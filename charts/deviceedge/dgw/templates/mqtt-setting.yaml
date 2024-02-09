@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: mqtt-setting
 data:
-  MQTT_SERVER: "tcp://amq-broker-hdls-svc:61616"
+  MQTT_SERVER: "amq-broker-hdls-svc:61616"
   MQTT_CLIENTID: "demo"
   MQTT_USERNQME: "admin"
   MQTT_PASSWORD: "admin"
