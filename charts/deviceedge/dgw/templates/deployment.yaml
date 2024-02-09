@@ -30,8 +30,8 @@ spec:
             name: pvc-dxpgateway
           - mountPath: /mnt/sdcard
             name: pvc-sdcard
-          - mountPath: /DeviceGateway.lic
-            subPath: /mnt/sdcard/DeviceGateway.lic
+          - mountPath: /mnt/sdcard/DeviceGateway.lic
+            subPath: DeviceGateway.lic
             name: license
           - mountPath: /etc/dxpgateway/config/setting.dxg
             subPath: setting.dxg
