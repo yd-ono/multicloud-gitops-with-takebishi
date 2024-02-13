@@ -14,8 +14,10 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    # storageClassName: gp3-csi
-    storageClassName: lvms-vg1
+    # fogをAWSにデプロイする場合は以下をコメントアウト
+    storageClassName: gp3-csi
+    # fogをベアメタでデプロイする場合は以下をコメントアウト
+    # storageClassName: lvms-vg1
     region: fog
 
 # AWS側のOpenShiftのクラスタドメインを指定
@@ -52,57 +54,57 @@ clusterGroup:
       source: redhat-operators
       startingCSV: skupper-operator.v1.2
 
-    # odf:
-    #   name: odf-operator
-    #   namespace: openshift-storage
-    #   installPlanApproval: Automatic
-    #   channel: stable-4.13
-    #   source: redhat-operators
-    #   startingCSV: odf-operator.v4.13.3-rhodf
+    odf:
+      name: odf-operator
+      namespace: openshift-storage
+      installPlanApproval: Automatic
+      channel: stable-4.13
+      source: redhat-operators
+      startingCSV: odf-operator.v4.13.3-rhodf
 
   projects:
     - eso
     - fog
-    - cps
+    # - cps
 
   applications:
   # クラウド上のクラスタは以下をコメントアウト
-    # golang-external-secrets:
-    #   name: golang-external-secrets
-    #   namespace: golang-external-secrets
-    #   project: eso
-    #   path: common/golang-external-secrets
-
-    # ベアメンタルクラスタの場合は以下をコメントアウト
     golang-external-secrets:
       name: golang-external-secrets
       namespace: golang-external-secrets
       project: eso
-      path: charts/deviceedge/golang-external-secrets
+      path: common/golang-external-secrets
 
-    # object-storage:
-    #   name: object-storage
-    #   namespace: openshift-storage
+    # ベアメンタルクラスタの場合は以下をコメントアウト
+    # golang-external-secrets:
+    #   name: golang-external-secrets
+    #   namespace: golang-external-secrets
+    #   project: eso
+    #   path: charts/deviceedge/golang-external-secrets
+
+    object-storage:
+      name: object-storage
+      namespace: openshift-storage
+      project: fog
+      path: charts/common/object-storage
+
+    # mqtt2kafka-plc-state:
+    #   name: mqtt2kafka-plc-state
+    #   namespace: kafka
     #   project: fog
-    #   path: charts/common/object-storage
+    #   path: charts/fog/mqtt2kafka-plc-state
 
-    mqtt2kafka-plc-state:
-      name: mqtt2kafka-plc-state
-      namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-plc-state
+    # mqtt2kafka-result:
+    #   name: mqtt2kafka-result
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/mqtt2kafka-result
 
-    mqtt2kafka-result:
-      name: mqtt2kafka-result
-      namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-result
-
-    mqtt2kafka-oee:
-      name: mqtt2kafka-oee
-      namespace: kafka
-      project: fog
-      path: charts/fog/mqtt2kafka-oee
+    # mqtt2kafka-oee:
+    #   name: mqtt2kafka-oee
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/mqtt2kafka-oee
 
     # kafka2s3-plc-state:
     #   name: kafka2s3-plc-state
@@ -146,11 +148,11 @@ clusterGroup:
       project: fog
       path: charts/fog/kafka-mirror-maker-oee
 
-    # kafdrop:
-    #   name: kafdrop
-    #   namespace: kafka
-    #   project: fog
-    #   path: charts/fog/kafdrop
+    akhq:
+      name: akhq
+      namespace: kafka
+      project: fog
+      path: charts/fog/akhq-fog
 
     skupper:
       name: skupper
@@ -158,11 +160,11 @@ clusterGroup:
       project: fog
       path: charts/fog/skupper
 
-    ledblink:
-      name: ledblink
-      namespace: kafka
-      project: cps
-      path: charts/common/cps/ledblink-monitor
+    # ledblink:
+    #   name: ledblink
+    #   namespace: kafka
+    #   project: cps
+    #   path: charts/common/cps/ledblink-monitor
 
     # model-gen:
     #   name: model-gen
@@ -176,20 +178,20 @@ clusterGroup:
     #   project: cps
     #   path: charts/common/cps/model_get
 
-    oee:
-      name: oee
-      namespace: kafka
-      project: cps
-      path: charts/common/cps/oee-dashboard/oee-handler
+    # oee:
+    #   name: oee
+    #   namespace: kafka
+    #   project: cps
+    #   path: charts/common/cps/oee-dashboard/oee-handler
 
-    dasboard:
-      name: dashboard
-      namespace: kafka
-      project: cps
-      path: charts/common/cps/oee-dashboard/grafana
+    # dasboard:
+    #   name: dashboard
+    #   namespace: kafka
+    #   project: cps
+    #   path: charts/common/cps/oee-dashboard/grafana
 
-    quality:
-      name: quality
-      namespace: kafka
-      project: cps
-      path: charts/common/cps/quality-handler
+    # quality:
+    #   name: quality
+    #   namespace: kafka
+    #   project: cps
+    #   path: charts/common/cps/quality-handler

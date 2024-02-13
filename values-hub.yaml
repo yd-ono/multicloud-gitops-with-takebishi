@@ -108,11 +108,11 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka
 
-    # kafdrop:
-    #   name: kafdrop
-    #   namespace: kafka
-    #   project: hub
-    #   path: charts/hub/kafdrop
+    akhq:
+      name: akhq
+      namespace: kafka
+      project: hub
+      path: charts/hub/akhq-hub
 
     # kafka2s3:
     #   name: kafka2s3
