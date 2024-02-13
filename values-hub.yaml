@@ -118,11 +118,11 @@ clusterGroup:
       project: hub
       path: charts/hub/kafka
 
-    kafdrop:
-      name: kafdrop
+    akhq:
+      name: akhq
       namespace: kafka
       project: hub
-      path: charts/hub/kafdrop
+      path: charts/hub/akhq-hub
 
     kafka2s3:
       name: kafka2s3
@@ -191,24 +191,24 @@ clusterGroup:
         value: false
 
       # NOTE: If you want to create cluter by ACM, comment out the following lines
-      clusterPools:
-        exampleAWSPool:
-          size: 1
-          name: fog
-          openshiftVersion: 4.14.1
-          baseDomain: sandbox2453.opentlc.com 
-          controlPlane:
-            count: 3
-            platform:
-              aws:
-                type: m5.4xlarge
-          workers:
-            count: 0
-          platform:
-            aws:
-              region: ap-northeast-2
-          clusters:
-          - One
+      # clusterPools:
+      #   exampleAWSPool:
+      #     size: 1
+      #     name: fog
+      #     openshiftVersion: 4.14.1
+      #     baseDomain: sandbox2453.opentlc.com 
+      #     controlPlane:
+      #       count: 3
+      #       platform:
+      #         aws:
+      #           type: m5.4xlarge
+      #     workers:
+      #       count: 0
+      #     platform:
+      #       aws:
+      #         region: ap-northeast-2
+      #     clusters:
+      #     - One
 
     edge:
       name: edge
@@ -225,7 +225,7 @@ clusterGroup:
       #     size: 1
       #     name: edge
       #     openshiftVersion: 4.14.1
-      #     baseDomain: sandbox2453.opentlc.com 
+      #     baseDomain: sandbox2453.opentlc.com
       #     controlPlane:
       #       count: 1
       #       platform:
