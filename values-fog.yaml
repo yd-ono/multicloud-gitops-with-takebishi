@@ -130,23 +130,41 @@ clusterGroup:
       project: fog
       path: charts/fog/kafka
 
-    kafka-mirror-plc-state:
-      name: kafka-mirror-plc-state
+    mqtt2kafka:
+      name: mqtt2kafka
       namespace: kafka
       project: fog
-      path: charts/fog/kafka-mirror-maker-plc-state
+      path: charts/fog/mqtt2kafka
 
-    kafka-mirror-result:
-      name: kafka-mirror-result
+    kafka2s3:
+      name: kafka2s3
       namespace: kafka
       project: fog
-      path: charts/fog/kafka-mirror-maker-result
+      path: charts/fog/kafka2s3
 
-    kafka-mirror-oee:
-      name: kafka-mirror-oee
+    kafka-mirror:
+      name: kafka-mirror
       namespace: kafka
       project: fog
-      path: charts/fog/kafka-mirror-maker-oee
+      path: charts/fog/kafka-mirror-maker
+
+    # kafka-mirror-plc-state:
+    #   name: kafka-mirror-plc-state
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka-mirror-maker-plc-state
+
+    # kafka-mirror-result:
+    #   name: kafka-mirror-result
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka-mirror-maker-result
+
+    # kafka-mirror-oee:
+    #   name: kafka-mirror-oee
+    #   namespace: kafka
+    #   project: fog
+    #   path: charts/fog/kafka-mirror-maker-oee
 
     akhq:
       name: akhq

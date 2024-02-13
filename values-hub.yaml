@@ -114,29 +114,29 @@ clusterGroup:
       project: hub
       path: charts/hub/akhq-hub
 
-    # kafka2s3:
-    #   name: kafka2s3
+    kafka2s3:
+      name: kafka2s3
+      namespace: kafka
+      project: hub
+      path: charts/hub/kafka2s3
+
+    # kafka2s3-plc-state:
+    #   name: kafka2s3-plc-state
     #   namespace: kafka
     #   project: hub
-    #   path: charts/hub/kafka2s3
+    #   path: charts/hub/kafka2s3-plc-state
 
-    kafka2s3-plc-state:
-      name: kafka2s3-plc-state
-      namespace: kafka
-      project: hub
-      path: charts/hub/kafka2s3-plc-state
+    # kafka2s3-result:
+    #   name: kafka2s3-result
+    #   namespace: kafka
+    #   project: hub
+    #   path: charts/hub/kafka2s3-result
 
-    kafka2s3-result:
-      name: kafka2s3-result
-      namespace: kafka
-      project: hub
-      path: charts/hub/kafka2s3-result
-
-    kafka2s3-oee:
-      name: kafka2s3-oee
-      namespace: kafka
-      project: hub
-      path: charts/hub/kafka2s3-oee
+    # kafka2s3-oee:
+    #   name: kafka2s3-oee
+    #   namespace: kafka
+    #   project: hub
+    #   path: charts/hub/kafka2s3-oee
 
     deviceedge_cluster_argocd:
       name: cluster-argocd

@@ -1,0 +1,29 @@
+global:
+  localClusterDomain: svc
+
+  s3:
+    bucket:
+      name: demo
+      uri: http://rook-ceph-rgw-ocs-storagecluster-cephobjectstore.openshift-storage.svc
+      namespace: openshift-storage
+      region: ap-northeast-3
+      key_name: kafka.txt
+      message:
+        aggregation:
+          count: 50
+      custom:
+        endpoint:
+          enabled: true
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+s3secret:
+  key: secret/data/odf/aws
+  namespaces: kafka
+
+kafka:
+  broker:
+    uri: "fog-cluster-kafka-bootstrap:9092"
+    topic: "dgw"
