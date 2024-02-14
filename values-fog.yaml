@@ -7,7 +7,7 @@
 # platform_type: baremetal
 
 global:
-  hubClusterDomain: apps.demo.sandbox1326.opentlc.com
+  hubClusterDomain: apps.demo.sandbox285.opentlc.com
   options:
     useCSV: False
     syncPolicy: Automatic
@@ -23,7 +23,7 @@ global:
 # AWS側のOpenShiftのクラスタドメインを指定
 skupper:
   # connectClusterDomain: apps.fog.rhsc.local
-  connectClusterDomain: apps.demo.sandbox1326.opentlc.com
+  connectClusterDomain: apps.demo.sandbox285.opentlc.com
 
 clusterGroup:
   name: fog

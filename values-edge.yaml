@@ -6,7 +6,7 @@
 # platform_type: baremetal
 
 global:
-  hubClusterDomain: apps.demo.sandbox1326.opentlc.com
+  hubClusterDomain: apps.demo.sandbox285.opentlc.com
   options:
     useCSV: False
     syncPolicy: Automatic
@@ -18,8 +18,8 @@ global:
     region: fog
 
 skupper:
-  # connectClusterDomain: apps.demo.sandbox3027.opentlc.com
-  connectClusterDomain: apps.fog.rhsc.local
+  connectClusterDomain: apps.demo.sandbox2867.opentlc.com
+  # connectClusterDomain: apps.fog.rhsc.local
 
 clusterGroup:
   name: edge
@@ -98,23 +98,23 @@ clusterGroup:
       project: dw-gateway
       path: charts/edge/skupper
 
-    ledblink:
-      name: ledblink
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/ledblink-monitor
+    # ledblink:
+    #   name: ledblink
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/ledblink-monitor
 
-    model-gen:
-      name: model-gen
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/model_gen
+    # model-gen:
+    #   name: model-gen
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/model_gen
 
-    model-get:
-      name: model-get
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/model_get
+    # model-get:
+    #   name: model-get
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/model_get
 
     # nginx-rtmp:
     #   name: nginx-rtmp
@@ -122,23 +122,23 @@ clusterGroup:
     #   project: cps
     #   path: charts/common/nginx-rtmp
 
-    oee:
-      name: oee
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/oee-dashboard/oee-handler
+    # oee:
+    #   name: oee
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/oee-dashboard/oee-handler
 
-    dasboard:
-      name: dashboard
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/oee-dashboard/grafana
+    # dasboard:
+    #   name: dashboard
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/oee-dashboard/grafana
 
-    quality:
-      name: quality
-      namespace: dgw
-      project: cps
-      path: charts/common/cps/quality-handler
+    # quality:
+    #   name: quality
+    #   namespace: dgw
+    #   project: cps
+    #   path: charts/common/cps/quality-handler
 
     # mqtt2kafka:
     #   name: mqtt2kafka
