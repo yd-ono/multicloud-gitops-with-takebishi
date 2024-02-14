@@ -10,3 +10,6 @@ dgw:
     destinationTopic: dgw
     message: "{\n   \"time\":  <%=@nowUtc(\"yyyyMMdd HH:mm:ss.ms\")%>,\n   \"status\": <%=@p(\"Managemnt.Information.Summary.ledStatus\")%>,\n   \"send\": <%=@p(\"Managemnt.Lan.Summary.sendBytes0\")%>,\n   \"recieve\": <%=@p(\"Managemnt.Lan.Summary.receiveBytes0\")%>\n}\n"
     cycleMsec: 1000
+
+dgwtoken:
+  key: secret/data/global/dgw
