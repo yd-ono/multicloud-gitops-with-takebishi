@@ -69,6 +69,6 @@ spec:
               path: setting.dxg.tpl
             # - key: setting.dxg.tpl
             #   path: setting.dxg.tpl
-              # mode: 0777
+              mode: 0777
       serviceAccount: dgw
       serviceAccountName: dgw
