@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: akhq
+  labels:
+    app: akhq
+spec:
+  # host: auto determined - no need to provide host name
+  to:
+    kind: Service
+    name: akhq
+    weight: 100
+  port:
+    targetPort: 80
+  wildcardPolicy: None
