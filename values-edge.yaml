@@ -13,9 +13,9 @@ global:
     installPlanApproval: Automatic
 
   datacenter:
-    # storageClassName: gp3-csi
-    storageClassName: lvms-vg1
-    region: fog
+    storageClassName: gp3-csi
+    # storageClassName: lvms-vg1
+    region: edge
 
 skupper:
   connectClusterDomain: apps.demo.sandbox2867.opentlc.com
@@ -68,17 +68,18 @@ clusterGroup:
 
   applications:
 
-    golang-external-secrets:
-      name: golang-external-secrets
-      namespace: golang-external-secrets
-      project: eso
-      path: charts/deviceedge/golang-external-secrets
-
+    ## ベアメタルの場合は以下をコメントアウト
     # golang-external-secrets:
     #   name: golang-external-secrets
     #   namespace: golang-external-secrets
     #   project: eso
-    #   path: common/golang-external-secrets
+    #   path: charts/deviceedge/golang-external-secrets
+
+    golang-external-secrets:
+      name: golang-external-secrets
+      namespace: golang-external-secrets
+      project: eso
+      path: common/golang-external-secrets
 
     amq:
       name: mqtt-broker
