@@ -57,6 +57,13 @@ spec:
       #   hostPath:
       #     path: /mnt/sdcard
       #     type: DirectoryOrCreate
+      - name: license
+        secret:
+          secretName: dgw-license
+          readOnly: true
+          items:
+            - key: DeviceGateway.lic
+              path: DeviceGateway.lic
       - name: setting
         configMap:
           name: dgw-settings
