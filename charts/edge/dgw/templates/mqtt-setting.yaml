@@ -8,4 +8,3 @@ data:
   MQTT_USERNAME: "admin"
   MQTT_PASSWORD: "admin"
   TOPIC: {{ .Values.dgw.setting.destinationTopic }}
-  MESSAGE: {{ .Values.dgw.setting.message }}

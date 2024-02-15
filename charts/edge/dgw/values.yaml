@@ -8,8 +8,6 @@ dgw:
     mqttServer: amq-broker-hdls-svc.mqtt.svc.cluster.local:61616
     clientID: dgw
     destinationTopic: dgw
-    message: "{ 'time':  <%=@nowUtc('yyyyMMdd HH:mm:ss.ms')%>, 'status': <%=@p('Managemnt.Information.Summary.ledStatus')%>,'send': <%=@p('Managemnt.Lan.Summary.sendBytes0')%>, 'recieve': <%=@p('Managemnt.Lan.Summary.receiveBytes0')%>}"
-    cycleMsec: 1000
 
 dgwtoken:
   key: secret/data/global/dgw
