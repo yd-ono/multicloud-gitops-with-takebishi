@@ -3,7 +3,7 @@ kind: ActiveMQArtemis
 metadata:
   name: {{ .Values.mqtt.name }}
   annotations:
-    skupper.io/address: amq-broker-hdls-svc-proxy
+    skupper.io/address: -broker-hdls-svc-proxyamq
     skupper.io/port: '61616'
     skupper.io/proxy: tcp
 spec:
