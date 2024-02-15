@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: mqtt-setting
 data:
-  MQTT_SERVER: {{ .Values.dgw.setting.mqtt-server-address }}
+  MQTT_SERVER: {{ .Values.dgw.setting.mqttServer }}
   MQTT_CLIENTID: {{ .Values.dgw.setting.clientID }}
   MQTT_USERNAME: "admin"
   MQTT_PASSWORD: "admin"
