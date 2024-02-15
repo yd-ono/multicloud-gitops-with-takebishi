@@ -63,11 +63,9 @@ spec:
       - name: license
         secret:
           secretName: dgw-license
-          readOnly: true
           items:
             - key: DeviceGateway.lic
               path: DeviceGateway.lic
-              mode: 0777
       - name: setting
         configMap:
           name: dgw-settings
