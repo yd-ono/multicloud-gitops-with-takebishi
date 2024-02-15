@@ -33,9 +33,9 @@ spec:
           - mountPath: /etc/dxpgateway/config/setting.dxg.tpl
             subPath: setting.dxg.tpl
             name: setting
-          # - mountPath: /mnt/sdcard/DeviceGateway.lic
-          #   subPath: DeviceGateway.lic
-          #   name: license
+            # - mountPath: /mnt/sdcard/DeviceGateway.lic
+            #   subPath: DeviceGateway.lic
+            #   name: license
           securityContext:
             privileged: true
           resources:
