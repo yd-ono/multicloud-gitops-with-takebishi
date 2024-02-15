@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: mqtt-setting
 data:
-  MQTT_SERVER: "amq-broker-hdls-svc.mqtt.svc.cluster.local:61616"
-  MQTT_CLIENTID: "demo"
+  MQTT_SERVER: {{ .Values.dgw.setting.mqtt-server-address }}
+  MQTT_CLIENTID: {{ .Values.dgw.setting.clientID }}
   MQTT_USERNAME: "admin"
   MQTT_PASSWORD: "admin"
-  PLC_IPADDRESS: "192.168.95.2"
-  PLC_PORT: "502"
+  TOPIC: {{ .Values.dgw.setting.destinationTopic }}
+  MESSAGE: {{ .Values.dgw.setting.message }}
