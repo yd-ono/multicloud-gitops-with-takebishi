@@ -63,7 +63,7 @@ clusterGroup:
   projects:
     - eso
     - dw-gateway
-    - cps
+    # - cps
     # - edge-data-pipeline
 
   applications:

@@ -5,7 +5,7 @@ secretStore:
 dgw:
   storageclass: gp3-csi
   setting:
-    mqttServer: amq-broker-hdls-svc.mqtt.svc.cluster.local:61616
+    mqttServer: amq-broker-hdls-svc.dgw.svc.cluster.local:61616
     clientID: dgw
     destinationTopic: dgw
 
