@@ -18,7 +18,7 @@ global:
     region: edge
 
 skupper:
-  connectClusterDomain: apps.demo.sandbox2867.opentlc.com
+  connectClusterDomain: apps.demo.sandbox1789.opentlc.com
   # connectClusterDomain: apps.fog.rhsc.local
 
 clusterGroup:
